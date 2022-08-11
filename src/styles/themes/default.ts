@@ -10,4 +10,4 @@ export const defaultTheme = {
   "white": "#FFFFFF",
 
   "color-text": "#202020",
-};
+} as const;
