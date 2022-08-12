@@ -5,11 +5,9 @@ interface props {
   transform?: number;
   backgroundColor?: string;
   display?: string;
-  width?: string;
-  color?: string;
 }
 
-export const DivModal = styled(Modal)<props>`
+export const DivModal = styled(Modal)`
   .modal-content {
     width: 100%;
     display: flex;
@@ -36,7 +34,7 @@ export const DivModal = styled(Modal)<props>`
   }
 `;
 
-export const DivCards = styled.div<props>`
+export const DivCards = styled.div`
   width: 100%;
   display: flex;
 `;
@@ -70,7 +68,7 @@ export const DivInformation = styled.div`
   }
 `;
 
-export const DivIndicator = styled.div<props>`
+export const DivIndicator = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -93,6 +91,7 @@ export const DivButton = styled.div<props>`
   justify-content: space-around;
   padding: 1rem;
 `;
+
 export const Button = styled.div<props>`
   display: ${(props) => props.display};
   width: ${(props) => (props.transform == 0 ? "100%" : "48%")};

@@ -1,23 +1,20 @@
-import { ThemeProvider } from "styled-components"
-import { ModalInfo } from "./components/ModalInfo"
-import { GlobalStyle } from "./styles/global"
-import { defaultTheme } from "./styles/themes/default"
-import { createTheme, SmashGlobalStyle } from '@gama-academy/smash-web'
+import { ThemeProvider } from "styled-components";
+import { ModalInfo } from "./components/ModalInfo";
+import { GlobalStyle } from "./styles/global";
+import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
 
-const theme = createTheme()
+const theme = createTheme();
 
 function App() {
-
-
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <SmashGlobalStyle/>
-          <ModalInfo/>
-          <GlobalStyle />
+        <SmashGlobalStyle />
+        <ModalInfo />
+        <GlobalStyle />
       </ThemeProvider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
