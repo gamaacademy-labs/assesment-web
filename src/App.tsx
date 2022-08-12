@@ -1,15 +1,20 @@
-import { ThemeProvider, useTheme } from "styled-components"
+import { ThemeProvider } from "styled-components"
+import { ModalInfo } from "./components/ModalInfo"
 import { GlobalStyle } from "./styles/global"
 import { defaultTheme } from "./styles/themes/default"
+import { createTheme, SmashGlobalStyle } from '@gama-academy/smash-web'
+
+const theme = createTheme()
 
 function App() {
 
 
   return (
     <div>
-      <ThemeProvider theme={defaultTheme}>
-        <h1>Hello world</h1>
-        <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <SmashGlobalStyle/>
+          <ModalInfo/>
+          <GlobalStyle />
       </ThemeProvider>
     </div>
   )
