@@ -9,7 +9,6 @@ function App() {
     <div>
       <ThemeProvider theme={defaultTheme}>
         <h1>Hello world</h1>
-
         <GlobalStyle />
       </ThemeProvider>
     </div>
