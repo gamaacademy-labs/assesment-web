@@ -4,6 +4,7 @@ import ilus1 from "../../assets/ilus1.png";
 import ilus2 from "../../assets/ilus2.png";
 import ilus3 from "../../assets/ilus3.png";
 import {
+  Button,
   DivButton,
   DivCard,
   DivCards,
@@ -87,7 +88,7 @@ export const ModalInfo = () => {
             />
           </DivIndicator>
           <DivButton>
-            <div style={{ width: "48%" }}>
+            <Button display = {transform == 0 ? 'none' : 'inline'}>
               <Btn
                 color="brand.secondary"
                 onClick={() => changeCard("+")}
@@ -96,8 +97,8 @@ export const ModalInfo = () => {
               >
                 voltar
               </Btn>
-            </div>
-            <div style={{ width: "48%" }}>
+            </Button>
+            <Button transform={transform}>
               <Btn
                 color="brand.secondary"
                 onClick={() => changeCard("-")}
@@ -105,7 +106,7 @@ export const ModalInfo = () => {
               >
                 {transform == -2 ? "Ok, entendi" : "Avançar"}
               </Btn>
-            </div>
+            </Button>
           </DivButton>
         </Modal.Body>
       </DivModal>

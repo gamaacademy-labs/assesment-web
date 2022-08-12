@@ -93,5 +93,7 @@ export const DivButton = styled.div<props>`
   justify-content: space-around;
   padding: 1rem;
 `;
-
-
+export const Button = styled.div<props>`
+  display: ${(props) => props.display};
+  width: ${(props) => (props.transform == 0 ? "100%" : "48%")};
+`;
