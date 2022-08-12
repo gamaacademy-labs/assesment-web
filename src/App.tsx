@@ -1,19 +1,22 @@
-import { ThemeProvider } from "styled-components"
-import { GlobalStyle } from "./styles/global"
-import { defaultTheme } from "./styles/themes/default"
+import { ThemeProvider } from "styled-components";
+import { AvaliationQuestions } from "./components/AvaliationQuestions";
+import { QuestionsMap } from "./components/QuestionsMap";
+import { HomeAvaliations } from "./pages/HomeAvaliations";
+import { GlobalStyle } from "./styles/global";
+import { defaultTheme } from "./styles/themes/default";
 
 function App() {
-
-
   return (
     <div>
       <ThemeProvider theme={defaultTheme}>
-        <h1>Hello world</h1>
+        {/* <AvaliationQuestions /> */}
+        <HomeAvaliations />
+        {/* <QuestionsMap /> */}
 
         <GlobalStyle />
       </ThemeProvider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
