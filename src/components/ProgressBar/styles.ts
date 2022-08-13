@@ -14,8 +14,8 @@ export const Div = styled.div`
   align-items: center;
   padding: 16px 32px;
   background: #7d38db;
+  color: white;
   box-shadow: 0px -2px 4px rgba(36, 37, 35, 0.24);
-  margin: 200px 50px;
 `;
 export const DivInformation = styled.div<props>`
   display: flex;
@@ -29,3 +29,7 @@ export const DivInformation = styled.div<props>`
     margin: 0 0.5rem;
   }
 `;
+
+export const DivButton = styled.div`
+  margin-left: 1rem;
+`
