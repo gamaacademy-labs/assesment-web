@@ -73,20 +73,6 @@ export const ModalInfo = () => {
               </DivInformation>
             </DivCard>
           </DivCards>
-          <DivIndicator>
-            <Indicator
-              onClick={() => setTransform(0)}
-              backgroundColor="purple"
-            />
-            <Indicator
-              onClick={() => setTransform(-1)}
-              backgroundColor={transform <= -1 ? "purple" : "#d0c9c9"}
-            />
-            <Indicator
-              onClick={() => setTransform(-2)}
-              backgroundColor={transform == -2 ? "purple" : "#d0c9c9"}
-            />
-          </DivIndicator>
           <DivButton>
             <Button display = {transform == 0 ? 'none' : 'inline'}>
               <Btn
@@ -108,6 +94,20 @@ export const ModalInfo = () => {
               </Btn>
             </Button>
           </DivButton>
+          <DivIndicator>
+            <Indicator
+              onClick={() => setTransform(0)}
+              backgroundColor="purple"
+            />
+            <Indicator
+              onClick={() => setTransform(-1)}
+              backgroundColor={transform <= -1 ? "purple" : "#d0c9c9"}
+            />
+            <Indicator
+              onClick={() => setTransform(-2)}
+              backgroundColor={transform == -2 ? "purple" : "#d0c9c9"}
+            />
+          </DivIndicator>
         </Modal.Body>
       </DivModal>
     </div>

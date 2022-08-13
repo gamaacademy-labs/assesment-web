@@ -73,7 +73,7 @@ export const DivIndicator = styled.div`
   justify-content: center;
   width: 100%;
   align-items: flex-end;
-  padding-top: 1rem;
+  padding: 1rem 0;
 `;
 
 export const Indicator = styled.div<props>`
@@ -90,9 +90,16 @@ export const DivButton = styled.div<props>`
   display: flex;
   justify-content: space-around;
   padding: 1rem;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 `;
 
 export const Button = styled.div<props>`
   display: ${(props) => props.display};
   width: ${(props) => (props.transform == 0 ? "100%" : "48%")};
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
