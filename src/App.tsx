@@ -1,19 +1,20 @@
-import { ThemeProvider, useTheme } from "styled-components"
-import { GlobalStyle } from "./styles/global"
-import { defaultTheme } from "./styles/themes/default"
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./styles/global";
+import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
+import { defaultTheme } from "./styles/themes/default";
+
+const theme = createTheme();
 
 function App() {
-
-
   return (
-    <div>
-      <ThemeProvider theme={defaultTheme}>
-        <h1>Hello world</h1>
-
+    <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={theme}>
+        <SmashGlobalStyle />
         <GlobalStyle />
+        <h1>Hello World!</h1>
       </ThemeProvider>
-    </div>
-  )
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
