@@ -6,8 +6,8 @@ interface props{
 
 export const Div = styled.div`
   position: absolute;
-  width: 1254px;
-  height: 72px;
+  width: 78.37rem;
+  height: 4.5rem;
   left: 0px;
   bottom: 0px;
   display: flex;

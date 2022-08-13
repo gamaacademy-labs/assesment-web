@@ -29,25 +29,7 @@ export const ProgressBar = () => {
           {num}/{numQuestion}
         </p>
       </DivInformation>
-      <Progress_Bar
-        max={numQuestion}
-        value={num}
-        percentageSide="right"
-        margin={undefined}
-        m={undefined}
-        mt={undefined}
-        marginTop={undefined}
-        mb={undefined}
-        marginBottom={undefined}
-        ml={undefined}
-        marginLeft={undefined}
-        mr={undefined}
-        marginRight={undefined}
-        my={undefined}
-        marginY={undefined}
-        mx={undefined}
-        marginX={undefined}
-      />
+      <Progress_Bar max={numQuestion} value={num} percentageSide="right" />
       <DivButton>
         <Button size="2" onClick={() => nextQuestion()} disabled={false}>
           <Box alignment="center" dir="row" justifyContent="space-between">
