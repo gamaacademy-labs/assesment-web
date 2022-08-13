@@ -2,18 +2,19 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/global";
 import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
 import { ProgressBar } from "./components/ProgressBar";
+import { defaultTheme } from "./styles/themes/default";
 
 const theme = createTheme();
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={defaultTheme}>
       <ThemeProvider theme={theme}>
         <SmashGlobalStyle />
-        <ProgressBar/>
+        <ProgressBar />
         <GlobalStyle />
       </ThemeProvider>
-    </div>
+    </ThemeProvider>
   );
 }
 
