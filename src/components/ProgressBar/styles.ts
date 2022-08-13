@@ -16,6 +16,7 @@ export const Div = styled.div`
   background: #7d38db;
   color: white;
   box-shadow: 0px -2px 4px rgba(36, 37, 35, 0.24);
+  
 `;
 export const DivInformation = styled.div<props>`
   display: flex;
