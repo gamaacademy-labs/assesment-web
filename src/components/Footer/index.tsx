@@ -19,11 +19,11 @@ export const Footer: React.FC = () => {
             Iniciar avaliação
           </Typography>
           <MaterialIcon
-            name="play_circle_outline"
+            name="play_arrow"
             color="primary.3"
             shape="round"
             shapeBackground="primary.3"
-            stroke={1}
+            stroke={2}
             strokeColor="primary.3"
             type="round"
           />
