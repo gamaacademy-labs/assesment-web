@@ -13,6 +13,7 @@ function App() {
         <SmashGlobalStyle />
         <ModalInfo />
         <GlobalStyle />
+        <h1>Hello World!</h1>
       </ThemeProvider>
     </ThemeProvider>
   );
