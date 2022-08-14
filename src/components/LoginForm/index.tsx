@@ -42,11 +42,10 @@ export const LoginForm: React.FC = () => {
     <S.SContainer>
       <S.SForm onSubmit={formik.handleSubmit}>
         <Form.Group>
-          {formik.errors.username && <span>{formik.errors.username}</span>}
           <Input
             label="Username"
             name="username"
-            onChangeValue={formik.handleChange}
+            onChange={formik.handleChange}
             placeholder="Type here"
             startAdornment={
               <img
@@ -58,10 +57,15 @@ export const LoginForm: React.FC = () => {
             type="text"
             id="username"
           />
+          {formik.errors.username && <span>{formik.errors.username}</span>}
         </Form.Group>
 
-        <S.SButton type="submit" onClick={function noRefCheck() {}} size="1">
-            Login
+        <S.SButton
+          buttonType="submit"
+          onClick={function noRefCheck() {}}
+          size="1"
+        >
+          Login
         </S.SButton>
       </S.SForm>
     </S.SContainer>
