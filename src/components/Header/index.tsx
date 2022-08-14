@@ -2,12 +2,13 @@ import React from "react";
 import * as S from "./styled";
 import logo from "../../assets/Logo.svg";
 import perfil from "../../assets/Perfil.svg";
-import { InputSearch, MaterialIcon, Typography } from "@gama-academy/smash-web";
+import square from "../../assets/SquareDotsIcon.svg";
+import { MaterialIcon, Typography } from "@gama-academy/smash-web";
 
 export const Header: React.FC = () => {
   return (
     <S.SHeaderContainer>
-      <img src={logo} alt="Gama Academy logo" />
+      <img src={logo} alt="Logo da Gama Academy" />
       <S.SContainer>
         <S.SInputSearch
           label=""
@@ -21,7 +22,7 @@ export const Header: React.FC = () => {
           marginTop={undefined}
           mb={undefined}
           marginBottom={undefined}
-          ml={10}
+          ml={undefined}
           marginLeft={undefined}
           mr={undefined}
           marginRight={undefined}
@@ -31,19 +32,17 @@ export const Header: React.FC = () => {
           marginX={undefined}
         />
       </S.SContainer>
-      <S.SContainer>
-        <Typography>Avaliação #{}</Typography>
-        <S.SLink to="/">Carreiras</S.SLink>
-        <MaterialIcon name="pattern" color="black" />
-        <MaterialIcon
-          color="white"
-          name="notifications"
-          size={18}
-          shape="round"
-          shapeStyle={{ width: 24, height: 24 }}
-        />
-        <img src={perfil} alt="Foto do usuário" />
-      </S.SContainer>
+      <Typography numberOfLines={1}>Avaliação #{}</Typography>
+      <Typography>Carreiras</Typography>
+      <img src={square} alt="Ícone de quadrado" />
+      <MaterialIcon
+        color="white"
+        name="notifications"
+        size={18}
+        shape="round"
+        shapeStyle={{ width: 24, height: 24 }}
+      />
+      <img src={perfil} alt="Foto do usuário" />
     </S.SHeaderContainer>
   );
 };
