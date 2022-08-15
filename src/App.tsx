@@ -7,6 +7,7 @@ import { GlobalStyle } from "./styles/global";
 import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
 import { ProgressBar } from "./components/ProgressBar";
 import { defaultTheme } from "./styles/themes/default";
+import { MyRoutes } from "./routes";
 import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
 
 const theme = createTheme();
@@ -17,6 +18,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <SmashGlobalStyle />
         <GlobalStyle />
+        <MyRoutes />
         <h1>Hello World!</h1>
         {/* <AvaliationQuestions /> */}
         <HomeAvaliations />
