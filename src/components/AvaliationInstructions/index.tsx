@@ -42,24 +42,13 @@ export function AvaliationInstructions({
         </p>
         <p>Boa avaliação!</p>
 
-        {/* <Checkbox
-            fluid
-            label="Lorem Ipsum"
-            name="checkbox-story"
-            onChange={function noRefCheck() {}}
-            variant="card"
-          /> */}
-
-        <div>
-          <input
-            onClick={() => setIsDisabled(!isDisabled)}
-            id="checkboxInstructions"
-            type="checkbox"
-          />
-          <label htmlFor="checkboxInstructions">
-            Li as instruções e concordo com as regras aqui estabelecidas.
-          </label>
-        </div>
+        <Checkbox
+          fluid
+          label="Li as instruções e concordo com as regras aqui estabelecidas."
+          name="checkbox-story"
+          variant="card"
+          onClick={() => setIsDisabled(!isDisabled)}
+        />
       </MainContainer>
     </>
   );

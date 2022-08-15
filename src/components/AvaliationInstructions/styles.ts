@@ -16,28 +16,34 @@ export const MainContainer = styled.main`
   p {
     margin-top: 1.5rem;
   }
+`;
 
-  div {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    width: fit-content;
+interface InputProps {
+  variant?: boolean;
+}
 
-    background: ${(props) => props.theme["purple"]};
+export const DivInput = styled.div<InputProps>`
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  width: fit-content;
 
-    border: 1px solid #202020;
-    box-shadow: -4px 4px 0px #202020;
-    border-radius: 8px;
+  border-radius: 8px;
 
-    input {
-      margin-right: 0.75rem;
-    }
+  background: ${(props) =>
+    props.variant ? props.theme["purple"] : "transparent"};
 
-    label {
-        color: ${props => props.theme['white']};
-        font-size: 0.875rem;
-    }
+  border: ${(props) => (props.variant ? "1px solid #202020" : "1px solid")};
+  box-shadow: ${(props) => props.variant && "-4px 4px 0px #202020"};
+
+  input {
+    margin-right: 0.75rem;
+  }
+
+  label {
+    color: ${(props) => (props.variant ? props.theme["white"] : "black")};
+    font-size: 0.875rem;
   }
 `;

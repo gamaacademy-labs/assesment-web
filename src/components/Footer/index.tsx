@@ -1,17 +1,18 @@
 import * as S from "./styled";
 import { Box, Button, MaterialIcon, Typography } from "@gama-academy/smash-web";
+import { useNavigate } from "react-router-dom";
 
 interface FooterProps {
   isDisabled: boolean;
 }
 
-export const Footer = ({isDisabled}: FooterProps) => {
-
+export const Footer = ({ isDisabled }: FooterProps) => {
+  const navigate = useNavigate();
 
   return (
     <S.SFooterContainer>
       <Button
-        onClick={function noRefCheck() {}}
+        onClick={() => navigate("/assessment")}
         size="1"
         color="white"
         borderRadius="md"
