@@ -3,6 +3,8 @@ import { AvaliationQuestions } from "./components/AvaliationQuestions";
 import { QuestionsMap } from "./components/QuestionsMap";
 import { HomeAvaliations } from "./pages/HomeAvaliations";
 import { GlobalStyle } from "./styles/global";
+import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
+import { ProgressBar } from "./components/ProgressBar";
 import { defaultTheme } from "./styles/themes/default";
 import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
 
@@ -13,6 +15,7 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <ThemeProvider theme={theme}>
         <SmashGlobalStyle />
+        <ProgressBar />
         <GlobalStyle />
         <h1>Hello World!</h1>
         {/* <AvaliationQuestions /> */}

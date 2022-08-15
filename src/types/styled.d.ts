@@ -6,4 +6,4 @@ type ThemeType = typeof defaultTheme | DefaultTheme;
 
 declare module "styled-components" {
   export interface DefaultTheme extends ThemeType {}
-}
+};
