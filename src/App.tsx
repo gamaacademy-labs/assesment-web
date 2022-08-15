@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import { ModalInfo } from "./components/ModalInfo";
 import { AvaliationQuestions } from "./components/AvaliationQuestions";
 import { QuestionsMap } from "./components/QuestionsMap";
 import { HomeAvaliations } from "./pages/HomeAvaliations";
@@ -15,7 +16,6 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <ThemeProvider theme={theme}>
         <SmashGlobalStyle />
-        <ProgressBar />
         <GlobalStyle />
         <h1>Hello World!</h1>
         {/* <AvaliationQuestions /> */}
