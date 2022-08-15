@@ -3,7 +3,7 @@ import * as S from "./styled";
 import logo from "../../assets/Logo.svg";
 import perfil from "../../assets/Perfil.svg";
 import square from "../../assets/SquareDotsIcon.svg";
-import { MaterialIcon, Typography } from "@gama-academy/smash-web";
+import { MaterialIcon } from "@gama-academy/smash-web";
 
 export const Header: React.FC = () => {
   return (
@@ -32,17 +32,19 @@ export const Header: React.FC = () => {
           marginX={undefined}
         />
       </S.SContainer>
-      <Typography numberOfLines={1}>Avaliação #{}</Typography>
-      <Typography>Carreiras</Typography>
-      <img src={square} alt="Ícone de quadrado" />
-      <MaterialIcon
+      <S.STypography numberOfLines={1}>Avaliação #{}</S.STypography>
+      <S.STypography>Carreiras</S.STypography>
+      <S.SMobileIcon name="search" color="black" />
+      <MaterialIcon name="apps" color="black" />
+      <S.SMaterialIcon
         color="white"
         name="notifications"
         size={18}
         shape="round"
         shapeStyle={{ width: 24, height: 24 }}
       />
-      <img src={perfil} alt="Foto do usuário" />
+      <S.SMobileIcon name="menu" color="black" />
+      <S.SImage src={perfil} alt="Foto do usuário" />
     </S.SHeaderContainer>
   );
 };
