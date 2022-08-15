@@ -5,6 +5,7 @@ export const Container = styled.main`
   border: 1px solid #d7dbda;
   border-radius: 8px;
   color: ${(props) => props.theme["color-text"]};
+  flex: 1;
 
   h3 {
     font-size: 1rem;

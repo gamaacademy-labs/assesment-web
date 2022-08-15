@@ -4,7 +4,11 @@ import iconSummaryFooter from '../../assets/iconSummaryFooter.svg'
 
 import { Container, FooterInfos, SubContainerInfos } from "./styles";
 
-export function SummaryAvaliation() {
+interface SummaryAvaliationProps {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function SummaryAvaliation({ setShowModal }: SummaryAvaliationProps) {
   return (
     <Container>
       <header>
@@ -12,7 +16,7 @@ export function SummaryAvaliation() {
           <img src={iconSummaryAvaliation} />
           Resumo
         </strong>
-        <img src={iconSummaryMoreInformation} />
+        <img onClick={() => setShowModal(true)} src={iconSummaryMoreInformation} />
       </header>
       <SubContainerInfos>
         <strong>Avalição: </strong>

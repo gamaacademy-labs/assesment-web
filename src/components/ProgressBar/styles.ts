@@ -6,7 +6,7 @@ interface props{
 }
 
 export const Div = styled.div`
-  position: absolute;
+position: absolute;
   width: 100%;
   height: 4.5rem;
   left: 0px;
@@ -18,6 +18,7 @@ export const Div = styled.div`
   box-shadow: 0px -2px 4px rgba(36, 37, 35, 0.24);
 
   @media (max-width: 768px) {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -45,6 +46,7 @@ export const DivInformation = styled.div<props>`
 
   .question{
     display: flex;
+    margin: 0;
     margin-left: 0.75rem;
     @media (max-width: 768px) {
       display: none;

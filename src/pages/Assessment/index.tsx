@@ -1,12 +1,19 @@
-import React from "react";
 import { Header } from "../../components/Header";
-// import { Footer } from "../../components/Footer";
+import { ProgressBar } from "../../components/ProgressBar";
+import { QuestionsMap } from "../../components/QuestionsMap";
+import { AvaliationQuestions } from "../../components/AvaliationQuestions";
+import { Container, SubContainer } from "./styles";
 
-export const Assessment: React.FC = () => {
+export const Assessment = () => {
   return (
-    <>
-      <Header />
-      {/* <Footer /> */}
-    </>
+    <Container>
+      {/* <Header /> */}
+      <SubContainer>
+        <QuestionsMap />
+        <AvaliationQuestions />
+      </SubContainer>
+
+      <ProgressBar />
+    </Container>
   );
 };

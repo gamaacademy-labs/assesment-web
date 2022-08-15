@@ -1,9 +1,12 @@
 import * as S from "./styled";
 import { Box, Button, MaterialIcon, Typography } from "@gama-academy/smash-web";
-import { useState } from "react";
 
-export const Footer: React.FC = () => {
-  const [isDisabled, setIsDisabled] = useState(true);
+interface FooterProps {
+  isDisabled: boolean;
+}
+
+export const Footer = ({isDisabled}: FooterProps) => {
+
 
   return (
     <S.SFooterContainer>
