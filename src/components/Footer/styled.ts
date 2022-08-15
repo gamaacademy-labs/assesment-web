@@ -9,4 +9,13 @@ export const SFooterContainer = styled.div`
   padding: 0.75rem 2rem;
   margin: 0;
   box-sizing: border-box;
+
+  @media (max-width: 425px) {
+    justify-content: center;
+
+    button {
+      width: 327px;
+      font-size: 16px;
+    }
+  }
 `;
