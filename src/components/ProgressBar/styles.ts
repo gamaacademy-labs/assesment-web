@@ -86,8 +86,6 @@ export const DivButton = styled.div<props>`
 export const MatiralIconStyles = styled(MaterialIcon)<props>`
   span{
     color: ${props =>props.changeColor ? 'black' : '#68DE5A' };
-    &:active{
-      color: #68DE5A
-    }
+
   }
 `
