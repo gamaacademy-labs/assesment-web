@@ -16,13 +16,18 @@ import {
 } from "./styles";
 import { Button as Btn } from "@gama-academy/smash-web";
 
-export const ModalInfo = () => {
-  const [show, setShow] = useState(true);
+interface ModalInfoProps {
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const ModalInfo = ( {showModal, setShowModal}: ModalInfoProps) => {
+  
   const [transform, setTransform] = useState(0);
 
   const changeCard = (sinal: string) => {
     if (sinal === "-" && transform == -2) {
-      setShow(false);
+      setShowModal(false);
     }
     if (sinal === "-" && transform > -2) {
       setTransform(transform - 1);
@@ -31,15 +36,11 @@ export const ModalInfo = () => {
       setTransform(transform + 1);
     }
   };
-  const handleClose = () => setShow(false);
-  const handleShow = () => {
-    setTransform(0);
-    setShow(true);
-  };
+  const handleClose = () => setShowModal(false);
+
   return (
     <div>
-      <Btn onClick={handleShow} fluid>Launch demo modal</Btn>
-      <DivModal show={show} onHide={handleClose} centered>
+      <DivModal show={showModal} onHide={handleClose} centered>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <DivCards>

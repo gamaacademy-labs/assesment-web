@@ -19,6 +19,11 @@ export const Container = styled.aside`
     display: flex;
     justify-content: space-between;
 
+    img:not(:first-child) {
+      
+      cursor: pointer;
+    }
+
     strong {
       font-size: 1rem;
       img {

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const SFooterContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
   background-color: #7d38db;
   display: flex;
   justify-content: flex-end;
@@ -10,7 +13,7 @@ export const SFooterContainer = styled.div`
   margin: 0;
   box-sizing: border-box;
 
-  @media (max-width: 425px) {
+  @media (max-width: 426px) {
     justify-content: center;
 
     button {

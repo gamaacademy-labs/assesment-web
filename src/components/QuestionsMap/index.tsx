@@ -1,9 +1,13 @@
 import iconQuestionsMap from "../../assets/iconQuestionsMap.svg";
 import { Container, DivInputRadio, SubContainerQuestions } from "./styles";
 
-const arrayQuestions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+const arrayQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
-export function QuestionsMap() {
+interface QuestionsMapProps {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function QuestionsMap({ setShowModal }: QuestionsMapProps) {
   return (
     <Container>
       <header>
@@ -12,7 +16,9 @@ export function QuestionsMap() {
       </header>
       <SubContainerQuestions>
         {arrayQuestions.map((question) => (
-          <a key={question} href={question}>{question}</a>
+          <a key={question} href={question}>
+            {question}
+          </a>
         ))}
       </SubContainerQuestions>
 
@@ -29,7 +35,9 @@ export function QuestionsMap() {
         <label htmlFor="nao-respondida">Não respondida</label>
       </DivInputRadio>
 
-      <button>Instruções da avaliação</button>
+      <button onClick={() => setShowModal(true)}>
+        Instruções da avaliação
+      </button>
     </Container>
   );
 }

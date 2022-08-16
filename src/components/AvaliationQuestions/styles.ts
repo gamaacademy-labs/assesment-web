@@ -5,6 +5,7 @@ export const Container = styled.main`
   border: 1px solid #d7dbda;
   border-radius: 8px;
   color: ${(props) => props.theme["color-text"]};
+  flex: 1;
 
   h3 {
     font-size: 1rem;
@@ -26,7 +27,7 @@ export const Container = styled.main`
 `;
 
 interface TypeContainerInput {
-    variant: boolean;
+  variant: boolean;
 }
 
 export const ContainerInput = styled.div<TypeContainerInput>`
@@ -34,17 +35,24 @@ export const ContainerInput = styled.div<TypeContainerInput>`
   font-weight: 700;
   margin-top: 1rem;
   padding: 0.5rem;
+  display: flex;
 
   border: 1px solid #ccd1cf;
   border-radius: 8px;
 
-  background: ${props => props.variant ? '#7D38DB' : '#FFF'};
-  box-shadow: ${props => props.variant && '-4px 4px 0px #202020'};
+  background: ${(props) => (props.variant ? "#7D38DB" : "#FFF")};
+  color: ${(props) => (props.variant ? "#FFF" : props.theme["color-text"])};
+  box-shadow: ${(props) => props.variant && "-4px 4px 0px #202020"};
+
   input {
     margin-right: 0.5rem;
   }
 
   &:checked {
-    background: #7D38DB
+    background: #7d38db;
+  }
+
+  label {
+    flex: 1;
   }
 `;

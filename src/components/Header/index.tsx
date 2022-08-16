@@ -2,13 +2,13 @@ import React from "react";
 import * as S from "./styled";
 import logo from "../../assets/Logo.svg";
 import perfil from "../../assets/Perfil.svg";
-import square from "../../assets/SquareDotsIcon.svg";
 import { MaterialIcon } from "@gama-academy/smash-web";
+import { Link } from "react-router-dom";
 
 export const Header: React.FC = () => {
   return (
     <S.SHeaderContainer>
-      <img src={logo} alt="Logo da Gama Academy" />
+      <Link to="/"><img src={logo} alt="Logo da Gama Academy" /></Link>
       <S.SContainer>
         <S.SInputSearch
           label=""
