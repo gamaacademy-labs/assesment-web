@@ -87,6 +87,7 @@ export const ProgressBar = () => {
             fluid
             onClick={() => nextQuestion("+")}
             disabled={false}
+            color="white"
           >
             <Box
               className="box"
