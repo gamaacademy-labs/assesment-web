@@ -13,14 +13,13 @@ export function HomeAssessment() {
 
   return (
     <>
-        <Header />
+      <Header />
       <Container>
         <SummaryAvaliation setShowModal={setShowModal} />
         <AvaliationInstructions
           isDisabled={isDisabled}
           setIsDisabled={setIsDisabled}
         />
-
         <ModalInfo showModal={showModal} setShowModal={setShowModal} />
       </Container>
       <Footer isDisabled={isDisabled} />

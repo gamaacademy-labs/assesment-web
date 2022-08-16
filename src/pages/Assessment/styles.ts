@@ -9,6 +9,7 @@ export const SubContainer = styled.div`
   display: flex;
   margin: 2rem;
   gap: 2rem;
+  margin-bottom: 7.5rem;
 
   @media (max-width: 768px) {
     flex-direction: column;

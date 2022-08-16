@@ -4,12 +4,10 @@ import { createTheme, SmashGlobalStyle } from "@gama-academy/smash-web";
 import { defaultTheme } from "./styles/themes/default";
 import { MyRoutes } from "./routes";
 
-const theme = createTheme();
-
-function App() {
+export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={createTheme()}>
         <SmashGlobalStyle />
         <GlobalStyle />
         <MyRoutes />
@@ -17,5 +15,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;
