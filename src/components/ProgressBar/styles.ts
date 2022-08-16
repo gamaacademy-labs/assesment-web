@@ -1,8 +1,10 @@
+import { MaterialIcon } from "@gama-academy/smash-web";
 import styled from "styled-components";
 
 interface props{
   margin?: number
   num?: number;
+  changeColor?: boolean
 }
 
 export const Div = styled.div`
@@ -73,10 +75,19 @@ export const DivButton = styled.div<props>`
   
   .backButton{
     border: 1px solid white;
-    color: white;
+
     &:active{
       border: none;
     }
   }
 
+`
+
+export const MatiralIconStyles = styled(MaterialIcon)<props>`
+  span{
+    color: ${props =>props.changeColor ? 'black' : '#68DE5A' };
+    &:active{
+      color: #68DE5A
+    }
+  }
 `

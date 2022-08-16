@@ -12,11 +12,13 @@ import {
   DivButton,
   DivInfoBar,
   DivInformation,
+  MatiralIconStyles,
 } from "./styles";
 
 export const ProgressBar = () => {
   const [num, setNum] = useState(0);
   let numQuestion = 4;
+  const change = num < numQuestion
 
   const nextQuestion = (signal: string) => {
     if (signal == "+" && num < numQuestion) {
@@ -71,7 +73,7 @@ export const ProgressBar = () => {
           >
             <Box alignment="center" dir="row" justifyContent="space-between">
               <MaterialIcon
-                color="black"
+                color="white"
                 name="arrow_back"
                 shapeBackground="primary.3"
               />
@@ -87,7 +89,7 @@ export const ProgressBar = () => {
             fluid
             onClick={() => nextQuestion("+")}
             disabled={false}
-            color="white"
+            color= {change ? "white" : "primary.3"}
           >
             <Box
               className="box"
@@ -96,13 +98,15 @@ export const ProgressBar = () => {
               justifyContent="space-between"
             >
               <Typography fontWeight="semi_bold" mr="2" numberOfLines={1}>
-                {num < numQuestion ? "Próximo" : "finalizar"}
+                {change ? "Próximo" : "finalizar"}
               </Typography>
-              <MaterialIcon
-                color="black"
-                type="outlined"
-                name={num < numQuestion ? "arrow_forward" : "flag"}
-                shapeBackground="primary.3"
+              <MatiralIconStyles
+                name={change ? "arrow_forward" : "flag"}
+                shape="round"
+                color="black"              
+                shapeBackground={change ? "primary.3" : "contrast.dark"}
+                changeColor = {change}
+                type="round"
               />
             </Box>
           </Button>
