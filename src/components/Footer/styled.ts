@@ -4,7 +4,7 @@ export const SFooterContainer = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: #7d38db;
+  background-color: ${(props) => props.theme["purple"]};
   display: flex;
   justify-content: flex-end;
   align-items: center;
