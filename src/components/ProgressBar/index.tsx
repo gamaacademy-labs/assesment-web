@@ -98,7 +98,7 @@ export const ProgressBar = () => {
               justifyContent="space-between"
             >
               <Typography fontWeight="semi_bold" mr="2" numberOfLines={1}>
-                {change ? "Próximo" : "Entregar avaliação"}
+                {change ? "Próxima" : "Entregar avaliação"}
               </Typography>
               <MatiralIconStyles
                 name={change ? "arrow_forward" : "flag"}
