@@ -10,7 +10,7 @@ import {
   DivModal,
   Img,
 } from "./styles";
-import { Button as Btn, ThemeColorsName } from "@gama-academy/smash-web";
+import { Button as ButtonSmash, ThemeColorsName } from "@gama-academy/smash-web";
 
 interface Props {
   title: string;
@@ -41,12 +41,12 @@ export const ModalInfo = (props: Props) => {
           </DivCard>
           <DivButton>
             <Button>
-              <Btn color={props.colorButton} onClick={props.onClickConfirm} fluid>
+              <ButtonSmash color={props.colorButton} onClick={props.onClickConfirm} fluid>
                 {props.textButton}
-              </Btn>
+              </ButtonSmash>
             </Button>
             <Button display = {props.displayButton}>
-              <Btn
+              <ButtonSmash
                 color="brand.secondary"
                 onClick={props.onClickCancel}
                 fluid
@@ -54,7 +54,7 @@ export const ModalInfo = (props: Props) => {
 
               >
                 canclear
-              </Btn>
+              </ButtonSmash>
             </Button>
           </DivButton>
         </Modal.Body>
