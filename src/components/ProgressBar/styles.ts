@@ -1,22 +1,22 @@
 import { MaterialIcon } from "@gama-academy/smash-web";
 import styled from "styled-components";
 
-interface props{
-  margin?: number
+interface props {
+  margin?: number;
   num?: number;
   changeColor?: boolean
 }
 
 export const Div = styled.div`
-position: absolute;
+  position: fixed;
   width: 100%;
   height: 4.5rem;
-  left: 0px;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   padding: 16px 32px;
-  background: #7d38db;
+  background: ${(props) => props.theme["purple"]};
   box-shadow: 0px -2px 4px rgba(36, 37, 35, 0.24);
 
   @media (max-width: 768px) {
@@ -39,14 +39,14 @@ export const DivInfoBar = styled.div`
   @media (max-width: 768px) {
     margin-right: 0;
   }
-`
+`;
 
 export const DivInformation = styled.div<props>`
   display: flex;
   align-items: center;
   color: white;
 
-  .question{
+  .question {
     display: flex;
     margin: 0;
     margin-left: 0.75rem;
@@ -54,7 +54,7 @@ export const DivInformation = styled.div<props>`
       display: none;
     }
   }
-  .numQuestion{
+  .numQuestion {
     margin: 0 0.5rem;
   }
 `;
@@ -65,27 +65,25 @@ export const DivAllButton = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
-`
+`;
 
 export const DivButton = styled.div<props>`
-  display: ${props=>props.num == 0 ? 'none' : 'block'};
+  display: ${(props) => (props.num == 0 ? "none" : "block")};
   @media (max-width: 768px) {
     width: 100%;
   }
-  
-  .backButton{
+
+  .backButton {
     border: 1px solid white;
 
     &:active{
       border: none;
     }
   }
-
-`
+`;
 
 export const MatiralIconStyles = styled(MaterialIcon)<props>`
   span{
     color: ${props =>props.changeColor ? 'black' : '#68DE5A' };
-
   }
-`
+`;

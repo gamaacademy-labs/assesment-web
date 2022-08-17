@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 export const Header: React.FC = () => {
   return (
     <S.SHeaderContainer>
-      <Link to="/"><img src={logo} alt="Logo da Gama Academy" /></Link>
+      <Link to="/">
+        <img src={logo} alt="Logo da Gama Academy" />
+      </Link>
       <S.SContainer>
         <S.SInputSearch
           label=""

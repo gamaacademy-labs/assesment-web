@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
 });
 
 export const LoginForm: React.FC = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -34,7 +34,7 @@ export const LoginForm: React.FC = () => {
       localStorage.setItem("user", JSON.stringify(user));
       alert("Usuário logado!");
       formik.resetForm();
-      // navigate("/");
+      navigate("/");
     },
   });
 

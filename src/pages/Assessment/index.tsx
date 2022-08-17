@@ -13,10 +13,9 @@ export const Assessment = () => {
     <Container>
       <Header />
       <SubContainer>
-        <QuestionsMap setShowModal={setShowModal}/>
+        <QuestionsMap setShowModal={setShowModal} />
         <AvaliationQuestions />
       </SubContainer>
-
       <ProgressBar />
       <ModalInfo showModal={showModal} setShowModal={setShowModal} />
     </Container>

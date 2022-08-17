@@ -5,7 +5,8 @@ export const SHeaderContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100vw;
+  width: auto;
+  max-width: 100vw;
   padding: 0.5rem 1rem;
   margin: 0;
   box-sizing: border-box;
