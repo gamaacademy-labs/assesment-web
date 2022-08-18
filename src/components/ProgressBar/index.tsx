@@ -101,6 +101,7 @@ export const ProgressBar = () => {
                 {change ? "Próxima" : "Entregar avaliação"}
               </Typography>
               <MatiralIconStyles
+                size={20}
                 name={change ? "arrow_forward" : "flag"}
                 shape="round"
                 color="black"              
