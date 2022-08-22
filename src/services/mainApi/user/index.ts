@@ -16,8 +16,7 @@ export const getUsers = async (id?: number): Promise<User> => {
 
 export const loginUser = async (user: Login) => {
   try {
-    const response = await api.post("/login", user);
-    console.log(response);
+    const response = await api.post("/auth/login", user);
     return response.data;
   } catch (error) {
     console.error(error);

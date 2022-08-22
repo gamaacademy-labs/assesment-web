@@ -22,16 +22,16 @@ export const LoginForm: React.FC = () => {
     validationSchema,
 
     onSubmit: async (values) => {
-      const { token, user } = await loginUser(values);
-
-      if (!user) {
+      const token  = await loginUser({username: values.username});
+      
+      if (!token) {
         alert("Senha ou usuário inválidos!");
         return;
       }
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify(token));
       alert("Usuário logado!");
       formik.resetForm();
       navigate("/");
