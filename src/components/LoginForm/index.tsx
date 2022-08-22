@@ -2,10 +2,11 @@ import * as S from "./styled";
 import { Form } from "react-bootstrap";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { loginUser } from "../../services/mainApi/user";
+import { getUsers, loginUser } from "../../services/mainApi/user";
 import { api } from "../../services/mainApi";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@gama-academy/smash-web";
+import Cookie from 'js-cookie'
 
 const validationSchema = Yup.object({
   username: Yup.string().required("*"),
@@ -30,8 +31,8 @@ export const LoginForm: React.FC = () => {
       }
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(token));
+      const user = await getUsers(values.username)
+      Cookie.set('user', user.username)
       alert("Usuário logado!");
       formik.resetForm();
       navigate("/");
