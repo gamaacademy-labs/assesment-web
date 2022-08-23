@@ -9,15 +9,14 @@ interface Login {
   username: string;
 }
 
-export const getUsers = async (id?: number): Promise<User> => {
-  const response = await api.get<User>(`/user/${id}`);
+export const getUsers = async (name: string): Promise<User> => {
+  const response = await api.get<User>(`/users/${name}`);
   return response.data;
 };
 
 export const loginUser = async (user: Login) => {
   try {
-    const response = await api.post("/login", user);
-    console.log(response);
+    const response = await api.post("/auth/login", user);
     return response.data;
   } catch (error) {
     console.error(error);
