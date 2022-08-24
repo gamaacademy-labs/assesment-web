@@ -19,7 +19,7 @@ interface Props {
   textButton: string;
   displayButton?: string;
   imageModal?: string;
-  onClickCancel?: () => void;
+  onClickCancel: () => void;
   onClickConfirm: () => void;
 }
 
@@ -51,7 +51,6 @@ export const ModalInfo = (props: Props) => {
                 onClick={props.onClickCancel}
                 fluid
                 variant="outline"
-
               >
                 canclear
               </ButtonSmash>

@@ -15,3 +15,5 @@ export function App() {
     </ThemeProvider>
   );
 }
+
+// Configurar acesso as paginas HomeAssessment e Assessment apenas para usuarios logados
