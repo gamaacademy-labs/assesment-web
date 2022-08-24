@@ -5,7 +5,11 @@ import perfil from "../../assets/Perfil.svg";
 import { MaterialIcon } from "@gama-academy/smash-web";
 import { Link } from "react-router-dom";
 
-export const Header: React.FC = () => {
+interface PropsHeader {
+  title: string;
+}
+
+export const Header = ({title}:PropsHeader) => {
   return (
     <S.SHeaderContainer>
       <Link to="/">
@@ -34,7 +38,7 @@ export const Header: React.FC = () => {
           marginX={undefined}
         />
       </S.SContainer>
-      <S.STypography numberOfLines={1}>Avaliação #{}</S.STypography>
+      <S.STypography numberOfLines={1}>{title}</S.STypography>
       <S.STypography>Carreiras</S.STypography>
       <S.SMobileIcon name="search" color="black" />
       <MaterialIcon name="apps" color="black" />
