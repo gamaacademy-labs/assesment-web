@@ -9,6 +9,7 @@ import { SummaryAvaliation } from "../../components/SummaryAvaliation";
 import { getAssessment } from "../../services/mainApi/assessments";
 import { Assessment } from "../../types";
 import { Container } from "./styles";
+import Cookies from "js-cookie";
 
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
@@ -20,6 +21,7 @@ export function HomeAssessment() {
 			const response = await getAssessment(
 				"0416f181-78b4-499c-91c0-7b32a89773d5"
 			);
+			Cookies.set('titleAssessment', response.title)
 			return setAssessment(
         {...response,
           finishedAt: format(new Date(response.finishedAt), 'dd/MM/yyyy')
@@ -27,7 +29,7 @@ export function HomeAssessment() {
       );
 		};
 		takeAssessment();
-	}, []);
+	}, [assessment]);
 
 	return (
 		<>
