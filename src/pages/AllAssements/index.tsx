@@ -1,6 +1,5 @@
 import {
 	Button,
-	Dropdown,
 	MaterialIcon,
 	Typography,
 } from "@gama-academy/smash-web";
