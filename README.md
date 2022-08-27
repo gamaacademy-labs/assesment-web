@@ -1,4 +1,4 @@
-# GamaLab Squad 3 - API
+# GamaLab Squad Paredão - Web App
 
 ## Membros
 
@@ -22,9 +22,10 @@
 - Nomeclatura de tabelas e colunas
   - Snake case
     - Ex: created_at
-- Nomeclatura de componentes  
+- Nomeclatura de componentes
 
 ## Git Flow
+
 ![plot](./docs//gitflow//git-flow.drawio.png)
 
 ## Especifições do software
