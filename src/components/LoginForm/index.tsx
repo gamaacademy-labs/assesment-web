@@ -6,7 +6,9 @@ import { getUsers, loginUser } from '../../services/mainApi/user';
 import { api } from '../../services/mainApi';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@gama-academy/smash-web';
+import { toast } from 'react-toastify';
 import Cookie from 'js-cookie';
+import { useState } from 'react';
 
 const validationSchema = Yup.object({
 	username: Yup.string().required('*'),
@@ -14,6 +16,7 @@ const validationSchema = Yup.object({
 
 export const LoginForm: React.FC = () => {
 	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const formik = useFormik({
 		initialValues: {
@@ -26,14 +29,17 @@ export const LoginForm: React.FC = () => {
 			const token = await loginUser({ username: values.username });
 
 			if (!token) {
-				alert('Senha ou usuário inválidos!');
+				toast.warn('Senha ou usuário inválidos!');
+				setIsLoading(false);
 				return;
 			}
 
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const user = await getUsers(values.username);
 			Cookie.set('user', user.username);
-			alert('Usuário logado!');
+
+			toast.success('Login realizado com sucesso!');
+			setIsLoading(false);
 			formik.resetForm();
 			window.location.href = '/';
 		},
@@ -60,10 +66,10 @@ export const LoginForm: React.FC = () => {
 					/>
 					{formik.errors.username && <span>{formik.errors.username}</span>}
 				</Form.Group>
-
 				<S.SButton
 					buttonType="submit"
-					onClick={function noRefCheck() {}}
+					loading={isLoading}
+					onClick={() => setIsLoading(true)}
 					size="1"
 				>
 					Login

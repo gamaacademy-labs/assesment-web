@@ -13,9 +13,9 @@ export const Assessment = () => {
 	const deadline = Cookies.get('dateAssessment') as string;
 
 	return (
-		<Container>
+		<Container className="body-container">
 			<Header title={title} />
-			<SubContainer>
+			<SubContainer className="body-container">
 				<QuestionsMap setShowModal={setShowModal} />
 				<AvaliationQuestions />
 			</SubContainer>

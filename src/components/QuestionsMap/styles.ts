@@ -2,14 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.aside`
 	padding: 2rem;
-
+	background-color: #fff;
 	border: 1px solid #d7dbda;
 	border-radius: 8px;
 	width: fit-content;
 	height: fit-content;
-
 	color: ${props => props.theme['color-text']};
-
 	width: 100%;
 	max-width: 300px;
 

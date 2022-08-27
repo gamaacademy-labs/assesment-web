@@ -4,7 +4,7 @@ export const MainContainer = styled.main`
 	flex: 1;
 	padding: 1.5rem;
 	height: fit-content;
-
+	background-color: #fff;
 	border: 1px solid #d7dbda;
 	border-radius: 8px;
 

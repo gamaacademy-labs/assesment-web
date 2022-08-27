@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-
 import { AvaliationInstructions } from '../../components/AvaliationInstructions';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -28,13 +27,14 @@ export function HomeAssessment() {
 			Cookies.set('titleAssessment', response.title);
 			Cookies.set('dateAssessment', assessment.finishedAt);
 		};
+
 		takeAssessment();
 	}, [assessment]);
 
 	return (
 		<>
 			<Header title={assessment.title} />
-			<Container>
+			<Container className="body-container">
 				<SummaryAvaliation
 					title={assessment.title}
 					qtdQuestions={assessment.qtdQuestions}
