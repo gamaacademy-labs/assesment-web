@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "npx prettier --write ."
   },
   "dependencies": {
     "@gama-academy/smash-web": "^2.10.0",
