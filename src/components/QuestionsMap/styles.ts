@@ -7,6 +7,8 @@ export const Container = styled.aside`
 	border-radius: 8px;
 	width: fit-content;
 	height: fit-content;
+	background: #fff;
+
 	color: ${props => props.theme['color-text']};
 	width: 100%;
 	max-width: 300px;
