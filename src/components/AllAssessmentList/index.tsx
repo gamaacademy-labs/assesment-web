@@ -1,6 +1,7 @@
 import * as S from './styles';
 import { Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export function AllASsessmentList() {
 	const navigate = useNavigate();
@@ -28,7 +29,7 @@ export function AllASsessmentList() {
 	];
 
 	const goToSelectedAssessment = (id: string) => {
-		localStorage.setItem('assessmentId', id);
+		Cookies.set('assessmentId', id);
 		navigate(`/instructions`);
 	};
 
