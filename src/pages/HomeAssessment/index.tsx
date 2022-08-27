@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-
 import { AvaliationInstructions } from '../../components/AvaliationInstructions';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -27,13 +26,14 @@ export function HomeAssessment() {
 				finishedAt: format(new Date(response.finishedAt), 'dd/MM/yyyy'),
 			});
 		};
+
 		takeAssessment();
 	}, [assessment]);
 
 	return (
 		<>
 			<Header title={assessment.title} />
-			<Container>
+			<Container className="body-container">
 				<SummaryAvaliation
 					title={assessment.title}
 					qtdQuestions={assessment.qtdQuestions}

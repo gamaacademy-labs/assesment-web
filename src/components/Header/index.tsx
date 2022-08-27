@@ -1,19 +1,23 @@
 import { MaterialIcon } from '@gama-academy/smash-web';
 import Cookies from 'js-cookie';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from '../../assets/Logo.svg';
 import perfil from '../../assets/Perfil.svg';
 import * as S from './styled';
 
-interface PropsHeader {
+interface HeaderProps {
 	title: string;
 }
 
-export const Header = ({ title }: PropsHeader) => {
+export const Header = ({ title }: HeaderProps) => {
+	const navigate = useNavigate();
 	const logout = () => {
 		Cookies.remove('user');
-		window.location.href = '/login';
+		toast.success('Logout realizado com sucesso!');
+		window.location.href = '/';
 	};
+
 	return (
 		<S.SHeaderContainer>
 			<Link to="/">
@@ -22,8 +26,8 @@ export const Header = ({ title }: PropsHeader) => {
 			<S.SContainer>
 				<S.SInputSearch
 					label=""
-					onChangeValue={function noRefCheck() {}}
-					onClear={function noRefCheck() {}}
+					onChangeValue={function noRefCheck() { }}
+					onClear={function noRefCheck() { }}
 					placeholder="Digite uma palavra-chave"
 					value=""
 					m={undefined}
