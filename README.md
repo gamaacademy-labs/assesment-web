@@ -1,4 +1,4 @@
-# GamaLab Squad 3 - API
+# GamaLab Squad Paredão - Web App
 
 ## Membros
 
