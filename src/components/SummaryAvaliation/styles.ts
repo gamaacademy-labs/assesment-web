@@ -7,7 +7,7 @@ export const Container = styled.aside`
 	padding: 1.5rem;
 	color: ${props => props.theme['color-text']};
 	font-size: 0.875rem;
-
+	background-color: #fff;
 	border: 1px solid #d7dbda;
 	border-radius: 8px;
 

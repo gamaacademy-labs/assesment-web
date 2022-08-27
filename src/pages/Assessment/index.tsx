@@ -12,9 +12,9 @@ export const Assessment = () => {
 	const title = Cookies.get('titleAssessment') as string;
 
 	return (
-		<Container>
+		<Container className="body-container">
 			<Header title={title} />
-			<SubContainer>
+			<SubContainer className="body-container">
 				<QuestionsMap setShowModal={setShowModal} />
 				<AvaliationQuestions />
 			</SubContainer>

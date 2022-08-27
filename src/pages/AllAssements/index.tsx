@@ -1,7 +1,5 @@
 import { Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
 import Cookies from 'js-cookie';
-import React from 'react';
-import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { Header } from '../../components/Header';
 import { Container, Content } from './styles';
 
@@ -9,7 +7,7 @@ export default function AllAssements() {
 	const userName = Cookies.get('user') as string;
 
 	return (
-		<Container>
+		<Container className="body-container">
 			<Header title={userName} />
 			<Content>
 				<Typography type="title">Avaliações</Typography>

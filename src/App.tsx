@@ -1,3 +1,4 @@
+import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/global';
 import { createTheme, SmashGlobalStyle } from '@gama-academy/smash-web';
@@ -15,5 +16,3 @@ export function App() {
 		</ThemeProvider>
 	);
 }
-
-// Configurar acesso as paginas HomeAssessment e Assessment apenas para usuarios logados
