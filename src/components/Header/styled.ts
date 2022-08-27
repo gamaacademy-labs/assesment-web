@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { InputSearch, MaterialIcon, Typography } from "@gama-academy/smash-web";
+import styled from 'styled-components';
+import { InputSearch, MaterialIcon, Typography } from '@gama-academy/smash-web';
 
 export const SHeaderContainer = styled.div`
 	display: flex;
