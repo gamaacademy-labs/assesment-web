@@ -5,7 +5,7 @@ import { Assessment } from './pages/Assessment';
 import Cookies from 'js-cookie';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AllAssements from './pages/AllAssements';
+import { AllAssements } from './pages/AllAssements';
 
 export const MyRoutes = () => {
 	const token = Cookies.get('user');

@@ -1,4 +1,4 @@
-import * as S from './styled';
+import * as S from './styles';
 import logo from '../../assets/Logo.svg';
 import perfil from '../../assets/Perfil.svg';
 import { MaterialIcon } from '@gama-academy/smash-web';

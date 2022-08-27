@@ -7,7 +7,7 @@ import { ModalInfo } from '../../components/ModalInfo';
 import { SummaryAvaliation } from '../../components/SummaryAvaliation';
 import { getAssessment } from '../../services/mainApi/assessments';
 import { Assessment } from '../../types';
-import { Container } from './styles';
+import { Container } from '.../../@types
 import Cookies from 'js-cookie';
 
 export function HomeAssessment() {

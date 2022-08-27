@@ -1,4 +1,4 @@
-import { Assessment } from '../../../types';
+import { Assessment } from '../../../@types';
 import { api } from '../../mainApi';
 
 export const getAssessment = async (id: string): Promise<Assessment> => {

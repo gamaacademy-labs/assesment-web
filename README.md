@@ -1,18 +1,22 @@
 # GamaLab Squad Paredão - Web App
 
+- [Deploy](https://assesment-web.vercel.app)
+- [Repository](https://github.com/gamaacademy-labs/assesment-web)
+- [API](https://assesment-api.herokuapp.com/docs)
+
 ## Membros
 
 - [Rafael Sampaio](https://github.com/sampaiorafael) - Tech Lead
-- [Lucas Veiga]() - Front end Developer
-- [Júnior Dering]() - Front end Developer
-- [André Lima]() - Front end Developer
-- [Matheus Sousa]() - Fullstack Developer
-- [Gefferson oliveira]() - Back end Developer
-- [Álvaro M Ferreira]() - Back end Developer
+- [André Lima](https://github.com/andresdslima) - Frontend Developer
+- [Lucas Veiga]() - Frontend Developer
+- [Júnior Dering]() - Frontend Developer
+- [Matheus Sousa]() - Backend Developer
+- [Gefferson oliveira]() - Backend Developer
+- [Álvaro M Ferreira]() - Backend Developer
 
 ## Convenções de desenvolvimento
 
-- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0)
 - Nomeclatura de variaveis/métodos/funções...
   - Cammel case
     - Ex: const async getProductCountById()
