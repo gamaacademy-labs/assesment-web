@@ -32,10 +32,10 @@ export const LoginForm: React.FC = () => {
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const user = await getUsers(values.username)
-      Cookie.set('user', user.username)
+      Cookie.set('user', user.username);
       alert("Usuário logado!");
       formik.resetForm();
-      navigate("/");
+      window.location.href = '/'
     },
   });
 
