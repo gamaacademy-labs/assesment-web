@@ -19,7 +19,10 @@ export const MyRoutes = () => {
 					path="/instructions"
 					element={token ? <HomeAssessment /> : <Login />}
 				/>
-				<Route path="/assessment" element={token ? <Assessment /> : <Login />} />
+				<Route
+					path="/assessment"
+					element={token ? <Assessment /> : <Login />}
+				/>
 				<Route path="/" element={token ? <AllAssements /> : <Login />} />
 			</Routes>
 		</Router>

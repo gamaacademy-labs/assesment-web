@@ -1,8 +1,8 @@
-import { Checkbox } from "@gama-academy/smash-web";
-import { useEffect, useState } from "react";
-import iconAvaliationInstruction from "../../assets/iconAvaliationInstruction.svg";
-import { MainContainer } from "./styles";
-import Cookie from "js-cookie";
+import { Checkbox } from '@gama-academy/smash-web';
+import { useEffect, useState } from 'react';
+import iconAvaliationInstruction from '../../assets/iconAvaliationInstruction.svg';
+import { MainContainer } from './styles';
+import Cookie from 'js-cookie';
 
 interface AvaliationInstructionProps {
 	setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,10 +13,10 @@ export function AvaliationInstructions({
 	setIsDisabled,
 	isDisabled,
 }: AvaliationInstructionProps) {
-	const [username, setUsername] = useState("");
+	const [username, setUsername] = useState('');
 
 	useEffect(() => {
-		const user = String(Cookie.get("user"))
+		const user = String(Cookie.get('user'));
 		setUsername(user);
 	}, []);
 
@@ -55,7 +55,7 @@ export function AvaliationInstructions({
 					fluid
 					label="Li as instruções e concordo com as regras aqui estabelecidas."
 					variant="card"
-          checked={!isDisabled}
+					checked={!isDisabled}
 					onChange={() => setIsDisabled(!isDisabled)}
 				/>
 			</MainContainer>

@@ -17,7 +17,9 @@ export function HomeAssessment() {
 
 	useEffect(() => {
 		const takeAssessment = async () => {
-			const response = await getAssessment('0416f181-78b4-499c-91c0-7b32a89773d5');
+			const response = await getAssessment(
+				'0416f181-78b4-499c-91c0-7b32a89773d5',
+			);
 			Cookies.set('titleAssessment', response.title);
 			return setAssessment({
 				...response,

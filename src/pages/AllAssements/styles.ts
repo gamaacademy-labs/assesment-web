@@ -30,6 +30,14 @@ export const Content = styled.div`
 		p {
 			margin: 0;
 		}
+
+		@media (max-width: 425px) {
+			flex-direction: column;
+
+			p {
+				margin-bottom: 0.5rem;
+			}
+		}
 	}
 
 	.teste {
