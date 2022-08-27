@@ -1,6 +1,6 @@
 import { Button } from '@gama-academy/smash-web';
 import Cookies from 'js-cookie';
-import illustration from '../../assets/illustration-page-success.png';
+import illustration from '../../assets/images/illustration-page-success.png';
 import { Container } from './styles';
 
 export function SuccessPage() {
