@@ -15,7 +15,6 @@ import {
 	Indicator,
 } from './styles';
 import { Button as Btn } from '@gama-academy/smash-web';
-import { Assessment } from '../../types';
 
 interface ModalInfoProps {
 	showModal: boolean;
