@@ -1,8 +1,7 @@
-import React from 'react';
 import * as S from './styled';
 import logo from '../../assets/Logo.svg';
 import perfil from '../../assets/Perfil.svg';
-import { MaterialIcon, Toast } from '@gama-academy/smash-web';
+import { MaterialIcon } from '@gama-academy/smash-web';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
