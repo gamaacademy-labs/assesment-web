@@ -1,4 +1,4 @@
-import iconQuestionsMap from '../../assets/iconQuestionsMap.svg';
+import iconQuestionsMap from '../../assets/icons/iconQuestionsMap.svg';
 import { Container, DivInputRadio, SubContainerQuestions } from './styles';
 
 const arrayQuestions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];

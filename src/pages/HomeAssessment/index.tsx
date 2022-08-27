@@ -6,8 +6,8 @@ import { Header } from '../../components/Header';
 import { ModalInfo } from '../../components/ModalInfo';
 import { SummaryAvaliation } from '../../components/SummaryAvaliation';
 import { getAssessment } from '../../services/mainApi/assessments';
-import { Assessment } from '../../types';
-import { Container } from '.../../@types
+import { Assessment } from '../../@types';
+import { Container } from './styles';
 import Cookies from 'js-cookie';
 
 export function HomeAssessment() {
