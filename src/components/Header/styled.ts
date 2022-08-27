@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { InputSearch, MaterialIcon, Typography } from "@gama-academy/smash-web";
+import styled from 'styled-components';
+import { InputSearch, MaterialIcon, Typography } from '@gama-academy/smash-web';
 
 export const SHeaderContainer = styled.div`
 	display: flex;
@@ -11,6 +11,10 @@ export const SHeaderContainer = styled.div`
 	margin: 0;
 	box-sizing: border-box;
 	gap: 2rem;
+	background-color: #fff;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+	position: relative;
+	z-index: 1;
 
 	@media (max-width: 1024px) {
 		gap: 1rem;
@@ -65,9 +69,6 @@ export const STypography = styled(Typography)`
 
 export const SImage = styled.img`
 	cursor: pointer;
-	@media (max-width: 425px) {
-		display: none;
-	}
 `;
 
 export const SMaterialIcon = styled(MaterialIcon)`

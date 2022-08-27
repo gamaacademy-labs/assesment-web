@@ -1,17 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.main`
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0;
+	padding-bottom: 0;
 `;
 
 export const SubContainer = styled.div`
-  display: flex;
-  margin: 2rem;
-  gap: 2rem;
-  margin-bottom: 7.5rem;
+	display: flex;
+	padding: 2rem;
+	gap: 2rem;
+	padding-bottom: 7.5rem;
+	margin-bottom: 0;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
 `;
