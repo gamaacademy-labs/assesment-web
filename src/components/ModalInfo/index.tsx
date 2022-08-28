@@ -19,7 +19,7 @@ import { Button as Btn } from '@gama-academy/smash-web';
 interface ModalInfoProps {
 	showModal: boolean;
 	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-	deadline: string;
+	deadline?: string;
 }
 
 export const ModalInfo = ({
