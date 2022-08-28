@@ -1,4 +1,4 @@
-import * as S from './styled';
+import * as S from './styles';
 import { Form } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';

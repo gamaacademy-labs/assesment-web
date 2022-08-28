@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import ilus1 from '../../assets/ilus1.png';
-import ilus2 from '../../assets/ilus2.png';
-import ilus3 from '../../assets/ilus3.png';
+import ilus1 from '../../assets/images/ilus1.png';
+import ilus2 from '../../assets/images/ilus2.png';
+import ilus3 from '../../assets/images/ilus3.png';
 import {
 	Button,
 	DivButton,
@@ -19,7 +19,7 @@ import { Button as Btn } from '@gama-academy/smash-web';
 interface ModalInfoProps {
 	showModal: boolean;
 	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-	deadline: string;
+	deadline?: string;
 }
 
 export const ModalInfo = ({

@@ -1,6 +1,5 @@
-import { RadioButton } from '@gama-academy/smash-web';
 import { useState } from 'react';
-import iconAvaliationQuestions from '../../assets/iconAvaliationQuestions.svg';
+import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
 import { Container, ContainerInput } from './styles';
 
 export function AvaliationQuestions() {

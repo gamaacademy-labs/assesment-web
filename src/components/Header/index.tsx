@@ -1,10 +1,10 @@
+import * as S from './styles';
+import logo from '../../assets/images/Logo.svg';
+import perfil from '../../assets/images/Perfil.svg';
 import { MaterialIcon } from '@gama-academy/smash-web';
-import Cookies from 'js-cookie';
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
-import logo from '../../assets/Logo.svg';
-import perfil from '../../assets/Perfil.svg';
-import * as S from './styled';
 
 interface HeaderProps {
 	title: string;
@@ -26,8 +26,8 @@ export const Header = ({ title }: HeaderProps) => {
 			<S.SContainer>
 				<S.SInputSearch
 					label=""
-					onChangeValue={function noRefCheck() { }}
-					onClear={function noRefCheck() { }}
+					onChangeValue={function noRefCheck() {}}
+					onClear={function noRefCheck() {}}
 					placeholder="Digite uma palavra-chave"
 					value=""
 					m={undefined}
