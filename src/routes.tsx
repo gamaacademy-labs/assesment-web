@@ -1,11 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login } from './pages/Login';
-import { HomeAssessment } from './pages/HomeAssessment';
-import { Assessment } from './pages/Assessment';
 import Cookies from 'js-cookie';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AllAssements } from './pages/AllAssements';
+import { Assessment } from './pages/Assessment';
+import { HomeAssessment } from './pages/HomeAssessment';
+import { Login } from './pages/Login';
+import { Success } from './pages/Success';
 
 export const MyRoutes = () => {
 	const token = Cookies.get('user');
@@ -24,6 +25,7 @@ export const MyRoutes = () => {
 					element={token ? <Assessment /> : <Login />}
 				/>
 				<Route path="/" element={token ? <AllAssements /> : <Login />} />
+				<Route path="/success" element={token ? <Success /> : <Login />} />
 			</Routes>
 		</Router>
 	);
