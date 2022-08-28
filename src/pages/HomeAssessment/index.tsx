@@ -20,11 +20,12 @@ export function HomeAssessment() {
 			const response = await getAssessment(
 				'0416f181-78b4-499c-91c0-7b32a89773d5',
 			);
-			Cookies.set('titleAssessment', response.title);
-			return setAssessment({
+			setAssessment({
 				...response,
 				finishedAt: format(new Date(response.finishedAt), 'dd/MM/yyyy'),
 			});
+			Cookies.set('titleAssessment', response.title);
+			Cookies.set('dateAssessment', assessment.finishedAt);
 		};
 
 		takeAssessment();
@@ -45,7 +46,7 @@ export function HomeAssessment() {
 					isDisabled={isDisabled}
 					setIsDisabled={setIsDisabled}
 				/>
-				<ModalInfo showModal={showModal} setShowModal={setShowModal} />
+				<ModalInfo deadline = {assessment.finishedAt} showModal={showModal} setShowModal={setShowModal} />
 			</Container>
 			<Footer isDisabled={isDisabled} />
 		</>

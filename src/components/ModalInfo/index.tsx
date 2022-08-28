@@ -19,14 +19,20 @@ import { Button as Btn } from '@gama-academy/smash-web';
 interface ModalInfoProps {
 	showModal: boolean;
 	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+	deadline: string;
 }
 
-export const ModalInfo = ({ showModal, setShowModal }: ModalInfoProps) => {
+export const ModalInfo = ({
+	showModal,
+	setShowModal,
+	deadline,
+}: ModalInfoProps) => {
 	const [transform, setTransform] = useState(0);
 
 	const changeCard = (sinal: string) => {
 		if (sinal === '-' && transform == -2) {
 			setShowModal(false);
+			setTimeout(()=>setTransform(0),200) ;
 		}
 		if (sinal === '-' && transform > -2) {
 			setTransform(transform - 1);
@@ -67,8 +73,8 @@ export const ModalInfo = ({ showModal, setShowModal }: ModalInfoProps) => {
 							<DivInformation>
 								<h4>Data Limite</h4>
 								<p>
-									Você tem até data limite para finalizar a avaliação. Após esse
-									período não será possível encerrá-la.
+									Você tem até {deadline} para finalizar a
+									avaliação. Após esse período não será possível encerrá-la.
 								</p>
 							</DivInformation>
 						</DivCard>
