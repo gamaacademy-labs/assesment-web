@@ -42,6 +42,7 @@ export const LoginForm: React.FC = () => {
 
 			toast.success('Login realizado com sucesso!');
 			setIsLoading(false);
+			navigate('/')
 			formik.resetForm();
 		},
 	});

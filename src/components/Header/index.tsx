@@ -18,6 +18,7 @@ export const Header = ({ title }: HeaderProps) => {
 	const logout = () => {
 		toast.success('Logout realizado com sucesso!');
 		dispatch(setUser({token: ''}))
+		navigate('/login')
 	};
 
 	return (
