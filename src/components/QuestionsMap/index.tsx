@@ -5,8 +5,8 @@ import { Container, DivInputRadio, SubContainerQuestions } from './styles';
 
 interface QuestionsMapProps {
 	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-	questions: Question[];
-	setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+	questions?: Question[];
+	setQuestionIndex?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export function QuestionsMap({
@@ -21,11 +21,11 @@ export function QuestionsMap({
 				<strong>Mapa de questões</strong>
 			</header>
 			<SubContainerQuestions>
-				{questions.map((question, index) => (
+				{questions?.map((question, index) => (
 					<Link
 						key={question.id}
 						to="#"
-						onClick={() => setQuestionIndex(index)}
+						onClick={() => (setQuestionIndex ? setQuestionIndex(index) : null)}
 					>
 						{index + 1}
 					</Link>
