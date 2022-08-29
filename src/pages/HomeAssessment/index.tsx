@@ -16,10 +16,10 @@ export function HomeAssessment() {
 	const [assessment, setAssessment] = useState({} as Assessment);
 
 	useEffect(() => {
+		const id = Cookies.get('assessmentId');
+
 		const takeAssessment = async () => {
-			const response = await getAssessment(
-				'0416f181-78b4-499c-91c0-7b32a89773d5',
-			);
+			const response = await getAssessment(`${id}`);
 
 			setAssessment({
 				...response,
