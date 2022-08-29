@@ -10,16 +10,17 @@ import Cookies from 'js-cookie';
 export const Assessment = () => {
 	const [showModal, setShowModal] = useState(false);
 	const title = Cookies.get('titleAssessment') as string;
+	const deadline = Cookies.get('dateAssessment') as string;
 
 	return (
-		<Container>
+		<Container className="body-container">
 			<Header title={title} />
-			<SubContainer>
+			<SubContainer className="body-container">
 				<QuestionsMap setShowModal={setShowModal} />
 				<AvaliationQuestions />
 			</SubContainer>
 			<ProgressBar />
-			<ModalInfo showModal={showModal} setShowModal={setShowModal} />
+			<ModalInfo deadline={deadline} showModal={showModal} setShowModal={setShowModal} />
 		</Container>
 	);
 };

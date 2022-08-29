@@ -1,4 +1,4 @@
-import * as S from './styled';
+import * as S from './styles';
 import { Box, Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
 import { useNavigate } from 'react-router-dom';
 

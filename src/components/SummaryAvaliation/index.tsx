@@ -1,6 +1,6 @@
-import iconSummaryAvaliation from '../../assets/iconSummaryAvaliation.svg';
-import iconSummaryMoreInformation from '../../assets/iconSummaryMoreInformation.svg';
-import iconSummaryFooter from '../../assets/iconSummaryFooter.svg';
+import iconSummaryAvaliation from '../../assets/icons/iconSummaryAvaliation.svg';
+import iconSummaryMoreInformation from '../../assets/icons/iconSummaryMoreInformation.svg';
+import iconSummaryFooter from '../../assets/icons/iconSummaryFooter.svg';
 import { Container, FooterInfos, SubContainerInfos } from './styles';
 
 interface SummaryAvaliationProps {

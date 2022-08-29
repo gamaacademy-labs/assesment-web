@@ -1,4 +1,4 @@
-import { api } from '../../mainApi';
+import { api } from '..';
 
 interface User {
 	username: string;
@@ -20,6 +20,5 @@ export const loginUser = async (user: Login) => {
 		return response.data;
 	} catch (error) {
 		console.error(error);
-		alert('Usuário ou senha inválidos!');
 	}
 };

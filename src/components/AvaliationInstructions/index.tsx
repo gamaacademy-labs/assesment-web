@@ -1,6 +1,6 @@
 import { Checkbox } from '@gama-academy/smash-web';
 import { useEffect, useState } from 'react';
-import iconAvaliationInstruction from '../../assets/iconAvaliationInstruction.svg';
+import iconAvaliationInstruction from '../../assets/icons/iconAvaliationInstruction.svg';
 import { MainContainer } from './styles';
 import Cookie from 'js-cookie';
 

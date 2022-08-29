@@ -3,6 +3,6 @@ export interface Assessment {
 	isActive: boolean;
 	title: string;
 	finishedAt: string;
-	qtdQuestions: 0;
-	maxScore: 0;
+	qtdQuestions: number;
+	maxScore: number;
 }

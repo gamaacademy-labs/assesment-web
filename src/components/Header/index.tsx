@@ -1,21 +1,23 @@
-import React from 'react';
-import * as S from './styled';
-import logo from '../../assets/Logo.svg';
-import perfil from '../../assets/Perfil.svg';
+import * as S from './styles';
+import logo from '../../assets/images/Logo.svg';
+import perfil from '../../assets/images/Perfil.svg';
 import { MaterialIcon } from '@gama-academy/smash-web';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
-interface PropsHeader {
+interface HeaderProps {
 	title: string;
 }
 
-export const Header = ({ title }: PropsHeader) => {
+export const Header = ({ title }: HeaderProps) => {
 	const navigate = useNavigate();
 	const logout = () => {
 		Cookies.remove('user');
-		window.location.href = '/login';
+		toast.success('Logout realizado com sucesso!');
+		window.location.href = '/';
 	};
+
 	return (
 		<S.SHeaderContainer>
 			<Link to="/">
