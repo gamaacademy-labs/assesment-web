@@ -1,4 +1,4 @@
-import { api } from '../../mainApi';
+import { api } from '..';
 
 interface User {
 	username: string;

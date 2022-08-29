@@ -2,7 +2,7 @@ import * as S from './styles';
 import { Form } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { getUsers, loginUser } from '../../services/mainApi/user';
+import { getUsers, loginUser } from '../../services/mainApi/users';
 import { api } from '../../services/mainApi';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@gama-academy/smash-web';
@@ -29,7 +29,7 @@ export const LoginForm: React.FC = () => {
 			const token = await loginUser({ username: values.username });
 
 			if (!token) {
-				toast.warn('Senha ou usuário inválidos!');
+				toast.warn('Usuário inválido!');
 				setIsLoading(false);
 				return;
 			}
@@ -69,7 +69,9 @@ export const LoginForm: React.FC = () => {
 				<S.SButton
 					buttonType="submit"
 					loading={isLoading}
-					onClick={() => setIsLoading(true)}
+					onClick={() => {
+						formik.values.username !== '' && setIsLoading(true);
+					}}
 					size="1"
 				>
 					Login
