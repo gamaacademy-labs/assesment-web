@@ -14,8 +14,9 @@ export function AvaliationQuestions({
 }: AvaliationQuestionsProps) {
 	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState(
 		[] as string[],
-	);
+		);
 
+		const [changeChecked, setChangeChecked] = useState(false)
 	return (
 		<Container>
 			<h3>
@@ -35,13 +36,14 @@ export function AvaliationQuestions({
 								const stateCopy = [...checkQuestionAnswer];
 								stateCopy[index] = alternative.id;
 								setCheckQuestionAnswer(stateCopy);
+								setChangeChecked(checkQuestionAnswer[index] === alternative.id ? true : false)
 								
 							}}
 							value={alternative.id}
 							id={alternative.id}
 							type="radio"
 							name={questions[index].id}
-							checked={checkQuestionAnswer[index] === alternative.id ? true : false}
+							checked={changeChecked}
 						/>
 						<label htmlFor={alternative.id}>{alternative.title}</label>
 					</ContainerInput>
