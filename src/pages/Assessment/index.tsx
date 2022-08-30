@@ -1,13 +1,14 @@
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
+import { Question } from '../../@types';
+import { AvaliationQuestions } from '../../components/AvaliationQuestions';
 import { Header } from '../../components/Header';
+import { ModalInfo } from '../../components/ModalInfo';
 import { ProgressBar } from '../../components/ProgressBar';
 import { QuestionsMap } from '../../components/QuestionsMap';
-import { AvaliationQuestions } from '../../components/AvaliationQuestions';
-import { Container, SubContainer } from './styles';
-import { useEffect, useState } from 'react';
-import { ModalInfo } from '../../components/ModalInfo';
-import Cookies from 'js-cookie';
+import { api } from '../../services/mainApi';
 import { getAssessmentQuestion } from '../../services/mainApi/assessments';
-import { Question } from '../../@types';
+import { Container, SubContainer } from './styles';
 
 export const Assessment = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -19,6 +20,8 @@ export const Assessment = () => {
 
 	useEffect(() => {
 		const getQuestionList = async () => {
+			const token = String(Cookies.get('token'));
+			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const questionList = await getAssessmentQuestion(questionId);
 			setQuestions(questionList);
 		};
@@ -36,11 +39,11 @@ export const Assessment = () => {
 					setQuestionIndex={setQuestionIndex}
 					setShowModal={setShowModal}
 				/>
-				<AvaliationQuestions questions={questions} index={questionIndex} />
+				<AvaliationQuestions questions={questions} questionIndex={questionIndex} />
 			</SubContainer>
 			<ProgressBar
 				questions={questions}
-				index={questionIndex}
+				questionIndex={questionIndex}
 				setQuestionIndex={setQuestionIndex}
 			/>
 			<ModalInfo

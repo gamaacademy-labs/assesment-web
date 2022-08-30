@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
+import { Assessment } from '../../@types';
 import { AvaliationInstructions } from '../../components/AvaliationInstructions';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { ModalInfo } from '../../components/ModalInfo';
 import { SummaryAvaliation } from '../../components/SummaryAvaliation';
+import { api } from '../../services/mainApi';
 import { getAssessment } from '../../services/mainApi/assessments';
-import { Assessment } from '../../@types';
 import { Container } from './styles';
-import Cookies from 'js-cookie';
 
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
@@ -19,6 +20,8 @@ export function HomeAssessment() {
 		const id = Cookies.get('assessmentId');
 
 		const takeAssessment = async () => {
+			const token = String(Cookies.get('token'));
+			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const response = await getAssessment(`${id}`);
 
 			setAssessment({

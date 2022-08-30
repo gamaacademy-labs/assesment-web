@@ -1,14 +1,14 @@
-import * as S from './styles';
-import { Form } from 'react-bootstrap';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
-import { getUser, loginUser } from '../../services/mainApi/users';
-import { api } from '../../services/mainApi';
-import { useNavigate } from 'react-router-dom';
 import { Input } from '@gama-academy/smash-web';
-import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
 import Cookie from 'js-cookie';
 import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import { api } from '../../services/mainApi';
+import { getUser, loginUser } from '../../services/mainApi/users';
+import * as S from './styles';
 
 const validationSchema = Yup.object({
 	username: Yup.string().required('*'),
@@ -37,6 +37,7 @@ export const LoginForm: React.FC = () => {
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const user = await getUser(values.username);
 			Cookie.set('user', user.username);
+			Cookie.set('token', token);
 
 			toast.success('Login realizado com sucesso!');
 			setIsLoading(false);

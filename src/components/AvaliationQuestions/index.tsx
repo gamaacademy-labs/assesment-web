@@ -5,13 +5,15 @@ import { Container, ContainerInput } from './styles';
 
 interface AvaliationQuestionsProps {
 	questions: Question[];
-	index: number;
+	questionIndex: number;
 }
 
 export function AvaliationQuestions({
 	questions,
-	index,
+	questionIndex,
 }: AvaliationQuestionsProps) {
+
+
 	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState(
 		[] as string[],
 		);
@@ -20,21 +22,21 @@ export function AvaliationQuestions({
 	return (
 		<Container>
 			<h3>
-				<img src={iconAvaliationQuestions} /> Questão {index + 1}
+				<img src={iconAvaliationQuestions} /> Questão {questionIndex + 1}
 			</h3>
-			{questions.length > 0 && questions[index].title}
+			{questions.length > 0 && questions[questionIndex].title}
 			{questions.length > 0 &&
-				questions[index].alternatives.map((alternative: Alternative) => (
+				questions[questionIndex].alternatives.map((alternative: Alternative) => (
 					<ContainerInput
 						key={alternative.id}
 						variant={
-							checkQuestionAnswer[index] === alternative.id ? true : false
+							checkQuestionAnswer[questionIndex] === alternative.id ? true : false
 						}
 					>
 						<input
 							onClick={() => {
 								const stateCopy = [...checkQuestionAnswer];
-								stateCopy[index] = alternative.id;
+								stateCopy[questionIndex] = alternative.id;
 								setCheckQuestionAnswer(stateCopy);
 								setChangeChecked(checkQuestionAnswer[index] === alternative.id ? true : false)
 								
@@ -42,8 +44,8 @@ export function AvaliationQuestions({
 							value={alternative.id}
 							id={alternative.id}
 							type="radio"
-							name={questions[index].id}
-							checked={changeChecked}
+							name={questions[questionIndex].id}
+							checked={checkQuestionAnswer[questionIndex] === alternative.id ? true : false}
 						/>
 						<label htmlFor={alternative.id}>{alternative.title}</label>
 					</ContainerInput>
