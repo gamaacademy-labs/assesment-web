@@ -38,8 +38,7 @@ export function AvaliationQuestions({
 								const stateCopy = [...checkQuestionAnswer];
 								stateCopy[questionIndex] = alternative.id;
 								setCheckQuestionAnswer(stateCopy);
-								setChangeChecked(checkQuestionAnswer[index] === alternative.id ? true : false)
-								
+								setChangeChecked(checkQuestionAnswer[questionIndex] === alternative.id ? true : false)
 							}}
 							value={alternative.id}
 							id={alternative.id}
