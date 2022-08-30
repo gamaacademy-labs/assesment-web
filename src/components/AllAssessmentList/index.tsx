@@ -13,18 +13,22 @@ export function AllASsessmentList() {
 			isActive: true,
 			title: 'Avaliação de Node.js',
 			finishedAt: '2023-08-28T03:00:00.000Z',
-			qtdQuestions: 4,
-			maxScore: 4,
 		},
 		{
-			id: '1416f181-78b4-499c-91c0-7b32a89773d5',
+			id: '2ee624ae-aafe-454f-805b-a02de0418dd9',
 			createdAt: '2022-08-23T13:08:30.916Z',
 			updatedAt: '2022-08-23T13:08:30.916Z',
 			isActive: true,
-			title: 'Avaliação de JavaScript',
+			title: 'Prova de Metodologias Ageis',
 			finishedAt: '2023-08-28T03:00:00.000Z',
-			qtdQuestions: 4,
-			maxScore: 4,
+		},
+		{
+			id: '75142c9c-5cf7-4d62-893f-d52a018f88d1',
+			createdAt: '2022-08-23T13:08:30.916Z',
+			updatedAt: '2022-08-23T13:08:30.916Z',
+			isActive: true,
+			title: 'Prova de React JS',
+			finishedAt: '2023-08-28T03:00:00.000Z',
 		},
 	];
 

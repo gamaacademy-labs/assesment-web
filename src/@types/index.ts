@@ -6,3 +6,17 @@ export interface Assessment {
 	qtdQuestions: number;
 	maxScore: number;
 }
+
+export interface Alternative {
+	id: string;
+	title: string;
+}
+
+export interface Question {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+	isActive: boolean;
+	title: string;
+	alternatives: Alternative[];
+}

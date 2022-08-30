@@ -5,7 +5,8 @@ import {
 	ProgressBar as Progress_Bar,
 	Typography,
 } from '@gama-academy/smash-web';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Question } from '../../@types';
 import {
 	Div,
 	DivAllButton,
@@ -15,21 +16,43 @@ import {
 	MatiralIconStyles,
 } from './styles';
 
-export const ProgressBar = () => {
-	const [num, setNum] = useState(0);
-	let numQuestion = 4;
-	const change = num < numQuestion;
+interface ProgressBarProps {
+	questions: Question[];
+	index: number;
+	setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const ProgressBar = ({
+	questions,
+	index,
+	setQuestionIndex,
+}: ProgressBarProps) => {
+	const [indexCopy, setIndexCopy] = useState(index);
+	const numQuestion = questions.length;
+	const change = indexCopy < numQuestion;
 
 	const nextQuestion = (signal: string) => {
-		if (signal == '+' && num < numQuestion) {
-			setNum(num + 1);
-			console.log(num);
+		if (signal === '+' && index < numQuestion - 1) {
+			setQuestionIndex(index + 1);
+			setIndexCopy(indexCopy + 1);
+			return;
 		}
-		if (signal == '-' && num >= 1) {
-			setNum(num - 1);
-			console.log(num);
+
+		if (signal === '+' && indexCopy < numQuestion) {
+			setIndexCopy(indexCopy + 1);
+			return;
+		}
+
+		if (signal === '-' && index >= 1) {
+			setQuestionIndex(index - 1);
+			setIndexCopy(indexCopy - 1);
+			return;
 		}
 	};
+
+	useEffect(() => {
+		setIndexCopy(index);
+	}, [index]);
 
 	return (
 		<Div>
@@ -38,12 +61,12 @@ export const ProgressBar = () => {
 					<MaterialIcon color="white" name="ballot" />
 					<p className="question">Questões</p>
 					<p className="numQuestion">
-						{num}/{numQuestion}
+						{indexCopy}/{numQuestion}
 					</p>
 				</DivInformation>
 				<Progress_Bar
 					max={numQuestion}
-					value={num}
+					value={indexCopy}
 					percentageSide="right"
 					margin={undefined}
 					m={undefined}
@@ -62,7 +85,7 @@ export const ProgressBar = () => {
 				/>
 			</DivInfoBar>
 			<DivAllButton>
-				<DivButton num={num}>
+				<DivButton num={indexCopy}>
 					<Button
 						className="backButton"
 						size="2"

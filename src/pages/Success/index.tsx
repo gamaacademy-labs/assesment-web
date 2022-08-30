@@ -9,6 +9,7 @@ import { Container } from './styles';
 export function Success() {
 	const [showModal, setShowModal] = useState(false);
 	const title = Cookies.get('titleAssessment') as string;
+
 	return (
 		<>
 			<Header title={title} />

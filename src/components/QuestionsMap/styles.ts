@@ -52,7 +52,6 @@ export const SubContainerQuestions = styled.div`
 		padding: 0.5rem 0.25rem;
 		border: 1px solid #d7dbda;
 		border-radius: 4px;
-
 		display: flex;
 		justify-content: center;
 		align-items: center;
