@@ -2,7 +2,7 @@ import * as S from './styles';
 import { Form } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { getUsers, loginUser } from '../../services/mainApi/users';
+import { getUser, loginUser } from '../../services/mainApi/users';
 import { api } from '../../services/mainApi';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@gama-academy/smash-web';
@@ -35,7 +35,7 @@ export const LoginForm: React.FC = () => {
 			}
 
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-			const user = await getUsers(values.username);
+			const user = await getUser(values.username);
 			Cookie.set('user', user.username);
 
 			toast.success('Login realizado com sucesso!');
