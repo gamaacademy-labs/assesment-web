@@ -24,7 +24,9 @@ export const Assessment = () => {
 		};
 
 		getQuestionList();
+		
 	}, []);
+	console.log(questions);
 
 	return (
 		<Container className="body-container">

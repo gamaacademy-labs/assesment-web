@@ -35,11 +35,14 @@ export function AvaliationQuestions({
 								const stateCopy = [...checkQuestionAnswer];
 								stateCopy[index] = alternative.id;
 								setCheckQuestionAnswer(stateCopy);
+								console.log(stateCopy);
+								
 							}}
 							value={alternative.id}
 							id={alternative.id}
 							type="radio"
 							name={questions[index].id}
+							checked={checkQuestionAnswer[index] === alternative.id ? true : false}
 						/>
 						<label htmlFor={alternative.id}>{alternative.title}</label>
 					</ContainerInput>
