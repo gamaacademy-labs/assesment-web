@@ -37,6 +37,7 @@ export function AvaliationQuestions({
 								const stateCopy = [...checkQuestionAnswer];
 								stateCopy[questionIndex] = alternative.id;
 								setCheckQuestionAnswer(stateCopy);
+
 							}}
 							value={alternative.id}
 							id={alternative.id}

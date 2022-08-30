@@ -27,6 +27,7 @@ export const Assessment = () => {
 		};
 
 		getQuestionList();
+		
 	}, []);
 
 	return (
