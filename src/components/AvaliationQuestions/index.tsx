@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Question } from '../../@types';
+import { Alternative, Question } from '../../@types';
 import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
 import { Container, ContainerInput } from './styles';
 
@@ -12,7 +12,9 @@ export function AvaliationQuestions({
 	questions,
 	index,
 }: AvaliationQuestionsProps) {
-	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState('');
+	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState(
+		[] as string[],
+	);
 
 	return (
 		<Container>
@@ -21,13 +23,19 @@ export function AvaliationQuestions({
 			</h3>
 			{questions.length > 0 && questions[index].title}
 			{questions.length > 0 &&
-				questions[index].alternatives.map(alternative => (
+				questions[index].alternatives.map((alternative: Alternative) => (
 					<ContainerInput
 						key={alternative.id}
-						variant={checkQuestionAnswer === alternative.id ? true : false}
+						variant={
+							checkQuestionAnswer[index] === alternative.id ? true : false
+						}
 					>
 						<input
-							onClick={() => setCheckQuestionAnswer(alternative.id)}
+							onClick={() => {
+								const stateCopy = [...checkQuestionAnswer];
+								stateCopy[index] = alternative.id;
+								setCheckQuestionAnswer(stateCopy);
+							}}
 							value={alternative.id}
 							id={alternative.id}
 							type="radio"

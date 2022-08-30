@@ -7,7 +7,7 @@ export interface Assessment {
 	maxScore: number;
 }
 
-export interface Alternatives {
+export interface Alternative {
 	id: string;
 	title: string;
 }
@@ -18,5 +18,5 @@ export interface Question {
 	updatedAt: string;
 	isActive: boolean;
 	title: string;
-	alternatives: Alternatives[];
+	alternatives: Alternative[];
 }

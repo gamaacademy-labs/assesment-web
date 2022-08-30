@@ -5,7 +5,7 @@ import {
 	ProgressBar as Progress_Bar,
 	Typography,
 } from '@gama-academy/smash-web';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Question } from '../../@types';
 import {
 	Div,
@@ -27,23 +27,32 @@ export const ProgressBar = ({
 	index,
 	setQuestionIndex,
 }: ProgressBarProps) => {
-	let numQuestion = questions.length;
-	const change = index <= numQuestion - 1;
-	let value = 0;
+	const [indexCopy, setIndexCopy] = useState(index);
+	const numQuestion = questions.length;
+	const change = indexCopy < numQuestion;
 
 	const nextQuestion = (signal: string) => {
-		if (signal == '+' && index < numQuestion - 1) {
+		if (signal === '+' && index < numQuestion - 1) {
 			setQuestionIndex(index + 1);
+			setIndexCopy(indexCopy + 1);
+			return;
 		}
 
-		if (signal == '+' && index === numQuestion - 1) {
-			return value = index + 1;
+		if (signal === '+' && indexCopy < numQuestion) {
+			setIndexCopy(indexCopy + 1);
+			return;
 		}
 
-		if (signal == '-' && index >= 1) {
+		if (signal === '-' && index >= 1) {
 			setQuestionIndex(index - 1);
+			setIndexCopy(indexCopy - 1);
+			return;
 		}
 	};
+
+	useEffect(() => {
+		setIndexCopy(index);
+	}, [index]);
 
 	return (
 		<Div>
@@ -52,12 +61,12 @@ export const ProgressBar = ({
 					<MaterialIcon color="white" name="ballot" />
 					<p className="question">Questões</p>
 					<p className="numQuestion">
-						{index + value}/{numQuestion}
+						{indexCopy}/{numQuestion}
 					</p>
 				</DivInformation>
 				<Progress_Bar
 					max={numQuestion}
-					value={index}
+					value={indexCopy}
 					percentageSide="right"
 					margin={undefined}
 					m={undefined}
@@ -76,7 +85,7 @@ export const ProgressBar = ({
 				/>
 			</DivInfoBar>
 			<DivAllButton>
-				<DivButton num={index}>
+				<DivButton num={indexCopy}>
 					<Button
 						className="backButton"
 						size="2"
