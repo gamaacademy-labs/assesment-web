@@ -3,7 +3,7 @@ import {
 	Button,
 	MaterialIcon,
 	ProgressBar as Progress_Bar,
-	Typography,
+	Typography
 } from '@gama-academy/smash-web';
 import { useEffect, useState } from 'react';
 import { Question } from '../../@types';
@@ -13,27 +13,27 @@ import {
 	DivButton,
 	DivInfoBar,
 	DivInformation,
-	MatiralIconStyles,
+	MatiralIconStyles
 } from './styles';
 
 interface ProgressBarProps {
 	questions: Question[];
-	index: number;
+	questionIndex: number;
 	setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const ProgressBar = ({
 	questions,
-	index,
+	questionIndex,
 	setQuestionIndex,
 }: ProgressBarProps) => {
-	const [indexCopy, setIndexCopy] = useState(index);
+	const [indexCopy, setIndexCopy] = useState(questionIndex);
 	const numQuestion = questions.length;
 	const change = indexCopy < numQuestion;
 
 	const nextQuestion = (signal: string) => {
-		if (signal === '+' && index < numQuestion - 1) {
-			setQuestionIndex(index + 1);
+		if (signal === '+' && questionIndex < numQuestion - 1) {
+			setQuestionIndex(questionIndex + 1);
 			setIndexCopy(indexCopy + 1);
 			return;
 		}
@@ -43,16 +43,16 @@ export const ProgressBar = ({
 			return;
 		}
 
-		if (signal === '-' && index >= 1) {
-			setQuestionIndex(index - 1);
+		if (signal === '-' && questionIndex >= 1) {
+			setQuestionIndex(questionIndex - 1);
 			setIndexCopy(indexCopy - 1);
 			return;
 		}
 	};
 
 	useEffect(() => {
-		setIndexCopy(index);
-	}, [index]);
+		setIndexCopy(questionIndex);
+	}, [questionIndex]);
 
 	return (
 		<Div>
