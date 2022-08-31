@@ -14,6 +14,11 @@ export function QuestionsMap({
 	questions,
 	setQuestionIndex,
 }: QuestionsMapProps) {
+
+	function handleMapQuestions(index: number) {
+		setQuestionIndex ? setQuestionIndex(index) : null
+	}
+
 	return (
 		<Container>
 			<header>
@@ -25,7 +30,7 @@ export function QuestionsMap({
 					<Link
 						key={question.id}
 						to="#"
-						onClick={() => (setQuestionIndex ? setQuestionIndex(index) : null)}
+						onClick={() => handleMapQuestions(index)}
 					>
 						{index + 1}
 					</Link>

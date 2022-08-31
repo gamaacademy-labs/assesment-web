@@ -1,50 +1,51 @@
-import { useState } from 'react';
 import { Alternative, Question } from '../../@types';
 import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
 import { Container, ContainerInput } from './styles';
-
 interface AvaliationQuestionsProps {
 	questions: Question[];
 	questionIndex: number;
+	checkQuestionAnswer: string[];
+	setCheckQuestionAnswer: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export function AvaliationQuestions({
 	questions,
 	questionIndex,
+	checkQuestionAnswer,
+	setCheckQuestionAnswer,
 }: AvaliationQuestionsProps) {
 
+	const hasAvaliationActive = questions.length > 0 ? true : false
 
-	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState(
-		[] as string[],
-		);
+	function handleAnswerQuestion(alt: Alternative) {
+		const stateCopy = [...checkQuestionAnswer];
+		stateCopy[questionIndex] = alt.id;
+		setCheckQuestionAnswer(stateCopy);
+	}
 
-		const [changeChecked, setChangeChecked] = useState(false)
+	function handleCheckedRightAlternative(id: string) {
+		return checkQuestionAnswer[questionIndex] === id ? true : false
+	}
+
 	return (
 		<Container>
 			<h3>
 				<img src={iconAvaliationQuestions} /> Questão {questionIndex + 1}
 			</h3>
-			{questions.length > 0 && questions[questionIndex].title}
-			{questions.length > 0 &&
+			{hasAvaliationActive && questions[questionIndex].title}
+			{hasAvaliationActive &&
 				questions[questionIndex].alternatives.map((alternative: Alternative) => (
 					<ContainerInput
 						key={alternative.id}
-						variant={
-							checkQuestionAnswer[questionIndex] === alternative.id ? true : false
-						}
+						variant={handleCheckedRightAlternative(alternative.id)}
 					>
 						<input
-							onClick={() => {
-								const stateCopy = [...checkQuestionAnswer];
-								stateCopy[questionIndex] = alternative.id;
-								setCheckQuestionAnswer(stateCopy);
-								setChangeChecked(checkQuestionAnswer[questionIndex] === alternative.id ? true : false)
-							}}
+							onChange={() => handleAnswerQuestion(alternative)}
 							value={alternative.id}
 							id={alternative.id}
 							type="radio"
 							name={questions[questionIndex].id}
-							checked={checkQuestionAnswer[questionIndex] === alternative.id ? true : false}
+							checked={handleCheckedRightAlternative(alternative.id)}
 						/>
 						<label htmlFor={alternative.id}>{alternative.title}</label>
 					</ContainerInput>

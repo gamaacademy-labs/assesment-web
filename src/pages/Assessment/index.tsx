@@ -12,11 +12,13 @@ import { Container, SubContainer } from './styles';
 
 export const Assessment = () => {
 	const [showModal, setShowModal] = useState(false);
+	const [questions, setQuestions] = useState<Question[]>([]);
+	const [questionIndex, setQuestionIndex] = useState(0);
+	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState<string[]>([]);
+
 	const title = Cookies.get('titleAssessment') as string;
 	const questionId = Cookies.get('assessmentId') as string;
 	const deadline = Cookies.get('dateAssessment') as string;
-	const [questions, setQuestions] = useState([] as Question[]);
-	const [questionIndex, setQuestionIndex] = useState(0);
 
 	useEffect(() => {
 		const getQuestionList = async () => {
@@ -27,7 +29,6 @@ export const Assessment = () => {
 		};
 
 		getQuestionList();
-		
 	}, []);
 
 	return (
@@ -39,12 +40,18 @@ export const Assessment = () => {
 					setQuestionIndex={setQuestionIndex}
 					setShowModal={setShowModal}
 				/>
-				<AvaliationQuestions questions={questions} questionIndex={questionIndex} />
+				<AvaliationQuestions
+					checkQuestionAnswer={checkQuestionAnswer}
+					setCheckQuestionAnswer={setCheckQuestionAnswer}
+					questions={questions}
+					questionIndex={questionIndex}
+				/>
 			</SubContainer>
 			<ProgressBar
 				questions={questions}
 				questionIndex={questionIndex}
 				setQuestionIndex={setQuestionIndex}
+				checkQuestionAnswer={checkQuestionAnswer}
 			/>
 			<ModalInfo
 				deadline={deadline}
