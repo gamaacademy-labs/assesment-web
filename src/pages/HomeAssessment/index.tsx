@@ -30,14 +30,12 @@ export function HomeAssessment() {
 				...response,
 				finishedAt: format(new Date(response.finishedAt), 'dd/MM/yyyy'),
 			});
-
-			Cookies.set('titleAssessment', response.title);
-			Cookies.set('dateAssessment', assessment.finishedAt);
 		};
 
 		takeAssessment();
 	}, []);
-
+	Cookies.set('titleAssessment', assessment.title);
+	Cookies.set('dateAssessment', assessment.finishedAt);
 	return (
 		<>
 			<Header title={assessment.title} />
