@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Assessment } from '../../@types';
 import { AvaliationInstructions } from '../../components/AvaliationInstructions';
 import { Footer } from '../../components/Footer';
@@ -9,18 +10,19 @@ import { ModalInfo } from '../../components/ModalInfo';
 import { SummaryAvaliation } from '../../components/SummaryAvaliation';
 import { api } from '../../services/mainApi';
 import { getAssessment } from '../../services/mainApi/assessments';
+import { RootState } from '../../store';
 import { Container } from './styles';
 
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [assessment, setAssessment] = useState({} as Assessment);
+	const token = useSelector((state:RootState)=>state.persistedReducer.token);
 
 	useEffect(() => {
 		const id = Cookies.get('assessmentId');
 
 		const takeAssessment = async () => {
-			const token = String(Cookies.get('token'));
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const response = await getAssessment(`${id}`);
 

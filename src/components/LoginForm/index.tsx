@@ -30,6 +30,8 @@ export const LoginForm: React.FC = () => {
 
 		onSubmit: async values => {
 			const token = await loginUser({ username: values.username });
+			console.log(token);
+			
 
 			if (!token) {
 				toast.warn('Usuário inválido!');

@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Question } from '../../@types';
 import { AvaliationQuestions } from '../../components/AvaliationQuestions';
 import { Header } from '../../components/Header';
@@ -8,6 +9,7 @@ import { ProgressBar } from '../../components/ProgressBar';
 import { QuestionsMap } from '../../components/QuestionsMap';
 import { api } from '../../services/mainApi';
 import { getAssessmentQuestion } from '../../services/mainApi/assessments';
+import { RootState } from '../../store';
 import { Container, SubContainer } from './styles';
 
 export const Assessment = () => {
@@ -19,17 +21,21 @@ export const Assessment = () => {
 	const title = Cookies.get('titleAssessment') as string;
 	const questionId = Cookies.get('assessmentId') as string;
 	const deadline = Cookies.get('dateAssessment') as string;
+	const token = useSelector((state:RootState)=>state.persistedReducer.token);
 
 	useEffect(() => {
 		const getQuestionList = async () => {
-			const token = String(Cookies.get('token'));
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const questionList = await getAssessmentQuestion(questionId);
+			console.log(questionList);
+			
 			setQuestions(questionList);
 		};
 
 		getQuestionList();
 	}, []);
+
+	
 
 	return (
 		<Container className="body-container">
