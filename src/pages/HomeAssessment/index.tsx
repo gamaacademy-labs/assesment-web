@@ -9,17 +9,22 @@ import { getAssessment } from '../../services/mainApi/assessments';
 import { Assessment } from '../../@types';
 import { Container } from './styles';
 import Cookies from 'js-cookie';
+import { api } from '../../services/mainApi';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [assessment, setAssessment] = useState({} as Assessment);
+	const token = useSelector((state: RootState) => state.persistedReducer.token);
+	console.log(token);
 
 	useEffect(() => {
 		const takeAssessment = async () => {
-			const response = await getAssessment(
-				'0416f181-78b4-499c-91c0-7b32a89773d5',
-			);
+			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+			const takeAssessmentId = Cookies.get('assessmentId');
+			const response = await getAssessment(`${takeAssessmentId}`);
 
 			setAssessment({
 				...response,
@@ -31,7 +36,7 @@ export function HomeAssessment() {
 		};
 
 		takeAssessment();
-	}, [assessment]);
+	}, []);
 
 	return (
 		<>

@@ -1,8 +1,8 @@
 import { Checkbox } from '@gama-academy/smash-web';
-import { useEffect, useState } from 'react';
 import iconAvaliationInstruction from '../../assets/icons/iconAvaliationInstruction.svg';
 import { MainContainer } from './styles';
-import Cookie from 'js-cookie';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 interface AvaliationInstructionProps {
 	setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,12 +13,7 @@ export function AvaliationInstructions({
 	setIsDisabled,
 	isDisabled,
 }: AvaliationInstructionProps) {
-	const [username, setUsername] = useState('');
-
-	useEffect(() => {
-		const user = String(Cookie.get('user'));
-		setUsername(user);
-	}, []);
+	const username = useSelector((state:RootState)=>state.persistedReducer.username)
 
 	return (
 		<>
