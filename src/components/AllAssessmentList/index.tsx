@@ -2,45 +2,32 @@ import * as S from './styles';
 import { Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { getAllAssessmentList } from '../../services/mainApi/assessments';
+import { api } from '../../services/mainApi';
+import { Assessment } from '../../@types';
+import { useEffect, useState } from 'react';
 
 export function AllASsessmentList() {
 	const navigate = useNavigate();
-	const assessments = [
-		{
-			id: '0416f181-78b4-499c-91c0-7b32a89773d5',
-			createdAt: '2022-08-23T13:08:30.916Z',
-			updatedAt: '2022-08-23T13:08:30.916Z',
-			isActive: true,
-			title: 'Avaliação de Node.js',
-			finishedAt: '2023-08-28T03:00:00.000Z',
-		},
-		{
-			id: '2ee624ae-aafe-454f-805b-a02de0418dd9',
-			createdAt: '2022-08-23T13:08:30.916Z',
-			updatedAt: '2022-08-23T13:08:30.916Z',
-			isActive: true,
-			title: 'Prova de Metodologias Ageis',
-			finishedAt: '2023-08-28T03:00:00.000Z',
-		},
-		{
-			id: '75142c9c-5cf7-4d62-893f-d52a018f88d1',
-			createdAt: '2022-08-23T13:08:30.916Z',
-			updatedAt: '2022-08-23T13:08:30.916Z',
-			isActive: true,
-			title: 'Prova de React JS',
-			finishedAt: '2023-08-28T03:00:00.000Z',
-		},
-	];
+	const [assessments, setAssessments] = useState<Assessment[]>([]);
+	const token = Cookies.get('token');
+	api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 	const goToSelectedAssessment = (id: string) => {
 		Cookies.set('assessmentId', id);
 		navigate(`/instructions`);
 	};
 
+	useEffect(() => {
+		getAllAssessmentList().then(res => {
+			setAssessments(res);
+		});
+	}, []);
+
 	return (
 		<S.Content>
 			<Typography type="title">Avaliações</Typography>
-			{assessments.map(assessment => (
+			{assessments.map((assessment: Assessment) => (
 				<div key={assessment.id} className="avaliation">
 					<p>{assessment.title}</p>
 					<Button

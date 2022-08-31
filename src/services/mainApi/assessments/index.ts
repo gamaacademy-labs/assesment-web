@@ -15,8 +15,16 @@ export const getAssessmentQuestion = async (
 ): Promise<Question[]> => {
 	try {
 		const response = await api.get(`/assessment/questions/${id}`);
-
 		return response.data.questions;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
+export const getAllAssessmentList = async (): Promise<Assessment[]> => {
+	try {
+		const { data } = await api.get('/assessment/active');
+		return data.assessmentsActive;
 	} catch (error) {
 		return Promise.reject(error);
 	}
