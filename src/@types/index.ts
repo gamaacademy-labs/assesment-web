@@ -6,3 +6,8 @@ export interface Assessment {
 	qtdQuestions: number;
 	maxScore: number;
 }
+
+export interface User{
+	username: string;
+	token: string;
+}
