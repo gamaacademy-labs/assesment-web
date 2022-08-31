@@ -26,9 +26,7 @@ export const Assessment = () => {
 	useEffect(() => {
 		const getQuestionList = async () => {
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-			const questionList = await getAssessmentQuestion(questionId);
-			console.log(questionList);
-			
+			const questionList = await getAssessmentQuestion(questionId);			
 			setQuestions(questionList);
 		};
 

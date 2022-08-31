@@ -58,6 +58,9 @@ export const DivInformation = styled.div<props>`
 	.numQuestion {
 		margin: 0 0.5rem;
 	}
+	.amountOfQuestions{
+		margin: 0 0.5rem;
+	}
 `;
 
 export const DivAllButton = styled.div`
