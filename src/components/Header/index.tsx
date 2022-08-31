@@ -5,6 +5,8 @@ import { MaterialIcon } from '@gama-academy/smash-web';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/user';
 
 interface HeaderProps {
 	title: string;
@@ -12,10 +14,11 @@ interface HeaderProps {
 
 export const Header = ({ title }: HeaderProps) => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const logout = () => {
-		Cookies.remove('user');
 		toast.success('Logout realizado com sucesso!');
-		window.location.href = '/';
+		dispatch(setUser({token: ''}))
+		navigate('/login')
 	};
 
 	return (
