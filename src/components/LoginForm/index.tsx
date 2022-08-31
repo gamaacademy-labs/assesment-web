@@ -38,7 +38,7 @@ export const LoginForm: React.FC = () => {
 			}
 
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-			const user = await getUsers(values.username);
+			const user = await getUser(values.username);
 			dispatch(setUser({ username: values.username, token: token }));
 
 			toast.success('Login realizado com sucesso!');
