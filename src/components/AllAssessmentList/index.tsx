@@ -6,11 +6,13 @@ import { getAllAssessmentList } from '../../services/mainApi/assessments';
 import { api } from '../../services/mainApi';
 import { Assessment } from '../../@types';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 export function AllASsessmentList() {
 	const navigate = useNavigate();
 	const [assessments, setAssessments] = useState<Assessment[]>([]);
-	const token = Cookies.get('token');
+	const token = useSelector((state:RootState)=>state.persistedReducer.token);
 	api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 	const goToSelectedAssessment = (id: string) => {

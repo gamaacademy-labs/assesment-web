@@ -20,3 +20,8 @@ export interface Question {
 	title: string;
 	alternatives: Alternative[];
 }
+
+export interface User{
+	username: string;
+	token: string;
+}

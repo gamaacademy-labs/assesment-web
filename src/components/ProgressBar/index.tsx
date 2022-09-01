@@ -96,7 +96,7 @@ export const ProgressBar = ({
 						</Box>
 					</Button>
 				</DivButton>
-				<DivButton num={handleChangeNextButton}>
+				<DivButton handleChange={handleChangeNextButton}>
 					<Button
 						size="2"
 						fluid

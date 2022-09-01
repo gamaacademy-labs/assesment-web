@@ -9,6 +9,8 @@ import * as Yup from 'yup';
 import { api } from '../../services/mainApi';
 import { getUser, loginUser } from '../../services/mainApi/users';
 import * as S from './styles';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/user';
 
 const validationSchema = Yup.object({
 	username: Yup.string().required('*'),
@@ -16,6 +18,7 @@ const validationSchema = Yup.object({
 
 export const LoginForm: React.FC = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const formik = useFormik({
@@ -27,6 +30,8 @@ export const LoginForm: React.FC = () => {
 
 		onSubmit: async values => {
 			const token = await loginUser({ username: values.username });
+			console.log(token);
+			
 
 			if (!token) {
 				toast.warn('Usuário inválido!');
@@ -36,13 +41,12 @@ export const LoginForm: React.FC = () => {
 
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const user = await getUser(values.username);
-			Cookie.set('user', user.username);
-			Cookie.set('token', token);
+			dispatch(setUser({ username: values.username, token: token }));
 
 			toast.success('Login realizado com sucesso!');
 			setIsLoading(false);
+			navigate('/')
 			formik.resetForm();
-			window.location.href = '/';
 		},
 	});
 
