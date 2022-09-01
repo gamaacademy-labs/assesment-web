@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.aside`
@@ -38,23 +39,47 @@ export const Container = styled.aside`
 `;
 
 export const SubContainerQuestions = styled.div`
-	margin: 1rem 0;
+	margin: 1rem auto;
 	color: ${props => props.theme['purple']};
 	font-size: 0.75rem;
+	gap: 1rem;
 
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(5, auto);
 	grid-template-rows: auto;
-	gap: 16px;
 
-	a {
-		text-decoration: none;
-		padding: 0.5rem 0.25rem;
-		border: 1px solid #d7dbda;
-		border-radius: 4px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	border: 1px solid #d7dbda;
+	border-radius: 8px;
+	padding: 1rem 1.5rem;
+`;
+
+interface TypeLinkMapQuestions {
+	variant: 'checked' | 'unchecked';
+	isActive: 'active' | 'disabled';
+}
+
+export const LinkMapQuestions = styled(Link)<TypeLinkMapQuestions>`
+	font-size: 0.75rem;
+	font-weight: ${props => props.isActive && 'bold'};
+	width: 2rem;
+	height: 2rem;
+	color: #d7dbda;
+	text-decoration: none;
+	border: ${props =>
+		props.isActive === 'active' ? '1px solid #7d38db' : '1px solid #d7dbda'};
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: ${props => props.variant === 'checked' && '#7d38db'};
+	color: ${props =>
+		(props.variant === 'checked' && '#fff') ||
+		(props.isActive === 'active' && '#7d38db')};
+	transition: opacity 0.2s;
+
+	&:hover {
+		color: ${props => props.variant === 'checked' && '#fff'};
+		opacity: ${props => props.variant === 'checked' && '0.85'};
 	}
 `;
 
