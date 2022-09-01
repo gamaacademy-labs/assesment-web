@@ -28,12 +28,12 @@ export function AvaliationQuestions({
 	}
 
 	useEffect(()=>{
-		const teste = (rtf: string) => {
-			const v = document.getElementsByClassName('teste')[0];
-			v.innerHTML = rtf;
+		const richtTextConverter = (richText: string) => {
+			const divContent = document.getElementsByClassName('content')[0];
+			divContent.innerHTML = richText;
 		};
 
-		hasAvaliationActive && teste(questions[questionIndex].title)
+		hasAvaliationActive && richtTextConverter(questions[questionIndex].title)
 
 	},[questionIndex, hasAvaliationActive])
 
@@ -43,7 +43,7 @@ export function AvaliationQuestions({
 			<h3>
 				<img src={iconAvaliationQuestions} /> Questão {questionIndex + 1}
 			</h3>
-			<span className="teste"></span>
+			<div className="content"></div>
 			{hasAvaliationActive &&
 				questions[questionIndex].alternatives.map(
 					(alternative: Alternative) => (
