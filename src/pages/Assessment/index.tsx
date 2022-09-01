@@ -41,8 +41,10 @@ export const Assessment = () => {
 			<SubContainer className="body-container">
 				<QuestionsMap
 					questions={questions}
+					questionIndex={questionIndex}
 					setQuestionIndex={setQuestionIndex}
 					setShowModal={setShowModal}
+					checkQuestionAnswer={checkQuestionAnswer}
 				/>
 				<AvaliationQuestions
 					checkQuestionAnswer={checkQuestionAnswer}
