@@ -3,8 +3,9 @@ import {
 	Button,
 	MaterialIcon,
 	ProgressBar as Progress_Bar,
-	Typography
+	Typography,
 } from '@gama-academy/smash-web';
+import { toast } from 'react-toastify';
 import { Question } from '../../@types';
 import {
 	Div,
@@ -12,7 +13,7 @@ import {
 	DivButton,
 	DivInfoBar,
 	DivInformation,
-	MatiralIconStyles
+	MatiralIconStyles,
 } from './styles';
 
 interface ProgressBarProps {
@@ -26,22 +27,30 @@ export const ProgressBar = ({
 	questions,
 	questionIndex,
 	setQuestionIndex,
-	checkQuestionAnswer
+	checkQuestionAnswer,
 }: ProgressBarProps) => {
-
 	const amountOfQuestions = questions.length;
-	const filteredQuestionsAnswered = checkQuestionAnswer.filter((n) => typeof (n) === 'number')
-	const amountOfQuestionsAnswered = filteredQuestionsAnswered.length
-	const changeButton = amountOfQuestionsAnswered < amountOfQuestions;
-	const handleChangeNextButton = questionIndex !== amountOfQuestions - 1 || amountOfQuestionsAnswered === amountOfQuestions
-
+	const filteredQuestionsAnswered = checkQuestionAnswer.filter(
+		n => typeof n === 'number',
+	);
+	const amountOfQuestionsAnswered = filteredQuestionsAnswered.length;
+	const changeButton =
+		questionIndex !== amountOfQuestions - 1
 
 	function handleNextQuestion() {
-		questionIndex < amountOfQuestions - 1 && setQuestionIndex(questionIndex + 1)
+		if (questionIndex < amountOfQuestions - 1) {
+			return setQuestionIndex(questionIndex + 1);
+		}
+		if(amountOfQuestionsAnswered === amountOfQuestions){
+			return toast.success('Avaliação entregue!');
+
+		}
+		toast.warning('Você precisa responder todas as questões!');
+		
 	}
 
 	function handlePreviousQuestion() {
-		questionIndex >= 1 && setQuestionIndex(questionIndex - 1)
+		questionIndex >= 1 && setQuestionIndex(questionIndex - 1);
 	}
 
 	return (
@@ -96,12 +105,11 @@ export const ProgressBar = ({
 						</Box>
 					</Button>
 				</DivButton>
-				<DivButton handleChange={handleChangeNextButton}>
+				<DivButton>
 					<Button
 						size="2"
 						fluid
 						onClick={handleNextQuestion}
-						disabled={false}
 						color={changeButton ? 'white' : 'primary.3'}
 					>
 						<Box
