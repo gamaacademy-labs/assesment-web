@@ -47,7 +47,7 @@ export function QuestionsMap({
 			<SubContainerQuestions>
 				{questions?.map((question, index) => (
 					<LinkMapQuestions
-						isActive={handleLinkIsActive(index)}
+						isactive={handleLinkIsActive(index)}
 						variant={handleVariantQuestions(index)}
 						key={question.id}
 						to="#"
