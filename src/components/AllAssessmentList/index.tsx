@@ -6,11 +6,13 @@ import { getAllAssessmentList } from '../../services/mainApi/assessments';
 import { api } from '../../services/mainApi';
 import { Assessment } from '../../@types';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { setUser } from '../../store/user';
 
 export function AllASsessmentList() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch()
 	const [assessments, setAssessments] = useState<Assessment[]>([]);
 	const token = useSelector((state:RootState)=>state.persistedReducer.token);
 	api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -23,6 +25,8 @@ export function AllASsessmentList() {
 	useEffect(() => {
 		getAllAssessmentList().then(res => {
 			setAssessments(res);
+		}).catch(()=>{
+			dispatch(setUser({token: ''}))
 		});
 	}, []);
 
