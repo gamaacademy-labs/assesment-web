@@ -5,7 +5,8 @@ import {
 	Container,
 	DivInputRadio,
 	LinkMapQuestions,
-	SubContainerQuestions
+	SubContainerQuestions,
+	IconLegend,
 } from './styles';
 
 interface QuestionsMapProps {
@@ -23,7 +24,6 @@ export function QuestionsMap({
 	setQuestionIndex,
 	checkQuestionAnswer,
 }: QuestionsMapProps) {
-
 	function handleMapQuestions(index: number) {
 		setQuestionIndex ? setQuestionIndex(index) : null;
 	}
@@ -35,7 +35,7 @@ export function QuestionsMap({
 	}
 
 	function handleLinkIsActive(index: number) {
-		return questionIndex === index ? 'active' : 'disabled'
+		return questionIndex === index ? 'active' : 'disabled';
 	}
 
 	return (
@@ -55,22 +55,24 @@ export function QuestionsMap({
 					>
 						{handleVariantQuestions(index) === 'checked' ? (
 							<FaCheck size={12} />
-						) : index + 1}
+						) : (
+							index + 1
+						)}
 					</LinkMapQuestions>
 				))}
 			</SubContainerQuestions>
 
 			<DivInputRadio>
-				<input id="respondida" type="radio" name="inputMapQuestions" />
-				<label htmlFor="respondida">Respondida</label>
+				<IconLegend isactive={'active'} variant="checked" />
+				<label>Respondida</label>
 			</DivInputRadio>
 			<DivInputRadio>
-				<input id="selecionada" type="radio" name="inputMapQuestions" />
-				<label htmlFor="selecionada">Selecionada</label>
+				<IconLegend isactive={'active'} variant="unchecked" />
+				<label>Selecionada</label>
 			</DivInputRadio>
 			<DivInputRadio>
-				<input id="nao-respondida" type="radio" name="inputMapQuestions" />
-				<label htmlFor="nao-respondida">Não respondida</label>
+				<IconLegend isactive={'disabled'} variant={'unchecked'} />
+				<label>Não respondida</label>
 			</DivInputRadio>
 
 			<button onClick={() => setShowModal(true)}>

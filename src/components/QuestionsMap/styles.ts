@@ -83,6 +83,31 @@ export const LinkMapQuestions = styled(Link)<TypeLinkMapQuestions>`
 	}
 `;
 
+export const IconLegend = styled.div<TypeLinkMapQuestions>`
+	font-size: 0.75rem;
+	font-weight: ${props => props.isactive && 'bold'};
+	width: 0.7rem;
+	height: 0.7rem;
+	border-radius: 50%;
+	color: #d7dbda;
+	text-decoration: none;
+	border: ${props =>
+		props.isactive === 'active' ? '1px solid #7d38db' : '1px solid #d7dbda'};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: ${props => props.variant === 'checked' && '#7d38db'};
+	color: ${props =>
+		(props.variant === 'checked' && '#fff') ||
+		(props.isactive === 'active' && '#7d38db')};
+	transition: opacity 0.2s;
+
+	&:hover {
+		color: ${props => props.variant === 'checked' && '#fff'};
+		opacity: ${props => props.variant === 'checked' && '0.85'};
+	}
+`;
+
 export const DivInputRadio = styled.div`
 	display: flex;
 	align-items: center;
