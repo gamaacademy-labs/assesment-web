@@ -42,7 +42,7 @@ export const SubContainerQuestions = styled.div`
 	margin: 1rem auto;
 	color: ${props => props.theme['purple']};
 	font-size: 0.75rem;
-	gap: 1rem;
+	gap: 0.5rem;
 
 	display: grid;
 	grid-template-columns: repeat(5, auto);
@@ -50,7 +50,7 @@ export const SubContainerQuestions = styled.div`
 
 	border: 1px solid #d7dbda;
 	border-radius: 8px;
-	padding: 1rem 1.5rem;
+	padding: 1rem 1rem;
 `;
 
 interface TypeLinkMapQuestions {
