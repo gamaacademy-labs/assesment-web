@@ -1,11 +1,10 @@
-import './App.scss';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './styles/global';
 import { createTheme, SmashGlobalStyle } from '@gama-academy/smash-web';
-import { defaultTheme } from './styles/themes/default';
-import { MyRoutes } from './routes';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { MyRoutes } from './routes';
 import { store } from './store';
+import { GlobalStyle } from './styles/global';
+import { defaultTheme } from './styles/themes/default';
 
 export function App() {
 	return (

@@ -1,26 +1,43 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Container = styled.aside`
+interface ContainerDropdown {
+	collapse: boolean;
+}
+
+export const Container = styled.aside<ContainerDropdown>`
 	padding: 2rem;
 	background-color: #fff;
 	border: 1px solid #d7dbda;
 	border-radius: 8px;
-	width: fit-content;
 	height: fit-content;
 	background: #fff;
 
 	color: ${props => props.theme['color-text']};
 	width: 100%;
-	max-width: 300px;
 
-	@media (max-width: 768px) {
-		max-width: 100%;
+	@media (min-width: 769px) {
+		max-width: 300px;
 	}
 
 	header {
+		display: flex;
+		justify-content: space-between;
+
 		img {
 			margin-right: 0.75rem;
+		}
+
+		.icon-dropdown {
+			cursor: pointer;
+
+			display: none;
+			@media (max-width: 768px) {
+				display: block;
+				transform: ${props =>
+					props.collapse ? 'rotateZ(0deg)' : 'rotateZ(-180deg)'};
+				transition: transform 0.3s;
+			}
 		}
 	}
 
@@ -36,6 +53,13 @@ export const Container = styled.aside`
 		margin-top: 1rem;
 		cursor: pointer;
 	}
+`;
+
+export const ContainerDropdown = styled.div<ContainerDropdown>`
+	max-height: ${props => (props.collapse ? '0px' : '500px')};
+	overflow: hidden;
+
+	transition: max-height 0.2s;
 `;
 
 export const SubContainerQuestions = styled.div`

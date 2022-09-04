@@ -1,12 +1,13 @@
+import { MaterialIcon } from '@gama-academy/smash-web';
+import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { Question } from '../../@types';
 import iconQuestionsMap from '../../assets/icons/iconQuestionsMap.svg';
 import {
 	Container,
-	DivInputRadio,
-	LinkMapQuestions,
-	SubContainerQuestions,
-	IconLegend,
+	ContainerDropdown,
+	DivInputRadio, IconLegend, LinkMapQuestions,
+	SubContainerQuestions
 } from './styles';
 
 interface QuestionsMapProps {
@@ -24,6 +25,9 @@ export function QuestionsMap({
 	setQuestionIndex,
 	checkQuestionAnswer,
 }: QuestionsMapProps) {
+
+	const [collapse, setCollapse] = useState(false)
+
 	function handleMapQuestions(index: number) {
 		setQuestionIndex ? setQuestionIndex(index) : null;
 	}
@@ -39,45 +43,52 @@ export function QuestionsMap({
 	}
 
 	return (
-		<Container>
+		<Container collapse={collapse}>
 			<header>
-				<img src={iconQuestionsMap} />
-				<strong>Mapa de questões</strong>
+				<div>
+					<img src={iconQuestionsMap} />
+					<strong>Mapa de questões</strong>
+				</div>
+				<div className='icon-dropdown' onClick={() => setCollapse(!collapse)}>
+					<MaterialIcon color="#202020" name="expand_more" />
+				</div>
 			</header>
-			<SubContainerQuestions>
-				{questions?.map((question, index) => (
-					<LinkMapQuestions
-						isactive={handleLinkIsActive(index)}
-						variant={handleVariantQuestions(index)}
-						key={question.id}
-						to="#"
-						onClick={() => handleMapQuestions(index)}
-					>
-						{handleVariantQuestions(index) === 'checked' ? (
-							<FaCheck size={12} />
-						) : (
-							index + 1
-						)}
-					</LinkMapQuestions>
-				))}
-			</SubContainerQuestions>
+			<ContainerDropdown collapse={collapse}>
+				<SubContainerQuestions>
+					{questions?.map((question, index) => (
+						<LinkMapQuestions
+							isactive={handleLinkIsActive(index)}
+							variant={handleVariantQuestions(index)}
+							key={question.id}
+							to="#"
+							onClick={() => handleMapQuestions(index)}
+						>
+							{handleVariantQuestions(index) === 'checked' ? (
+								<FaCheck size={12} />
+							) : (
+								index + 1
+							)}
+						</LinkMapQuestions>
+					))}
+				</SubContainerQuestions>
 
-			<DivInputRadio>
-				<IconLegend isactive={'active'} variant="checked" />
-				<label>Respondida</label>
-			</DivInputRadio>
-			<DivInputRadio>
-				<IconLegend isactive={'active'} variant="unchecked" />
-				<label>Selecionada</label>
-			</DivInputRadio>
-			<DivInputRadio>
-				<IconLegend isactive={'disabled'} variant={'unchecked'} />
-				<label>Não respondida</label>
-			</DivInputRadio>
+				<DivInputRadio>
+					<IconLegend isactive={'active'} variant="checked" />
+					<label>Respondida</label>
+				</DivInputRadio>
+				<DivInputRadio>
+					<IconLegend isactive={'active'} variant="unchecked" />
+					<label>Selecionada</label>
+				</DivInputRadio>
+				<DivInputRadio>
+					<IconLegend isactive={'disabled'} variant={'unchecked'} />
+					<label>Não respondida</label>
+				</DivInputRadio>
 
-			<button onClick={() => setShowModal(true)}>
-				Instruções da avaliação
-			</button>
+				<button onClick={() => setShowModal(true)}>
+					Instruções da avaliação
+				</button>
+			</ContainerDropdown>
 		</Container>
 	);
 }

@@ -27,7 +27,7 @@ export function AvaliationQuestions({
 		return checkQuestionAnswer[questionIndex] === id ? true : false;
 	}
 
-	useEffect(()=>{
+	useEffect(() => {
 		const richtTextConverter = (richText: string) => {
 			const divContent = document.getElementsByClassName('content')[0];
 			divContent.innerHTML = richText;
@@ -35,7 +35,7 @@ export function AvaliationQuestions({
 
 		hasAvaliationActive && richtTextConverter(questions[questionIndex].title)
 
-	},[questionIndex, hasAvaliationActive])
+	}, [questionIndex, hasAvaliationActive])
 
 
 	return (
