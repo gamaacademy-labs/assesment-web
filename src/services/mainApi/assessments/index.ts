@@ -24,7 +24,7 @@ export const getAssessmentQuestion = async (
 export const getAllAssessmentList = async (): Promise<Assessment[]> => {
 	try {
 		const { data } = await api.get('/assessment/active');
-		return data.assessmentsActive;
+		return data;
 	} catch (error) {
 		return Promise.reject(error);
 	}

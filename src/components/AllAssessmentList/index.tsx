@@ -23,7 +23,7 @@ export function AllASsessmentList() {
 	};
 
 	useEffect(() => {
-		getAllAssessmentList().then(res => {
+		getAllAssessmentList().then(res => {	
 			setAssessments(res);
 		}).catch(() => {
 			dispatch(setUser({ token: '' }))
