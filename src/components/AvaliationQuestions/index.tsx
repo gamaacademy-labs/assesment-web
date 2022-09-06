@@ -39,7 +39,7 @@ export function AvaliationQuestions({
 
 	useEffect(() => {
 		const richtTextConverter = (richText: string) => {
-			const divContent = document.getElementsByClassName('content')[0];
+			const divContent = document.getElementsByClassName('questionTitle')[0];
 			divContent.innerHTML = richText;
 		};
 
@@ -53,7 +53,7 @@ export function AvaliationQuestions({
 			<h3>
 				<img src={iconAvaliationQuestions} /> Questão {questionIndex + 1}
 			</h3>
-			<div className="content"></div>
+			<div className="questionTitle"></div>
 			{hasAvaliationActive &&
 				questions[questionIndex].alternatives.map(
 					(alternative: Alternative) => (
