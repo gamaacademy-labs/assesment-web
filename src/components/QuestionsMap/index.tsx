@@ -43,7 +43,7 @@ export function QuestionsMap({
 	}
 
 	return (
-		<Container collapse={collapse}>
+		<Container collapse={collapse}	>
 			<header>
 				<div>
 					<img src={iconQuestionsMap} />

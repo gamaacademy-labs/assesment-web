@@ -1,18 +1,25 @@
-import * as S from './styles';
 import { Box, Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
 import { useNavigate } from 'react-router-dom';
+import { startingAssessment } from '../../services/user-assessment';
+import * as S from './styles';
 
 interface FooterProps {
 	isDisabled: boolean;
+	assessmentId: string;
 }
 
-export const Footer = ({ isDisabled }: FooterProps) => {
+export const Footer = ({ isDisabled, assessmentId }: FooterProps) => {
 	const navigate = useNavigate();
+
+	async function handleStartedAssessment() {
+		await startingAssessment(assessmentId)
+		navigate('/assessment')
+	}
 
 	return (
 		<S.SFooterContainer>
 			<Button
-				onClick={() => navigate('/assessment')}
+				onClick={handleStartedAssessment}
 				size="1"
 				color="white"
 				borderRadius="md"

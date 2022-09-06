@@ -5,6 +5,7 @@ export interface Assessment {
 	finishedAt: string;
 	qtdQuestions: number;
 	maxScore: number;
+	status: number;
 }
 
 export interface Alternative {
@@ -21,7 +22,7 @@ export interface Question {
 	alternatives: Alternative[];
 }
 
-export interface User{
+export interface User {
 	username: string;
 	token: string;
 }

@@ -17,7 +17,7 @@ export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [assessment, setAssessment] = useState({} as Assessment);
-	const token = useSelector((state:RootState)=>state.persistedReducer.token);
+	const token = useSelector((state: RootState) => state.persistedReducer.token);
 
 	useEffect(() => {
 		const id = Cookies.get('assessmentId');
@@ -36,7 +36,7 @@ export function HomeAssessment() {
 		};
 
 		takeAssessment();
-	}, [assessment]);
+	}, []);
 
 	return (
 		<>
@@ -59,7 +59,7 @@ export function HomeAssessment() {
 					setShowModal={setShowModal}
 				/>
 			</Container>
-			<Footer isDisabled={isDisabled} />
+			<Footer assessmentId={assessment.id} isDisabled={isDisabled} />
 		</>
 	);
 }

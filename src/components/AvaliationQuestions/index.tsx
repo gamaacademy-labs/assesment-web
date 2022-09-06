@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { Alternative, Question } from '../../@types';
 import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
+import { savingAnswer } from '../../services/user-assessment';
 import { Container, ContainerInput } from './styles';
 interface AvaliationQuestionsProps {
+	assessmentId: string;
 	questions: Question[];
 	questionIndex: number;
 	checkQuestionAnswer: string[];
@@ -10,6 +12,7 @@ interface AvaliationQuestionsProps {
 }
 
 export function AvaliationQuestions({
+	assessmentId,
 	questions,
 	questionIndex,
 	checkQuestionAnswer,
@@ -17,7 +20,14 @@ export function AvaliationQuestions({
 }: AvaliationQuestionsProps) {
 	const hasAvaliationActive = questions.length > 0 ? true : false;
 
-	function handleAnswerQuestion(alt: Alternative) {
+	async function handleAnswerQuestion(alt: Alternative) {
+		const questionId = questions[questionIndex].id
+		const alternativeId = alt.id
+
+		const selectedAnswer = { questionId, alternativeId, assessmentId }
+
+		await savingAnswer(selectedAnswer)
+
 		const stateCopy = [...checkQuestionAnswer];
 		stateCopy[questionIndex] = alt.id;
 		setCheckQuestionAnswer(stateCopy);

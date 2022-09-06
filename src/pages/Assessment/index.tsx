@@ -20,26 +20,26 @@ export const Assessment = () => {
 	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState<string[]>([]);
 
 	const title = Cookies.get('titleAssessment') as string;
-	const questionId = Cookies.get('assessmentId') as string;
+	const assessmentId = Cookies.get('assessmentId') as string;
 	const deadline = Cookies.get('dateAssessment') as string;
 	const dispatch = useDispatch()
-	const token = useSelector((state:RootState)=>state.persistedReducer.token);
+	const token = useSelector((state: RootState) => state.persistedReducer.token);
 
 	useEffect(() => {
 		const getQuestionList = async () => {
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			try {
-				const questionList = await getAssessmentQuestion(questionId);			
-				setQuestions(questionList);				
+				const questionList = await getAssessmentQuestion(assessmentId);
+				setQuestions(questionList);
 			} catch (error) {
-				dispatch(setUser({token: ''}))
+				dispatch(setUser({ token: '' }))
 			}
 		};
 
 		getQuestionList();
 	}, []);
 
-	
+
 
 	return (
 		<Container className="body-container">
@@ -53,6 +53,7 @@ export const Assessment = () => {
 					checkQuestionAnswer={checkQuestionAnswer}
 				/>
 				<AvaliationQuestions
+					assessmentId={assessmentId}
 					checkQuestionAnswer={checkQuestionAnswer}
 					setCheckQuestionAnswer={setCheckQuestionAnswer}
 					questions={questions}
@@ -60,6 +61,7 @@ export const Assessment = () => {
 				/>
 			</SubContainer>
 			<ProgressBar
+				assessmentId={assessmentId}
 				questions={questions}
 				questionIndex={questionIndex}
 				setQuestionIndex={setQuestionIndex}

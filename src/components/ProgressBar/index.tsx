@@ -3,20 +3,23 @@ import {
 	Button,
 	MaterialIcon,
 	ProgressBar as Progress_Bar,
-	Typography,
+	Typography
 } from '@gama-academy/smash-web';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Question } from '../../@types';
+import { finishingAssessment } from '../../services/user-assessment';
 import {
 	Div,
 	DivAllButton,
 	DivButton,
 	DivInfoBar,
 	DivInformation,
-	MatiralIconStyles,
+	MatiralIconStyles
 } from './styles';
 
 interface ProgressBarProps {
+	assessmentId: string;
 	questions: Question[];
 	questionIndex: number;
 	setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -24,6 +27,7 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar = ({
+	assessmentId,
 	questions,
 	questionIndex,
 	setQuestionIndex,
@@ -37,16 +41,22 @@ export const ProgressBar = ({
 	const changeButton =
 		questionIndex !== amountOfQuestions - 1
 
-	function handleNextQuestion() {
+	const navigate = useNavigate()
+
+	async function handleNextQuestion() {
+
+		if (!changeButton) {
+			await finishingAssessment(assessmentId)
+			navigate('/success')
+			return toast.success('Avaliação entregue!');
+		}
+
 		if (questionIndex < amountOfQuestions - 1) {
 			return setQuestionIndex(questionIndex + 1);
 		}
-		if(amountOfQuestionsAnswered === amountOfQuestions){
-			return toast.success('Avaliação entregue!');
 
-		}
 		toast.warning('Você precisa responder todas as questões!');
-		
+
 	}
 
 	function handlePreviousQuestion() {
