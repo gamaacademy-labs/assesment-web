@@ -77,39 +77,36 @@ export const SubContainerQuestions = styled.div`
 	padding: 1rem 1rem;
 `;
 
+export const LinkMapQuestions = styled(Link)`
+	font-size: 0.75rem;
+	font-weight: bold;
+	width: 2rem;
+	height: 2rem;
+	color: #d7dbda;
+	text-decoration: none;
+	border: 1px solid #7d38db;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #7d38db;
+	color: #fff;
+	transition: opacity 0.2s;
+
+	&:hover {
+		color: #fff;
+		opacity: 0.85;
+	}
+`;
+
 interface TypeLinkMapQuestions {
 	variant: 'checked' | 'unchecked';
 	isactive: 'active' | 'disabled';
 }
 
-export const LinkMapQuestions = styled(Link)<TypeLinkMapQuestions>`
-	font-size: 0.75rem;
-	font-weight: ${props => props.isactive && 'bold'};
-	width: 2rem;
-	height: 2rem;
-	color: #d7dbda;
-	text-decoration: none;
-	border: ${props =>
-		props.isactive === 'active' ? '1px solid #7d38db' : '1px solid #d7dbda'};
-	border-radius: 4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: ${props => props.variant === 'checked' && '#7d38db'};
-	color: ${props =>
-		(props.variant === 'checked' && '#fff') ||
-		(props.isactive === 'active' && '#7d38db')};
-	transition: opacity 0.2s;
-
-	&:hover {
-		color: ${props => props.variant === 'checked' && '#fff'};
-		opacity: ${props => props.variant === 'checked' && '0.85'};
-	}
-`;
-
 export const IconLegend = styled.div<TypeLinkMapQuestions>`
 	font-size: 0.75rem;
-	font-weight: ${props => props.isactive && 'bold'};
+	font-weight: bold;
 	width: 0.7rem;
 	height: 0.7rem;
 	border-radius: 50%;

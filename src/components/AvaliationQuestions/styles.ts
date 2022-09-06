@@ -44,9 +44,11 @@ export const ContainerInput = styled.div<TypeContainerInput>`
 	background: ${props => (props.variant ? '#7D38DB' : '#FFF')};
 	color: ${props => (props.variant ? '#FFF' : props.theme['color-text'])};
 	box-shadow: ${props => props.variant && '-4px 4px 0px #202020'};
+	cursor: pointer;
 
 	input {
 		margin-right: 0.5rem;
+		cursor: pointer;
 	}
 
 	&:checked {
@@ -55,5 +57,6 @@ export const ContainerInput = styled.div<TypeContainerInput>`
 
 	label {
 		flex: 1;
+		cursor: pointer;
 	}
 `;

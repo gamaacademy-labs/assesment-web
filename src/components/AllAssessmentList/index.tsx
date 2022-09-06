@@ -1,61 +1,116 @@
-import * as S from './styles';
 import { Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
-import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Assessment } from '../../@types';
+import { api } from '../../services/mainApi';
+import { getAllAssessmentList } from '../../services/mainApi/assessments';
+import { finishingAssessment } from '../../services/user-assessment';
+import { RootState } from '../../store';
+import { setUser } from '../../store/user';
+import * as S from './styles';
 
 export function AllASsessmentList() {
 	const navigate = useNavigate();
-	const assessments = [
-		{
-			id: '0416f181-78b4-499c-91c0-7b32a89773d5',
-			createdAt: '2022-08-23T13:08:30.916Z',
-			updatedAt: '2022-08-23T13:08:30.916Z',
-			isActive: true,
-			title: 'Avaliação de Node.js',
-			finishedAt: '2023-08-28T03:00:00.000Z',
-			qtdQuestions: 4,
-			maxScore: 4,
-		},
-		{
-			id: '1416f181-78b4-499c-91c0-7b32a89773d5',
-			createdAt: '2022-08-23T13:08:30.916Z',
-			updatedAt: '2022-08-23T13:08:30.916Z',
-			isActive: true,
-			title: 'Avaliação de JavaScript',
-			finishedAt: '2023-08-28T03:00:00.000Z',
-			qtdQuestions: 4,
-			maxScore: 4,
-		},
-	];
+	const dispatch = useDispatch()
+	const [assessments, setAssessments] = useState<Assessment[]>([]);
+	const token = useSelector((state: RootState) => state.persistedReducer.token);
+	api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+	const assessmentsNotStartedYet = assessments.filter(assessment => assessment.status === 0)
+	const assessmentAlreadyStarted = assessments.filter(assessment => assessment.status !== 0)
+	const assessmentAlreadyStartedButNotFinished = assessments.filter(assessment => assessment.status === 1)
 
 	const goToSelectedAssessment = (id: string) => {
 		Cookies.set('assessmentId', id);
 		navigate(`/instructions`);
 	};
 
+	const goToScore = (id: string) => {
+		Cookies.set('assessmentId', id);
+		navigate(`/success`);
+	};
+
+	useEffect(() => {
+		async function finishingAssessmentsWithStatus1() {
+			if (assessmentAlreadyStartedButNotFinished.length > 0) {
+				assessmentAlreadyStartedButNotFinished.map(async (assessment) => {
+					await finishingAssessment(assessment.id)
+				})
+			}
+		}
+		finishingAssessmentsWithStatus1()
+	}, [])
+
+	useEffect(() => {
+		getAllAssessmentList().then(res => {
+			setAssessments(res);
+		}).catch(() => {
+			dispatch(setUser({ token: '' }))
+		});
+	}, []);
+
 	return (
-		<S.Content>
-			<Typography type="title">Avaliações</Typography>
-			{assessments.map(assessment => (
-				<div key={assessment.id} className="avaliation">
-					<p>{assessment.title}</p>
-					<Button
-						color="primary.3"
-						onClick={() => goToSelectedAssessment(assessment.id)}
-						size="0"
-						variant="filled"
-					>
-						<Typography mr={2}>Realizar avaliação</Typography>
-						<MaterialIcon
-							name="play_circle_filled"
-							shape="none"
-							shapeBackground="primary.3"
-							color="white"
-							type="round"
-						/>
-					</Button>
-				</div>
-			))}
-		</S.Content>
+		<>
+			<S.Content>
+				<Typography type="title">Avaliações para fazer</Typography>
+				{assessmentsNotStartedYet.length === 0 ? (
+					<Typography>Você já fez todas as avaliações!</Typography>
+				) :
+					(
+						assessmentsNotStartedYet.map((assessment: Assessment) => (
+							<div key={assessment.id} className="avaliation">
+								<p>{assessment.title}</p>
+								<Button
+									color="primary.3"
+									onClick={() => goToSelectedAssessment(assessment.id)}
+									size="0"
+									variant="filled"
+								>
+									<Typography mr={2}>Realizar avaliação</Typography>
+									<MaterialIcon
+										name="play_circle_filled"
+										shape="none"
+										shapeBackground="primary.3"
+										color="white"
+										type="round"
+									/>
+								</Button>
+							</div>
+						))
+					)
+				}
+			</S.Content>
+			<S.Content>
+				<Typography type="title">Avaliações realizadas</Typography>
+				{assessmentAlreadyStarted.length === 0 ? (
+					<Typography>Você ainda não concluiu nenhuma avaliação!</Typography>
+				) :
+					(
+						assessmentAlreadyStarted.map((assessment: Assessment) => (
+							<div key={assessment.id} className="avaliation">
+								<p>{assessment.title}</p>
+								<Button
+									color="primary.3"
+									onClick={() => goToScore(assessment.id)}
+									size="0"
+									variant="filled"
+								>
+									<Typography mr={2}>Visualizar nota</Typography>
+									<MaterialIcon
+										name="play_circle_filled"
+										shape="none"
+										shapeBackground="primary.3"
+										color="white"
+										type="round"
+									/>
+								</Button>
+							</div>
+						))
+					)
+				}
+			</S.Content>
+		</>
 	);
 }
