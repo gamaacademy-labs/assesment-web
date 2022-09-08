@@ -13,7 +13,6 @@ import { getAssessment } from '../../services/mainApi/assessments';
 import { RootState } from '../../store';
 import { Container } from './styles';
 
-
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
 	const [showModal, setShowModal] = useState(false);
