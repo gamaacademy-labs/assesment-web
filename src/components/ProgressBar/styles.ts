@@ -5,6 +5,7 @@ interface props {
 	margin?: number;
 	num?: number;
 	changeColor?: boolean;
+	handleChange?: boolean;
 }
 
 export const Div = styled.div`
@@ -55,6 +56,9 @@ export const DivInformation = styled.div<props>`
 		}
 	}
 	.numQuestion {
+		margin: 0 0.5rem;
+	}
+	.amountOfQuestions{
 		margin: 0 0.5rem;
 	}
 `;

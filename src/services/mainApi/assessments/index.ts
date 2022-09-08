@@ -1,4 +1,4 @@
-import { Assessment } from '../../../@types';
+import { Assessment, Question } from '../../../@types';
 import { api } from '../../mainApi';
 
 export const getAssessment = async (id: string): Promise<Assessment> => {
@@ -10,10 +10,21 @@ export const getAssessment = async (id: string): Promise<Assessment> => {
 	}
 };
 
+export const getAssessmentQuestion = async (
+	id: string,
+): Promise<Question[]> => {
+	try {
+		const response = await api.get(`/assessment/questions/${id}`);
+		return response.data.questions;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
 export const getAllAssessmentList = async (): Promise<Assessment[]> => {
 	try {
 		const { data } = await api.get('/assessment/active');
-		return data.assessmentsActive;
+		return data;
 	} catch (error) {
 		return Promise.reject(error);
 	}

@@ -1,6 +1,4 @@
 import Cookies from 'js-cookie';
-import * as S from './styles';
-import { Header } from '../../components/Header';
 import { AllASsessmentList } from '../../components/AllAssessmentList';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';

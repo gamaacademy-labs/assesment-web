@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         font-size: 1rem;
+        background-color: #f5f5f5;
     }
 
     @media (max-width: 768px) {
