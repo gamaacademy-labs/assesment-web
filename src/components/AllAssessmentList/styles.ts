@@ -20,9 +20,20 @@ export const Content = styled.div`
 		border-radius: 8px;
 		width: 100%;
 		position: relative;
+		border: 2px solid #7d38db;
 
 		p {
 			margin: 0;
+		}
+
+		&:hover {
+			background-color: #7d38db;
+			color: #fff;
+		}
+
+		@media (max-width: 768px) {
+			background-color: #7d38db;
+			color: #fff;
 		}
 
 		@media (max-width: 425px) {

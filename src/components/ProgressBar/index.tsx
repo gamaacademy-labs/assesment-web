@@ -3,33 +3,65 @@ import {
 	Button,
 	MaterialIcon,
 	ProgressBar as Progress_Bar,
-	Typography,
+	Typography
 } from '@gama-academy/smash-web';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Question } from '../../@types';
+import { finishingAssessment } from '../../services/user-assessment';
 import {
 	Div,
 	DivAllButton,
 	DivButton,
 	DivInfoBar,
 	DivInformation,
-	MatiralIconStyles,
+	MatiralIconStyles
 } from './styles';
 
-export const ProgressBar = () => {
-	const [num, setNum] = useState(0);
-	let numQuestion = 4;
-	const change = num < numQuestion;
+interface ProgressBarProps {
+	assessmentId: string;
+	questions: Question[];
+	questionIndex: number;
+	setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+	checkQuestionAnswer: string[];
+}
 
-	const nextQuestion = (signal: string) => {
-		if (signal == '+' && num < numQuestion) {
-			setNum(num + 1);
-			console.log(num);
+export const ProgressBar = ({
+	assessmentId,
+	questions,
+	questionIndex,
+	setQuestionIndex,
+	checkQuestionAnswer,
+}: ProgressBarProps) => {
+	const amountOfQuestions = questions.length;
+	const filteredQuestionsAnswered = checkQuestionAnswer.filter(
+		n => typeof n === 'number',
+	);
+	const amountOfQuestionsAnswered = filteredQuestionsAnswered.length;
+	const changeButton =
+		questionIndex !== amountOfQuestions - 1
+
+	const navigate = useNavigate()
+
+	async function handleNextQuestion() {
+
+		if (!changeButton) {
+			await finishingAssessment(assessmentId)
+			navigate('/success')
+			return toast.success('Avaliação entregue!');
 		}
-		if (signal == '-' && num >= 1) {
-			setNum(num - 1);
-			console.log(num);
+
+		if (questionIndex < amountOfQuestions - 1) {
+			return setQuestionIndex(questionIndex + 1);
 		}
-	};
+
+		toast.warning('Você precisa responder todas as questões!');
+
+	}
+
+	function handlePreviousQuestion() {
+		questionIndex >= 1 && setQuestionIndex(questionIndex - 1);
+	}
 
 	return (
 		<Div>
@@ -37,13 +69,13 @@ export const ProgressBar = () => {
 				<DivInformation>
 					<MaterialIcon color="white" name="ballot" />
 					<p className="question">Questões</p>
-					<p className="numQuestion">
-						{num}/{numQuestion}
+					<p className="amountOfQuestions">
+						{amountOfQuestionsAnswered}/{amountOfQuestions}
 					</p>
 				</DivInformation>
 				<Progress_Bar
-					max={numQuestion}
-					value={num}
+					max={amountOfQuestions}
+					value={amountOfQuestionsAnswered}
 					percentageSide="right"
 					margin={undefined}
 					m={undefined}
@@ -62,12 +94,12 @@ export const ProgressBar = () => {
 				/>
 			</DivInfoBar>
 			<DivAllButton>
-				<DivButton num={num}>
+				<DivButton num={questionIndex}>
 					<Button
 						className="backButton"
 						size="2"
 						fluid
-						onClick={() => nextQuestion('-')}
+						onClick={handlePreviousQuestion}
 						variant="filled"
 						color="brand.secondary"
 					>
@@ -87,9 +119,8 @@ export const ProgressBar = () => {
 					<Button
 						size="2"
 						fluid
-						onClick={() => nextQuestion('+')}
-						disabled={false}
-						color={change ? 'white' : 'primary.3'}
+						onClick={handleNextQuestion}
+						color={changeButton ? 'white' : 'primary.3'}
 					>
 						<Box
 							className="box"
@@ -98,15 +129,15 @@ export const ProgressBar = () => {
 							justifyContent="space-between"
 						>
 							<Typography fontWeight="semi_bold" mr="2" numberOfLines={1}>
-								{change ? 'Próxima' : 'Entregar avaliação'}
+								{changeButton ? 'Próxima' : 'Entregar avaliação'}
 							</Typography>
 							<MatiralIconStyles
 								size={20}
-								name={change ? 'arrow_forward' : 'flag'}
+								name={changeButton ? 'arrow_forward' : 'flag'}
 								shape="round"
 								color="black"
-								shapeBackground={change ? 'primary.3' : 'contrast.dark'}
-								changeColor={change}
+								shapeBackground={changeButton ? 'primary.3' : 'contrast.dark'}
+								changeColor={changeButton}
 								type="round"
 							/>
 						</Box>

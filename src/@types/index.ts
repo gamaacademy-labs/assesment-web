@@ -5,9 +5,24 @@ export interface Assessment {
 	finishedAt: string;
 	qtdQuestions: number;
 	maxScore: number;
+	status: number;
 }
 
-export interface User{
+export interface Alternative {
+	id: string;
+	title: string;
+}
+
+export interface Question {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+	isActive: boolean;
+	title: string;
+	alternatives: Alternative[];
+}
+
+export interface User {
 	username: string;
 	token: string;
 }

@@ -1,30 +1,30 @@
-import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Assessment } from '../../@types';
 import { AvaliationInstructions } from '../../components/AvaliationInstructions';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { ModalInfo } from '../../components/ModalInfo';
 import { SummaryAvaliation } from '../../components/SummaryAvaliation';
-import { getAssessment } from '../../services/mainApi/assessments';
-import { Assessment } from '../../@types';
-import { Container } from './styles';
-import Cookies from 'js-cookie';
 import { api } from '../../services/mainApi';
-import { useSelector } from 'react-redux';
+import { getAssessment } from '../../services/mainApi/assessments';
 import { RootState } from '../../store';
+import { Container } from './styles';
 
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [assessment, setAssessment] = useState({} as Assessment);
 	const token = useSelector((state: RootState) => state.persistedReducer.token);
-	console.log(token);
 
 	useEffect(() => {
+		const id = Cookies.get('assessmentId');
+
 		const takeAssessment = async () => {
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-			const takeAssessmentId = Cookies.get('assessmentId');
-			const response = await getAssessment(`${takeAssessmentId}`);
+			const response = await getAssessment(`${id}`);
 
 			setAssessment({
 				...response,
@@ -34,8 +34,7 @@ export function HomeAssessment() {
 
 		takeAssessment();
 	}, []);
-	Cookies.set('titleAssessment', assessment.title);
-	Cookies.set('dateAssessment', assessment.finishedAt);
+
 	return (
 		<>
 			<Header title={assessment.title} />
@@ -57,7 +56,7 @@ export function HomeAssessment() {
 					setShowModal={setShowModal}
 				/>
 			</Container>
-			<Footer isDisabled={isDisabled} />
+			<Footer assessmentId={assessment.id} isDisabled={isDisabled} />
 		</>
 	);
 }

@@ -1,13 +1,14 @@
-import * as S from './styles';
-import { Form } from 'react-bootstrap';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
-import { getUsers, loginUser } from '../../services/mainApi/users';
-import { api } from '../../services/mainApi';
-import { useNavigate } from 'react-router-dom';
 import { Input } from '@gama-academy/smash-web';
-import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
+import Cookie from 'js-cookie';
 import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import { api } from '../../services/mainApi';
+import { getUser, loginUser } from '../../services/mainApi/users';
+import * as S from './styles';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/user';
 
@@ -37,7 +38,7 @@ export const LoginForm: React.FC = () => {
 			}
 
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-			const user = await getUsers(values.username);
+			const user = await getUser(values.username);
 			dispatch(setUser({ username: values.username, token: token }));
 
 			toast.success('Login realizado com sucesso!');
