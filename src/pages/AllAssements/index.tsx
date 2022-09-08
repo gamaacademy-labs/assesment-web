@@ -1,7 +1,8 @@
-import Cookies from 'js-cookie';
 import { AllASsessmentList } from '../../components/AllAssessmentList';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import * as S from './styles'
+import { Header } from '../../components/Header';
 
 export function AllAssements() {
 	const userName = useSelector((state:RootState)=>state.persistedReducer.username)

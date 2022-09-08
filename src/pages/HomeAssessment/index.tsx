@@ -12,10 +12,7 @@ import { api } from '../../services/mainApi';
 import { getAssessment } from '../../services/mainApi/assessments';
 import { RootState } from '../../store';
 import { Container } from './styles';
-import Cookies from 'js-cookie';
-import { api } from '../../services/mainApi';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+
 
 export function HomeAssessment() {
 	const [isDisabled, setIsDisabled] = useState(true);

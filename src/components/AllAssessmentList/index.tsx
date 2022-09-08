@@ -22,9 +22,15 @@ export function AllASsessmentList() {
 	const assessmentAlreadyStarted = assessments.filter(assessment => assessment.status !== 0)
 	const assessmentAlreadyStartedButNotFinished = assessments.filter(assessment => assessment.status === 1)
 
-	const goToSelectedAssessment = (id: string) => {
-		Cookies.set('assessmentId', id);
+	const goToSelectedAssessment = (assessment: Assessment) => {
+		Cookies.set('assessmentId', assessment.id);
+		Cookies.set('titleAssessment', assessment.title);
 		navigate(`/success`);
+	};
+	const goToAssessmentInstructions = (assessment: Assessment) => {
+		Cookies.set('assessmentId', assessment.id);
+		Cookies.set('titleAssessment', assessment.title);
+		navigate(`/instructions`);
 	};
 
 
@@ -60,7 +66,7 @@ export function AllASsessmentList() {
 								<p>{assessment.title}</p>
 								<Button
 									color="primary.3"
-									onClick={() => goToSelectedAssessment(assessment.id)}
+									onClick={() => goToAssessmentInstructions(assessment)}
 									size="0"
 									variant="filled"
 								>
@@ -89,7 +95,7 @@ export function AllASsessmentList() {
 								<p>{assessment.title}</p>
 								<Button
 									color="primary.3"
-									onClick={() => goToSelectedAssessment(assessment.id)}
+									onClick={() => goToSelectedAssessment(assessment)}
 									size="0"
 									variant="filled"
 								>
