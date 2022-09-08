@@ -1,10 +1,11 @@
-import Cookies from 'js-cookie';
 import { AllASsessmentList } from '../../components/AllAssessmentList';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import * as S from './styles'
 import { Header } from '../../components/Header';
-import * as S from './styles';
 
 export function AllAssements() {
-	const userName = Cookies.get('user') as string;
+	const userName = useSelector((state:RootState)=>state.persistedReducer.username)
 
 	return (
 		<S.Container>

@@ -30,9 +30,6 @@ export function HomeAssessment() {
 				...response,
 				finishedAt: format(new Date(response.finishedAt), 'dd/MM/yyyy'),
 			});
-
-			Cookies.set('titleAssessment', response.title);
-			Cookies.set('dateAssessment', assessment.finishedAt);
 		};
 
 		takeAssessment();
