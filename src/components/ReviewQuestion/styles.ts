@@ -13,18 +13,6 @@ export const Container = styled.main<TypeContainer>`
 	flex: 1;
 	background-color: #fff;
 
-	.icon-dropdown {
-		span {
-			margin: 0;
-			font-size: 1.2rem;
-		}
-		cursor: pointer;
-		transform: ${props =>
-			props.showQuestion ? 'rotateZ(-180deg)' : 'rotateZ(0deg)'};
-		transition: transform 0.5s ease-in-out;
-		margin-left: auto;
-	}
-
 	.questionBody {
 		max-height: ${props => (props.showQuestion ? '100vh' : '0px')};
 		overflow: hidden;
@@ -35,8 +23,26 @@ export const Container = styled.main<TypeContainer>`
 		font-size: 1rem;
 		margin-bottom: 0rem;
 		display: flex;
+		flex-direction: column;
 		gap: 0.3rem;
 		cursor: pointer;
+
+		.titleQuestion {
+			display: flex;
+			.icon-dropdown {
+				cursor: pointer;
+				transform: ${props =>
+					props.showQuestion ? 'rotateZ(-180deg)' : 'rotateZ(0deg)'};
+				transition: transform 0.5s ease-in-out;
+				margin-left: auto;
+				span {
+					margin: 0;
+				}
+			}
+			img {
+				margin-right: 0.5rem;
+			}
+		}
 	}
 
 	p {
@@ -71,9 +77,10 @@ export const ContainerInput = styled.div<TypeContainerInput>`
 		props.variant !== '#fff' ? '-4px 4px 0px #202020' : '0'};
 
 	@media (max-width: 768px) {
-		width: ${props => (props.width === 100 ? props.width-1 : 4 * props.width)}%;
+		width: ${props =>
+			props.width === 100 ? props.width - 1 : 4 * props.width}%;
 		height: 30px;
-		font-size:1rem;
+		font-size: 1rem;
 	}
 
 	input {
@@ -113,9 +120,8 @@ export const ContainerInput = styled.div<TypeContainerInput>`
 		align-items: center;
 		gap: 0.1rem;
 		margin-left: 0.5rem;
-		@media (max-width: 768px){
+		@media (max-width: 768px) {
 			font-size: 1rem;
-
 		}
 	}
 `;
@@ -124,5 +130,48 @@ export const Content = styled.div`
 	display: flex;
 	@media (max-width: 768px) {
 		flex-direction: column;
+	}
+`;
+
+interface TypeSubTitleAnswer {
+	circleColor: string;
+}
+
+export const SubTitleAnswer = styled.span<TypeSubTitleAnswer>`
+	display: flex;
+	margin-top: 0.2rem;
+	.circle {
+		width: 5px;
+		height: 5px;
+		background-color: ${props => props.circleColor};
+		margin: auto 0;
+		margin-right: 0.2rem;
+		border-radius: 50%;
+	}
+	span {
+		font-size: 0.7rem;
+	}
+`;
+
+interface TypeContainerExplanation {
+	TextColor: boolean;
+}
+
+export const ContainerExplanation = styled.div<TypeContainerExplanation>`
+	align-items: center;
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 1rem 0.5rem;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	margin-top: 1rem;
+	border: 1px solid #ccd1cf;
+	border-radius: 8px;
+	p{
+		font-weight: 400;
+	}
+	.textExplanation{
+		color: ${props=>props.TextColor ? '#0FD03F' : '#E2002F'};
+		font-weight: 700;
 	}
 `;

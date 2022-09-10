@@ -1,4 +1,10 @@
-import { Container, ContainerInput, Content } from './styles';
+import {
+	Container,
+	ContainerExplanation,
+	ContainerInput,
+	Content,
+	SubTitleAnswer,
+} from './styles';
 import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
 import { useState } from 'react';
 import { Alternative, CorrectAnswer } from '../../@types';
@@ -20,6 +26,10 @@ export function ReviewQuestion({
 }: ReviewQuestionProps) {
 	const [showQuestion, setShowQuestion] = useState(false);
 
+	const checkedAnswer =
+		correctAnswer?.Correct[0] === correctAnswer?.alternativeId;
+	const arrayLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+
 	const richtTextConverter = (richText: string) => {
 		return { __html: richText };
 	};
@@ -34,15 +44,29 @@ export function ReviewQuestion({
 		return '#fff';
 	};
 
-	console.log(correctAnswer);
-
 	return (
 		correctAnswer && (
 			<Container showQuestion={showQuestion}>
 				<h3 onClick={() => setShowQuestion(!showQuestion)}>
-					<img src={iconAvaliationQuestions} /> Questão {index + 1}
-					<div className="icon-dropdown">
-						<MaterialIcon color="#202020" name="expand_more" />
+					<div className="titleQuestion">
+						<img src={iconAvaliationQuestions} />
+						<p>
+							Questão {index + 1}
+							{checkedAnswer ? (
+								<SubTitleAnswer circleColor="#0FD03F">
+									<span className="circle" />
+									<span>Resposta correta</span>
+								</SubTitleAnswer>
+							) : (
+								<SubTitleAnswer circleColor="#E2002F">
+									<span className="circle" />
+									<span>Resposta incorreta</span>
+								</SubTitleAnswer>
+							)}
+						</p>
+						<div className="icon-dropdown">
+							<MaterialIcon color="#202020" name="expand_more" />
+						</div>
 					</div>
 				</h3>
 
@@ -50,7 +74,7 @@ export function ReviewQuestion({
 					<div dangerouslySetInnerHTML={richtTextConverter(title)} />
 
 					{alternative.map((item, index) => (
-						<Content>
+						<Content key={item.id}>
 							<ContainerInput
 								variant={checkedAnswerColor(index + 1)}
 								changeDisplay={
@@ -99,6 +123,18 @@ export function ReviewQuestion({
 							</ContainerInput>
 						</Content>
 					))}
+					<ContainerExplanation TextColor={checkedAnswer}>
+						<p className="textExplanation">
+							{checkedAnswer
+								? 'Parabéns, você acertou esta questão!'
+								: `Ops! Você errou esta questão, a resposta correta é a alternativa ${
+										arrayLetters[correctAnswer.Correct[0] - 1]
+								  }!`}
+						</p>
+						<p>
+							<strong>Explicação:</strong> Lorem ipsum dolor sit amet
+						</p>
+					</ContainerExplanation>
 				</div>
 			</Container>
 		)
