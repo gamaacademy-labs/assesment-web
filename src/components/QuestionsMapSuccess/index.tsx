@@ -17,12 +17,11 @@ import {
 } from './styles';
 
 interface QuestionsMapProps {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export function QuestionsMapSuccess({
-  setShowModal,
   setScore
 }: QuestionsMapProps) {
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -49,6 +48,8 @@ export function QuestionsMapSuccess({
   useEffect(() => {
     async function gettingScoreAssessment() {
       const constScoreAssessment = await scoreAssessment(assessmentId)
+    
+      
       setScore(constScoreAssessment.data.score)
     }
 
@@ -90,10 +91,6 @@ export function QuestionsMapSuccess({
           <IconLegend isactive={'disabled'} variant={'unchecked'} />
           <label>Não respondida</label>
         </DivInputRadio>
-
-        <button onClick={() => setShowModal(true)}>
-          Instruções da avaliação
-        </button>
       </ContainerDropdown>
     </Container>
   );

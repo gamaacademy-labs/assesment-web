@@ -7,6 +7,7 @@ import { AllAssements } from './pages/AllAssements';
 import { Assessment } from './pages/Assessment';
 import { HomeAssessment } from './pages/HomeAssessment';
 import { Login } from './pages/Login';
+import { Review } from './pages/Review';
 import { Success } from './pages/Success';
 import { RootState } from './store';
 
@@ -28,6 +29,7 @@ export const MyRoutes = () => {
 				/>
 				<Route path="/" element={token ? <AllAssements /> : <Login />} />
 				<Route path="/success" element={token ? <Success /> : <Login />} />
+				<Route path="/review" element={token ? <Review/> : <Login />} />
 			</Routes>
 		</Router>
 	);

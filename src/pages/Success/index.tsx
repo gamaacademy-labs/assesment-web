@@ -7,7 +7,6 @@ import { SuccessPage } from '../../components/SuccessPage';
 import { Container } from './styles';
 
 export function Success() {
-	const [showModal, setShowModal] = useState(false);
 	const [score, setScore] = useState(0);
 	const title = Cookies.get('titleAssessment') as string;
 
@@ -15,10 +14,9 @@ export function Success() {
 		<>
 			<Header title={title} />
 			<Container>
-				<QuestionsMapSuccess setScore={setScore} setShowModal={setShowModal} />
+				<QuestionsMapSuccess setScore={setScore}/>
 				<SuccessPage score={score} />
 			</Container>
-			<ModalInfo showModal={showModal} setShowModal={setShowModal} />
 		</>
 	);
 }
