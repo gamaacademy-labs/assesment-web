@@ -6,7 +6,7 @@ interface TypeContainer {
 }
 
 export const Container = styled.main<TypeContainer>`
-	padding: 2rem;
+	padding: 1rem 2rem;
 	border: 1px solid #d7dbda;
 	border-radius: 8px;
 	color: ${props => props.theme['color-text']};
@@ -16,12 +16,12 @@ export const Container = styled.main<TypeContainer>`
 	.questionBody {
 		max-height: ${props => (props.showQuestion ? '100vh' : '0px')};
 		overflow: hidden;
-		transition: max-height 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
 	}
 
 	h3 {
 		font-size: 1rem;
-		margin-bottom: 0rem;
+		margin: 1rem 0;
 		display: flex;
 		flex-direction: column;
 		gap: 0.3rem;
