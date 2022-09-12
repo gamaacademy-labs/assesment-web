@@ -27,7 +27,6 @@ export function AllASsessmentList() {
 	const assessmentAlreadyStartedButNotFinished = assessments.filter(
 		assessment => assessment.status === 1,
 	);
-	console.log(assessmentAlreadyStartedButNotFinished);
 
 	const goToSelectedAssessment = (assessment: Assessment) => {
 		Cookies.set('assessmentId', assessment.id);

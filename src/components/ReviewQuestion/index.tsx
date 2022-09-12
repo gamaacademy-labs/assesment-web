@@ -27,7 +27,8 @@ export function ReviewQuestion({
 	const [showQuestion, setShowQuestion] = useState(false);
 
 	const checkedAnswer =
-		correctAnswer?.Correct[0] === correctAnswer?.alternativeId;
+		correctAnswer?.Correct[0] == correctAnswer?.alternativeId;
+
 	const arrayLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
 
 	const richtTextConverter = (richText: string) => {
@@ -44,6 +45,47 @@ export function ReviewQuestion({
 		return '#fff';
 	};
 
+	const renderSubTitle = () => {
+		if (checkedAnswer) {
+			return (
+				<SubTitleAnswer circleColor="#0FD03F">
+					<span className="circle" />
+					<span>Resposta correta</span>
+				</SubTitleAnswer>
+			);
+		}
+		if (!checkedAnswer && correctAnswer?.alternativeId !== null) {
+			return (
+				<SubTitleAnswer circleColor="#E2002F">
+					<span className="circle" />
+					<span>Resposta incorreta</span>
+				</SubTitleAnswer>
+			);
+		}
+		if (correctAnswer?.alternativeId == null) {
+			return (
+				<SubTitleAnswer circleColor="#D7DBDA">
+					<span className="circle" />
+					<span>Não respondida</span>
+				</SubTitleAnswer>
+			);
+		}
+	};
+
+	const textExplanation = () => {
+		if (checkedAnswer) {
+			return 'Parabéns, você acertou esta questão!';
+		}
+		if (!checkedAnswer && correctAnswer?.alternativeId !== null) {
+			return `Ops! Você errou esta questão, a resposta correta é a alternativa ${
+				arrayLetters[correctAnswer.Correct[0] - 1]
+			}!`;
+		}
+		if (correctAnswer?.alternativeId == null) {
+			return 'Ops, você não respondeu esta questão!'
+		}
+	};
+
 	return (
 		correctAnswer && (
 			<Container showQuestion={showQuestion}>
@@ -52,17 +94,7 @@ export function ReviewQuestion({
 						<img src={iconAvaliationQuestions} />
 						<p>
 							Questão {index + 1}
-							{checkedAnswer ? (
-								<SubTitleAnswer circleColor="#0FD03F">
-									<span className="circle" />
-									<span>Resposta correta</span>
-								</SubTitleAnswer>
-							) : (
-								<SubTitleAnswer circleColor="#E2002F">
-									<span className="circle" />
-									<span>Resposta incorreta</span>
-								</SubTitleAnswer>
-							)}
+							{renderSubTitle()}
 						</p>
 						<div className="icon-dropdown">
 							<MaterialIcon color="#202020" name="expand_more" />
@@ -125,15 +157,14 @@ export function ReviewQuestion({
 					))}
 					<ContainerExplanation TextColor={checkedAnswer}>
 						<p className="textExplanation">
-							{checkedAnswer
-								? 'Parabéns, você acertou esta questão!'
-								: `Ops! Você errou esta questão, a resposta correta é a alternativa ${
-										arrayLetters[correctAnswer.Correct[0] - 1]
-								  }!`}
+							{textExplanation()}
 						</p>
-						<p>
-							<strong>Explicação:</strong> Lorem ipsum dolor sit amet
-						</p>
+
+						{correctAnswer?.alternativeId !== null && (
+							<p>
+								<strong>Explicação:</strong> Lorem ipsum dolor sit amet
+							</p>
+						)}
 					</ContainerExplanation>
 				</div>
 			</Container>

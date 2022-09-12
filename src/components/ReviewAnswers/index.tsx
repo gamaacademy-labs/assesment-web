@@ -34,7 +34,7 @@ export function ReviewAnswers() {
 		async function gettingScoreAssessment() {
 			try {
 				api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-				const a = await scoreAssessment(assessmentId);
+				const a = await scoreAssessment(assessmentId);		
 				setcorrectAnswer(a.data.answers);
 				
 			} catch (error) {
