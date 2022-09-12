@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 
-export function QuestionsMapSuccess() {
+export function QuestionsMapReview() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const assessmentId = Cookies.get('assessmentId') as string;
   const token = useSelector((state: RootState) => state.persistedReducer.token);
@@ -53,6 +53,7 @@ export function QuestionsMapSuccess() {
         <SubContainerQuestions>
           {questions?.map((question, index) => (
             <LinkMapQuestions
+              variant="red"
               key={question.id}
               to="#"
             >
@@ -62,11 +63,15 @@ export function QuestionsMapSuccess() {
         </SubContainerQuestions>
 
         <DivInputRadio>
-          <IconLegend isactive={'active'} variant="checked" />
-          <label>Respondida</label>
+          <IconLegend variant="green" />
+          <label>Correta</label>
         </DivInputRadio>
         <DivInputRadio>
-          <IconLegend isactive={'active'} variant="unchecked" />
+          <IconLegend variant="red" />
+          <label>Incorreta</label>
+        </DivInputRadio>
+        <DivInputRadio>
+          <IconLegend variant="white" />
           <label>Não respondida</label>
         </DivInputRadio>
       </ContainerDropdown>
