@@ -10,8 +10,6 @@
 - [André Lima](https://github.com/andresdslima) - Frontend Developer
 - [Lucas Veiga]() - Frontend Developer
 - [Júnior Dering]() - Frontend Developer
-- [Matheus Sousa]() - Backend Developer
-- [Gefferson oliveira]() - Backend Developer
 - [Álvaro M Ferreira]() - Backend Developer
 
 ## Convenções de desenvolvimento

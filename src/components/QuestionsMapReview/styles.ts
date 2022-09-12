@@ -5,6 +5,10 @@ interface ContainerDropdown {
 	collapse: boolean;
 }
 
+interface TypeLinkMapQuestions {
+	variant: 'green' | 'red' | 'white';
+}
+
 export const Container = styled.aside<ContainerDropdown>`
 	padding: 2rem;
 	background-color: #fff;
@@ -64,32 +68,28 @@ export const SubContainerQuestions = styled.div`
 	padding: 1rem 1rem;
 `;
 
-export const LinkMapQuestions = styled(Link)`
+export const LinkMapQuestions = styled(Link)<TypeLinkMapQuestions>`
 	font-size: 0.75rem;
 	font-weight: bold;
 	width: 2rem;
 	height: 2rem;
-	color: #d7dbda;
 	text-decoration: none;
-	border: 1px solid #7d38db;
 	border-radius: 4px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #7d38db;
-	color: #fff;
-	transition: opacity 0.2s;
+	background: ${props =>
+		(props.variant === 'green' && '#0FD03F') ||
+		(props.variant === 'red' && '#E10000;') ||
+		'#FFF'};
+	color: ${props => (props.variant === 'white' ? '#D7DBDA' : '#FFF')};
+	border: ${props =>
+		props.variant === 'white' ? '1px solid #D7DBDA' : 'none'};
 
 	&:hover {
-		color: #fff;
-		opacity: 0.85;
+		color: ${props => props.variant !== 'white' && '#FFF'};
 	}
 `;
-
-interface TypeLinkMapQuestions {
-	variant: 'checked' | 'unchecked';
-	isactive: 'active' | 'disabled';
-}
 
 export const IconLegend = styled.div<TypeLinkMapQuestions>`
 	font-size: 0.75rem;
@@ -99,21 +99,13 @@ export const IconLegend = styled.div<TypeLinkMapQuestions>`
 	border-radius: 50%;
 	color: #d7dbda;
 	text-decoration: none;
-	border: ${props =>
-		props.isactive === 'active' ? '1px solid #7d38db' : '1px solid #d7dbda'};
+	border: ${props => props.variant === 'white' && '1px solid #d7dbda'};
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: ${props => props.variant === 'checked' && '#7d38db'};
-	color: ${props =>
-		(props.variant === 'checked' && '#fff') ||
-		(props.isactive === 'active' && '#7d38db')};
-	transition: opacity 0.2s;
-
-	&:hover {
-		color: ${props => props.variant === 'checked' && '#fff'};
-		opacity: ${props => props.variant === 'checked' && '0.85'};
-	}
+	background: ${props =>
+		(props.variant === 'red' && '#E10000') ||
+		(props.variant === 'green' && '#0FD03F')};
 `;
 
 export const DivInputRadio = styled.div`
