@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storageSession from 'redux-persist/lib/storage/session'
 import userReducer from './user'
 
 const persistConfig = {
   key: '@user',
-  storage,
+  storage: storageSession,
 }
 
 const persistedReducer = persistReducer(persistConfig, userReducer)

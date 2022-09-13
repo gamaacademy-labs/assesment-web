@@ -21,12 +21,12 @@ export function AvaliationQuestions({
 	const hasAvaliationActive = questions.length > 0 ? true : false;
 
 	async function handleAnswerQuestion(alt: Alternative) {
-		const questionId = questions[questionIndex].id
-		const alternativeId = alt.id
+		const questionId = questions[questionIndex].id;
+		const alternativeId = alt.id;
 
-		const selectedAnswer = { questionId, alternativeId, assessmentId }
+		const selectedAnswer = { questionId, alternativeId, assessmentId };
 
-		await savingAnswer(selectedAnswer)
+		await savingAnswer(selectedAnswer);
 
 		const stateCopy = [...checkQuestionAnswer];
 		stateCopy[questionIndex] = alt.id;
@@ -37,25 +37,18 @@ export function AvaliationQuestions({
 		return checkQuestionAnswer[questionIndex] === id ? true : false;
 	}
 
-	useEffect(() => {
-		const richtTextConverter = (richText: string) => {
-			const divContent = document.getElementsByClassName('questionTitle')[0];
-			divContent.innerHTML = richText;
-		};
-
-		hasAvaliationActive && richtTextConverter(questions[questionIndex].title)
-
-	}, [questionIndex, hasAvaliationActive])
-
-
+	const richtTextConverter = (richText: string) => {
+		return { __html: richText };
+	};
 	return (
 		<Container>
 			<h3>
 				<img src={iconAvaliationQuestions} /> Questão {questionIndex + 1}
 			</h3>
-			<div className="questionTitle"></div>
 			{hasAvaliationActive &&
-				questions[questionIndex].alternatives.map(
+			<div>
+				<span className='titleQuestion' dangerouslySetInnerHTML={richtTextConverter(questions[questionIndex].title)} />
+				{questions[questionIndex].alternatives.map(
 					(alternative: Alternative) => (
 						<ContainerInput
 							key={alternative.id}
@@ -72,7 +65,9 @@ export function AvaliationQuestions({
 							<label htmlFor={alternative.id}>{alternative.title}</label>
 						</ContainerInput>
 					),
-				)}
+					)}
+			</div>
+					}
 		</Container>
 	);
 }

@@ -1,5 +1,6 @@
 import { Button } from '@gama-academy/smash-web';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 import illustration from '../../assets/images/illustration-page-success.png';
 import { Container } from './styles';
 
@@ -8,7 +9,11 @@ interface SuccessPageProps {
 }
 
 export function SuccessPage({ score }: SuccessPageProps) {
+	const navigate = useNavigate();
 	const title = Cookies.get('titleAssessment') as string;
+	const goToReview = () => {
+		navigate('/review')
+	}
 
 	return (
 		<Container>
@@ -19,7 +24,7 @@ export function SuccessPage({ score }: SuccessPageProps) {
 			</p>
 			<Button
 				color="success"
-				onClick={function noRefCheck() { }}
+				onClick={goToReview}
 				size="0"
 				variant="filled"
 			>
