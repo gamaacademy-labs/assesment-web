@@ -38,14 +38,14 @@ export const ProgressBar = ({
 		n => typeof n === 'number',
 	);
 	const amountOfQuestionsAnswered = filteredQuestionsAnswered.length;
-	const changeButton =
-		questionIndex !== amountOfQuestions - 1
+	const changeButton = questionIndex !== amountOfQuestions - 1 
+	const sentAssessment = filteredQuestionsAnswered.length === amountOfQuestions
 
 	const navigate = useNavigate()
-
+	
 	async function handleNextQuestion() {
 
-		if (!changeButton) {
+		if (!changeButton && sentAssessment) {
 			await finishingAssessment(assessmentId)
 			navigate('/success')
 			return toast.success('Avaliação entregue!');
@@ -120,7 +120,7 @@ export const ProgressBar = ({
 						size="2"
 						fluid
 						onClick={handleNextQuestion}
-						color={changeButton ? 'white' : 'primary.3'}
+						color={changeButton  ? 'white' : 'primary.3'}
 					>
 						<Box
 							className="box"
@@ -133,11 +133,11 @@ export const ProgressBar = ({
 							</Typography>
 							<MatiralIconStyles
 								size={20}
-								name={changeButton ? 'arrow_forward' : 'flag'}
+								name={changeButton  ? 'arrow_forward' : 'flag'}
 								shape="round"
 								color="black"
-								shapeBackground={changeButton ? 'primary.3' : 'contrast.dark'}
-								changeColor={changeButton}
+								shapeBackground={changeButton  ? 'primary.3' : 'contrast.dark'}
+								changeColor={changeButton }
 								type="round"
 							/>
 						</Box>

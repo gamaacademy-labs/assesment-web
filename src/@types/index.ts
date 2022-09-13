@@ -26,3 +26,9 @@ export interface User {
 	username: string;
 	token: string;
 }
+
+export interface CorrectAnswer {
+	Correct: number[];
+	alternativeId: number;
+	questionId: string;
+}

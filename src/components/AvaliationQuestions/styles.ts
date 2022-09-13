@@ -25,6 +25,7 @@ export const Container = styled.main`
 		margin-top: 0.5rem;
 		font-weight: 600;
 	}
+
 `;
 
 interface TypeContainerInput {
