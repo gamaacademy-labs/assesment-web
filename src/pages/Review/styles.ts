@@ -18,3 +18,5 @@ export const SubContainer = styled.div`
 		flex-direction: column;
 	}
 `;
+
+export const Aside = styled.aside``;
