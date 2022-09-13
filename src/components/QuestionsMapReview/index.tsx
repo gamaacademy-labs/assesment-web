@@ -1,13 +1,7 @@
 import { MaterialIcon } from '@gama-academy/smash-web';
-import Cookies from 'js-cookie';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Question } from '../../@types';
+import { useState } from 'react';
+import { CorrectAnswer } from '../../@types';
 import iconQuestionsMap from '../../assets/icons/iconQuestionsMap.svg';
-import { api } from '../../services/mainApi';
-import { getAssessmentQuestion } from '../../services/mainApi/assessments';
-import { RootState } from '../../store';
-import { setUser } from '../../store/user';
 import {
   Container,
   ContainerDropdown,
@@ -15,28 +9,23 @@ import {
   SubContainerQuestions
 } from './styles';
 
+interface TypeQuestionsMapReview {
+  answers: CorrectAnswer[];
+}
 
-export function QuestionsMapReview() {
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const assessmentId = Cookies.get('assessmentId') as string;
-  const token = useSelector((state: RootState) => state.persistedReducer.token);
-  const dispatch = useDispatch()
+export function QuestionsMapReview({ answers }: TypeQuestionsMapReview) {
 
   const [collapse, setCollapse] = useState(false)
 
-  useEffect(() => {
-    const getQuestionList = async () => {
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      try {
-        const questionList = await getAssessmentQuestion(assessmentId);
-        setQuestions(questionList);
-      } catch (error) {
-        dispatch(setUser({ token: '' }))
-      }
-    };
-
-    getQuestionList();
-  }, []);
+  function handleVariant(answer: CorrectAnswer) {
+    if (answer.Correct[0] == answer.alternativeId) {
+      return 'green'
+    }
+    if (answer.alternativeId === null) {
+      return 'white'
+    }
+    return 'red'
+  }
 
   return (
     <Container collapse={collapse}	>
@@ -51,10 +40,10 @@ export function QuestionsMapReview() {
       </header>
       <ContainerDropdown collapse={collapse}>
         <SubContainerQuestions>
-          {questions?.map((question, index) => (
+          {answers?.map((answer, index) => (
             <LinkMapQuestions
-              variant="red"
-              key={question.id}
+              variant={answer.alternativeId ? handleVariant(answer) : 'white'}
+              key={answer.questionId}
               to="#"
             >
               {index + 1}

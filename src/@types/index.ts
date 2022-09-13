@@ -27,6 +27,13 @@ export interface User {
 	token: string;
 }
 
+export interface ScoreAssessment {
+	id: string;
+	score: number;
+	status: number;
+	updatedAt: string;
+}
+
 export interface CorrectAnswer {
 	Correct: number[];
 	alternativeId: number;

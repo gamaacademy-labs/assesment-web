@@ -1,8 +1,15 @@
-import * as S from './styles';
+import { format } from 'date-fns';
+import { ScoreAssessment } from '../../@types';
 import clockIcon from '../../assets/icons/clockIcon.svg';
 import starIcon from '../../assets/icons/starIcon.svg';
+import * as S from './styles';
 
-export function MyAttemptCard() {
+interface TypeMyAttemptCard {
+	gettingScoreAssessment: ScoreAssessment;
+}
+
+export function MyAttemptCard({ gettingScoreAssessment }: TypeMyAttemptCard) {
+
 	return (
 		<S.Container>
 			<strong>
@@ -13,12 +20,12 @@ export function MyAttemptCard() {
 				<strong>
 					<small>Finalizada em: </small>
 				</strong>
-				<span>22/02/2021</span>
+				<span>{gettingScoreAssessment.updatedAt && format(new Date(gettingScoreAssessment.updatedAt), 'dd/MM/yyyy')}</span>
 			</S.SubContainerInfos>
 			<S.SubContainerInfos>
 				<img src={starIcon} alt="Ícone de estrela" />
 				<strong>Nota: </strong>
-				<span>8.0</span>
+				<span>{gettingScoreAssessment.score}.0</span>
 			</S.SubContainerInfos>
 		</S.Container>
 	);
