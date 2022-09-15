@@ -22,7 +22,7 @@ export function ReviewAnswers({ answers }: TypeReviewAnswers) {
 						index={index}
 						title={item.title}
 						alternative={item.alternatives}
-						name={item.questionId}
+						id={item.questionId}
 						correctAnswer={answers[index]}
 					/>
 				))}

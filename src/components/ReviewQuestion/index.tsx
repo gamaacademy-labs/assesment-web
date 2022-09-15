@@ -12,7 +12,7 @@ import { MaterialIcon } from '@gama-academy/smash-web';
 
 interface ReviewQuestionProps {
 	alternative: Alternative[];
-	name: string;
+	id: string;
 	title: string;
 	index: number;
 	correctAnswer: CorrectAnswer;
@@ -23,6 +23,7 @@ export function ReviewQuestion({
 	index,
 	title,
 	correctAnswer,
+	id
 }: ReviewQuestionProps) {
 	const [showQuestion, setShowQuestion] = useState(false);
 
@@ -90,7 +91,7 @@ export function ReviewQuestion({
 		correctAnswer && (
 			<Container showQuestion={showQuestion}>
 				<h3 onClick={() => setShowQuestion(!showQuestion)}>
-					<div className="titleQuestion">
+					<div id={id} className="titleQuestion">
 						<img src={iconAvaliationQuestions} />
 						<p>
 							Questão {index + 1}

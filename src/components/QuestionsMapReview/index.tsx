@@ -42,9 +42,10 @@ export function QuestionsMapReview({ answers }: TypeQuestionsMapReview) {
         <SubContainerQuestions>
           {answers?.map((answer, index) => (
             <LinkMapQuestions
+
               variant={answer.alternativeId ? handleVariant(answer) : 'white'}
               key={answer.questionId}
-              to="#"
+              href={`#${answer.questionId}`}
             >
               {index + 1}
             </LinkMapQuestions>

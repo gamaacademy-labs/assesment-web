@@ -68,7 +68,7 @@ export const SubContainerQuestions = styled.div`
 	padding: 1rem 1rem;
 `;
 
-export const LinkMapQuestions = styled(Link)<TypeLinkMapQuestions>`
+export const LinkMapQuestions = styled.a<TypeLinkMapQuestions>`
 	font-size: 0.75rem;
 	font-weight: bold;
 	width: 2rem;
