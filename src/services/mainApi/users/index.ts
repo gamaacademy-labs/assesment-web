@@ -21,6 +21,5 @@ export const loginUser = async (user: Login) => {
 
 		return response.data;
 	} catch (error) {
-		console.error(error);
 	}
 };

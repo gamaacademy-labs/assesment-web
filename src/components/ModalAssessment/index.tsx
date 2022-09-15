@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import ilus1 from '../../assets/illustration.png';
+import ilus1 from '../../assets/images/illustration.png';
 
 import {
 	Button as ButtonSmash,
@@ -24,14 +24,13 @@ interface Props {
 	imageModal?: string;
 	onClickCancel: () => void;
 	onClickConfirm: () => void;
+	show: boolean;
 }
 
 export const ModalAssessment = (props: Props) => {
-	const [show, setShow] = useState(true);
 
-	const handleClose = () => setShow(false);
 	return (
-		<DivModal show={show} onHide={handleClose} centered>
+		<DivModal show={props.show} onHide={props.onClickCancel} centered>
 			<Modal.Header closeButton></Modal.Header>
 			<Modal.Body>
 				<DivCard>
@@ -58,7 +57,7 @@ export const ModalAssessment = (props: Props) => {
 							fluid
 							variant="outline"
 						>
-							canclear
+							Cancelar
 						</ButtonSmash>
 					</Button>
 				</DivButton>
