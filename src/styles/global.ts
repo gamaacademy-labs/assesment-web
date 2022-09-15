@@ -14,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
         background-color: #f5f5f5;
     }
+    
+    a{
+        cursor: pointer;
+    }
 
     @media (max-width: 768px) {
     html {

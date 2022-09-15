@@ -24,10 +24,8 @@ export const Review = () => {
 			try {
 				api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 				const response = await scoreAssessment(assessmentId);
-				console.log(response);
 
 				setScoreAssessment(response.data);
-				console.log(ScoreAssessment);
 			} catch (error) {
 				dispatch(setUser({ token: '' }));
 			}

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Question } from '../../@types';
 import { AvaliationQuestions } from '../../components/AvaliationQuestions';
 import { Header } from '../../components/Header';
-import { ModalAssessment } from '../../components/ModalAssessment';
 import { ModalInfo } from '../../components/ModalInfo';
 import { ProgressBar } from '../../components/ProgressBar';
 import { QuestionsMap } from '../../components/QuestionsMap';
@@ -15,7 +14,7 @@ import { setUser } from '../../store/user';
 import { Container, SubContainer } from './styles';
 
 export const Assessment = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [showModalInfo, setShowModalInfo] = useState(false);
 	const [questions, setQuestions] = useState<Question[]>([]);
 	const [questionIndex, setQuestionIndex] = useState(0);
 	const [checkQuestionAnswer, setCheckQuestionAnswer] = useState<string[]>([]);
@@ -23,7 +22,7 @@ export const Assessment = () => {
 	const title = Cookies.get('titleAssessment') as string;
 	const assessmentId = Cookies.get('assessmentId') as string;
 	const deadline = Cookies.get('dateAssessment') as string;
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const token = useSelector((state: RootState) => state.persistedReducer.token);
 
 	useEffect(() => {
@@ -33,14 +32,12 @@ export const Assessment = () => {
 				const questionList = await getAssessmentQuestion(assessmentId);
 				setQuestions(questionList);
 			} catch (error) {
-				dispatch(setUser({ token: '' }))
+				dispatch(setUser({ token: '' }));
 			}
 		};
 
 		getQuestionList();
 	}, []);
-
-
 
 	return (
 		<Container className="body-container">
@@ -50,7 +47,7 @@ export const Assessment = () => {
 					questions={questions}
 					questionIndex={questionIndex}
 					setQuestionIndex={setQuestionIndex}
-					setShowModal={setShowModal}
+					setShowModal={setShowModalInfo}
 					checkQuestionAnswer={checkQuestionAnswer}
 				/>
 				<AvaliationQuestions
@@ -70,9 +67,10 @@ export const Assessment = () => {
 			/>
 			<ModalInfo
 				deadline={deadline}
-				showModal={showModal}
-				setShowModal={setShowModal}
+				showModal={showModalInfo}
+				setShowModal={setShowModalInfo}
 			/>
+
 		</Container>
 	);
 };

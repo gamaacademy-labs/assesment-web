@@ -57,6 +57,7 @@ export const DivInformation = styled.div`
 	margin: 0 auto;
 	h4 {
 		margin: 1rem 0;
+		font-weight: bold;
 	}
 	p {
 		margin: 0;
