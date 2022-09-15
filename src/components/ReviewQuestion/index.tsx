@@ -113,7 +113,7 @@ export function ReviewQuestion({
 								changeDisplay={
 									checkedAnswerColor(index + 1) !== '#fff' ? true : false
 								}
-								width={10}
+								width={20}
 								marginRight={1}
 							>
 								<strong>

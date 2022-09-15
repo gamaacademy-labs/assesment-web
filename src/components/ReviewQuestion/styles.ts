@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { boolean } from 'yup';
 
 interface TypeContainer {
 	showQuestion: boolean;
@@ -78,8 +77,8 @@ export const ContainerInput = styled.div<TypeContainerInput>`
 
 	@media (max-width: 768px) {
 		width: ${props =>
-			props.width === 100 ? props.width - 1 : 4 * props.width}%;
-		height: 30px;
+			props.width === 100 ? props.width - 1 : 2 * props.width}%;
+		min-height: 30px;
 		font-size: 1rem;
 	}
 
