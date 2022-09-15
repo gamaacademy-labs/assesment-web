@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Assessment } from '../../@types';
 import { api } from '../../services/mainApi';
 import { getAllAssessmentList } from '../../services/mainApi/assessments';
-import { finishingAssessment } from '../../services/user-assessment';
+import { finishingAssessment } from '../../services/userAssessment';
 import { RootState } from '../../store';
 import { setUser } from '../../store/user';
 import * as S from './styles';

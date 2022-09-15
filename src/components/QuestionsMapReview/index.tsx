@@ -18,7 +18,7 @@ export function QuestionsMapReview({ answers }: TypeQuestionsMapReview) {
   const [collapse, setCollapse] = useState(false)
 
   function handleVariant(answer: CorrectAnswer) {
-    if (answer.Correct[0] == answer.alternativeId) {
+    if (answer.isCorrect == answer.alternativeId) {
       return 'green'
     }
     if (answer.alternativeId === null) {
@@ -42,9 +42,10 @@ export function QuestionsMapReview({ answers }: TypeQuestionsMapReview) {
         <SubContainerQuestions>
           {answers?.map((answer, index) => (
             <LinkMapQuestions
+
               variant={answer.alternativeId ? handleVariant(answer) : 'white'}
               key={answer.questionId}
-              to="#"
+              href={`#${answer.questionId}`}
             >
               {index + 1}
             </LinkMapQuestions>

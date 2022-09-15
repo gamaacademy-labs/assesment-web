@@ -50,7 +50,7 @@ export const ModalInfo = ({
 				<Modal.Body>
 					<DivCards>
 						<DivCard display={transform === 0 ? 'flex' : 'none'}>
-							<Img src={ilus1} alt="" />
+							<Img src={ilus1} alt="ilustração" />
 							<DivInformation>
 								<h4>Nota Maxima</h4>
 								<p>
@@ -60,7 +60,7 @@ export const ModalInfo = ({
 							</DivInformation>
 						</DivCard>
 						<DivCard display={transform == -1 ? 'flex' : 'none'}>
-							<Img src={ilus2} alt="" />
+							<Img src={ilus2} alt="ilustração" />
 							<DivInformation>
 								<h4>Apenas uma chance!</h4>
 								<p>
@@ -69,7 +69,7 @@ export const ModalInfo = ({
 							</DivInformation>
 						</DivCard>
 						<DivCard display={transform === -2 ? 'flex' : 'none'}>
-							<Img src={ilus3} alt="" />
+							<Img src={ilus3} alt="ilustração" />
 							<DivInformation>
 								<h4>Data Limite</h4>
 								<p>
