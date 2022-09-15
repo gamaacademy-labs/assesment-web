@@ -35,7 +35,19 @@ export interface ScoreAssessment {
 }
 
 export interface CorrectAnswer {
-	Correct: number[];
+	isCorrect: number;
 	alternativeId: number;
 	questionId: string;
+	title: string;
+	alternatives: Alternative[];
+}
+
+export interface ResponseStore {
+	answers: CorrectAnswer[];
+	createdAt: string;
+	id: string;
+	isActive: boolean;
+	score: number;
+	status: number;
+	updatedAt: string;
 }

@@ -25,10 +25,12 @@ export function HomeAssessment() {
 		const takeAssessment = async () => {
 			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 			const response = await getAssessment(`${id}`);
+			const formatData = format(new Date(response.finishedAt), 'dd/MM/yyyy');
+			Cookies.set('dateAssessment', formatData);
 
 			setAssessment({
 				...response,
-				finishedAt: format(new Date(response.finishedAt), 'dd/MM/yyyy'),
+				finishedAt: formatData,
 			});
 		};
 

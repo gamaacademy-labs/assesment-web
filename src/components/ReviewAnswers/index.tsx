@@ -4,24 +4,26 @@ import { ReviewQuestion } from '../ReviewQuestion';
 import { Container } from './styles';
 
 interface TypeReviewAnswers {
-	questions: Question[];
 	answers: CorrectAnswer[];
 }
 
-export function ReviewAnswers({ questions, answers }: TypeReviewAnswers) {
+export function ReviewAnswers({ answers }: TypeReviewAnswers) {
+	console.log(answers);
+	
 
-	const hasAvaliationActive = questions.length > 0 ? true : false;
+	const hasAvaliationActive = answers.length > 0 ? true : false;
+		
 
 	return (
 		<Container>
 			{hasAvaliationActive &&
-				questions.map((item, index) => (
+				answers.map((item, index) => (
 					<ReviewQuestion
-						key={item.id}
+						key={item.questionId}
 						index={index}
 						title={item.title}
 						alternative={item.alternatives}
-						name={item.id}
+						id={item.questionId}
 						correctAnswer={answers[index]}
 					/>
 				))}

@@ -1,6 +1,6 @@
 import { Box, Button, MaterialIcon, Typography } from '@gama-academy/smash-web';
 import { useNavigate } from 'react-router-dom';
-import { startingAssessment } from '../../services/user-assessment';
+import { startingAssessment } from '../../services/userAssessment';
 import * as S from './styles';
 
 interface FooterProps {
