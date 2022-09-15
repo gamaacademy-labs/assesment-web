@@ -15,30 +15,21 @@ import { Aside, Container, SubContainer } from './styles';
 
 export const Review = () => {
 	const title = Cookies.get('titleAssessment') as string;
-	const [questions, setQuestions] = useState<Question[]>([]);
-	const [gettingScoreAssessment, setGettingScoreAssessment] = useState([] as any);
+	const [gettingScoreAssessment, setGettingScoreAssessment] = useState(
+		[] as any,
+	);
 	const dispatch = useDispatch();
 	const assessmentId = Cookies.get('assessmentId') as string;
 	const token = useSelector((state: RootState) => state.persistedReducer.token);
 
 	useEffect(() => {
-		const getQuestionList = async () => {
-			api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-			try {
-				const questionList = await getAssessmentQuestion(assessmentId);
-
-				setQuestions(questionList);
-			} catch (error) {
-				dispatch(setUser({ token: '' }));
-			}
-		};
 
 		async function gettingScoreAssessment() {
 			try {
 				api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 				const response = await scoreAssessment(assessmentId);
-				setGettingScoreAssessment(response.data);
 
+				setGettingScoreAssessment(response.data.answers);
 			} catch (error) {
 				dispatch(setUser({ token: '' }));
 			}
@@ -46,7 +37,6 @@ export const Review = () => {
 
 		gettingScoreAssessment();
 
-		getQuestionList();
 	}, []);
 
 	return (
@@ -55,9 +45,12 @@ export const Review = () => {
 			<SubContainer className="body-container">
 				<Aside>
 					<MyAttemptCard gettingScoreAssessment={gettingScoreAssessment} />
-					<QuestionsMapReview answers={gettingScoreAssessment.answers} />
+					<QuestionsMapReview answers={gettingScoreAssessment} />
 				</Aside>
-				<ReviewAnswers questions={questions} answers={gettingScoreAssessment.answers} />
+
+				<ReviewAnswers
+					answers={gettingScoreAssessment}
+				/>
 			</SubContainer>
 		</Container>
 	);

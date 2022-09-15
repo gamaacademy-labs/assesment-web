@@ -35,7 +35,9 @@ export interface ScoreAssessment {
 }
 
 export interface CorrectAnswer {
-	Correct: number[];
+	isCorrect: number;
 	alternativeId: number;
 	questionId: string;
+	title: string;
+	alternatives: Alternative[];
 }

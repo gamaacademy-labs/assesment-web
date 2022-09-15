@@ -27,7 +27,7 @@ export function ReviewQuestion({
 	const [showQuestion, setShowQuestion] = useState(false);
 
 	const checkedAnswer =
-		correctAnswer?.Correct[0] == correctAnswer?.alternativeId;
+		correctAnswer?.isCorrect == correctAnswer?.alternativeId;
 
 	const arrayLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
 
@@ -36,7 +36,7 @@ export function ReviewQuestion({
 	};
 
 	const checkedAnswerColor = (indexAlternative: number) => {
-		if (indexAlternative === correctAnswer.Correct[0]) {
+		if (indexAlternative === correctAnswer.isCorrect) {
 			return '#0FD03F';
 		}
 		if (indexAlternative === correctAnswer.alternativeId) {
@@ -78,7 +78,7 @@ export function ReviewQuestion({
 		}
 		if (!checkedAnswer && correctAnswer?.alternativeId !== null) {
 			return `Ops! Você errou esta questão, a resposta correta é a alternativa ${
-				arrayLetters[correctAnswer.Correct[0] - 1]
+				arrayLetters[correctAnswer.isCorrect - 1]
 			}!`;
 		}
 		if (correctAnswer?.alternativeId == null) {
