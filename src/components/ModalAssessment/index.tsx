@@ -3,17 +3,17 @@ import Modal from 'react-bootstrap/Modal';
 import ilus1 from '../../assets/illustration.png';
 
 import {
+	Button as ButtonSmash,
+	ThemeColorsName
+} from '@gama-academy/smash-web';
+import {
 	Button,
 	DivButton,
 	DivCard,
 	DivInformation,
 	DivModal,
-	Img,
+	Img
 } from './styles';
-import {
-	Button as ButtonSmash,
-	ThemeColorsName,
-} from '@gama-academy/smash-web';
 
 interface Props {
 	title: string;
@@ -26,7 +26,7 @@ interface Props {
 	onClickConfirm: () => void;
 }
 
-export const ModalInfo = (props: Props) => {
+export const ModalAssessment = (props: Props) => {
 	const [show, setShow] = useState(true);
 
 	const handleClose = () => setShow(false);
