@@ -54,21 +54,12 @@ export function QuestionsMapSuccess() {
           {questions?.map((question, index) => (
             <LinkMapQuestions
               key={question.id}
-              to="#"
             >
               {index + 1}
             </LinkMapQuestions>
           ))}
         </SubContainerQuestions>
 
-        <DivInputRadio>
-          <IconLegend isactive={'active'} variant="checked" />
-          <label>Respondida</label>
-        </DivInputRadio>
-        <DivInputRadio>
-          <IconLegend isactive={'active'} variant="unchecked" />
-          <label>Não respondida</label>
-        </DivInputRadio>
       </ContainerDropdown>
     </Container>
   );
