@@ -26,7 +26,7 @@ interface Props {
 	onClickConfirm: () => void;
 }
 
-export const ModalInfo = (props: Props) => {
+export const ModalAssessment = (props: Props) => {
 	const [show, setShow] = useState(true);
 
 	const handleClose = () => setShow(false);

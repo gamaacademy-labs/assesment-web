@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Question } from '../../@types';
 import { AvaliationQuestions } from '../../components/AvaliationQuestions';
 import { Header } from '../../components/Header';
+import { ModalAssessment } from '../../components/ModalAssessment';
 import { ModalInfo } from '../../components/ModalInfo';
 import { ProgressBar } from '../../components/ProgressBar';
 import { QuestionsMap } from '../../components/QuestionsMap';
