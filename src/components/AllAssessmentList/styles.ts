@@ -21,14 +21,17 @@ export const Content = styled.div`
 		width: 100%;
 		position: relative;
 		border: 2px solid #7d38db;
+		background-color: #7d38db;
+		color: #fff;
+		transition: all 0.2s;
 
 		p {
 			margin: 0;
 		}
 
 		&:hover {
-			background-color: #7d38db;
-			color: #fff;
+			border: 1px solid #202020;
+			box-shadow: -4px 4px 0px #202020;
 		}
 
 		@media (max-width: 768px) {

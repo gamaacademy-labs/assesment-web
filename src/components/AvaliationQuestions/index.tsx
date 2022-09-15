@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Alternative, Question } from '../../@types';
 import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
 import { savingAnswer } from '../../services/userAssessment';
@@ -46,28 +45,28 @@ export function AvaliationQuestions({
 				<img src={iconAvaliationQuestions} /> Questão {questionIndex + 1}
 			</h3>
 			{hasAvaliationActive &&
-			<div>
-				<span className='titleQuestion' dangerouslySetInnerHTML={richtTextConverter(questions[questionIndex].title)} />
-				{questions[questionIndex].alternatives.map(
-					(alternative: Alternative) => (
-						<ContainerInput
-							key={alternative.id}
-							variant={handleCheckedRightAlternative(alternative.id)}
-						>
-							<input
-								onChange={() => handleAnswerQuestion(alternative)}
-								value={alternative.id}
-								id={alternative.id}
-								type="radio"
-								name={questions[questionIndex].id}
-								checked={handleCheckedRightAlternative(alternative.id)}
-							/>
-							<label htmlFor={alternative.id}>{alternative.title}</label>
-						</ContainerInput>
-					),
+				<div>
+					<span className='titleQuestion' dangerouslySetInnerHTML={richtTextConverter(questions[questionIndex].title)} />
+					{questions[questionIndex].alternatives.map(
+						(alternative: Alternative) => (
+							<ContainerInput
+								key={alternative.id}
+								variant={handleCheckedRightAlternative(alternative.id)}
+							>
+								<input
+									onChange={() => handleAnswerQuestion(alternative)}
+									value={alternative.id}
+									id={alternative.id}
+									type="radio"
+									name={questions[questionIndex].id}
+									checked={handleCheckedRightAlternative(alternative.id)}
+								/>
+								<label htmlFor={alternative.id}>{alternative.title}</label>
+							</ContainerInput>
+						),
 					)}
-			</div>
-					}
+				</div>
+			}
 		</Container>
 	);
 }
