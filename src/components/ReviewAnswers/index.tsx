@@ -8,9 +8,10 @@ interface TypeReviewAnswers {
 }
 
 export function ReviewAnswers({ answers }: TypeReviewAnswers) {
+	console.log(answers);
+	
 
 	const hasAvaliationActive = answers.length > 0 ? true : false;
-	console.log(answers);
 		
 
 	return (

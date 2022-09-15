@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Alternative, Question } from '../../@types';
 import iconAvaliationQuestions from '../../assets/icons/iconAvaliationQuestions.svg';
-import { savingAnswer } from '../../services/user-assessment';
+import { savingAnswer } from '../../services/userAssessment';
 import { Container, ContainerInput } from './styles';
 interface AvaliationQuestionsProps {
 	assessmentId: string;

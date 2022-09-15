@@ -8,7 +8,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Question } from '../../@types';
-import { finishingAssessment } from '../../services/user-assessment';
+import { finishingAssessment } from '../../services/userAssessment';
 import {
 	Div,
 	DivAllButton,

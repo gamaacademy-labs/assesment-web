@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import { QuestionsMapSuccess } from '../../components/QuestionsMapSuccess';
 import { SuccessPage } from '../../components/SuccessPage';
-import { scoreAssessment } from '../../services/user-assessment';
+import { scoreAssessment } from '../../services/userAssessment';
 import { Container } from './styles';
 
 export function Success() {

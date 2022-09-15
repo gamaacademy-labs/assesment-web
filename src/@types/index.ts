@@ -41,3 +41,13 @@ export interface CorrectAnswer {
 	title: string;
 	alternatives: Alternative[];
 }
+
+export interface ResponseStore {
+	answers: CorrectAnswer[];
+	createdAt: string;
+	id: string;
+	isActive: boolean;
+	score: number;
+	status: number;
+	updatedAt: string;
+}

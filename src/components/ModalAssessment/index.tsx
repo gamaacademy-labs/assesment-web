@@ -35,7 +35,7 @@ export const ModalInfo = (props: Props) => {
 			<Modal.Header closeButton></Modal.Header>
 			<Modal.Body>
 				<DivCard>
-					<Img src={props.imageModal ? props.imageModal : ilus1} alt="" />
+					<Img src={props.imageModal ? props.imageModal : ilus1} alt="ilustração" />
 					<DivInformation>
 						<h4>{props.title}</h4>
 						<p>{props.text}</p>
