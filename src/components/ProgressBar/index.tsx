@@ -24,14 +24,15 @@ interface ProgressBarProps {
 	questionIndex: number;
 	setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
 	checkQuestionAnswer: string[];
+	setShowModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const ProgressBar = ({
-	assessmentId,
 	questions,
 	questionIndex,
 	setQuestionIndex,
 	checkQuestionAnswer,
+	setShowModal
 }: ProgressBarProps) => {
 	const amountOfQuestions = questions.length;
 	const filteredQuestionsAnswered = checkQuestionAnswer.filter(
@@ -40,15 +41,11 @@ export const ProgressBar = ({
 	const amountOfQuestionsAnswered = filteredQuestionsAnswered.length;
 	const changeButton = questionIndex !== amountOfQuestions - 1 
 	const sentAssessment = filteredQuestionsAnswered.length === amountOfQuestions
-
-	const navigate = useNavigate()
 	
 	async function handleNextQuestion() {
 
 		if (!changeButton && sentAssessment) {
-			await finishingAssessment(assessmentId)
-			navigate('/success')
-			return toast.success('Avaliação entregue!');
+			return setShowModal(true)
 		}
 
 		if (questionIndex < amountOfQuestions - 1) {
