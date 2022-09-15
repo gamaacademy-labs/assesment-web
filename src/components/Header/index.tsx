@@ -1,12 +1,11 @@
-import * as S from './styles';
+import { MaterialIcon } from '@gama-academy/smash-web';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from '../../assets/images/Logo.svg';
 import perfil from '../../assets/images/Perfil.svg';
-import { MaterialIcon } from '@gama-academy/smash-web';
-import { Link, useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/user';
+import * as S from './styles';
 
 interface HeaderProps {
 	title: string;
@@ -15,22 +14,28 @@ interface HeaderProps {
 export const Header = ({ title }: HeaderProps) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const location = useLocation()
+
+	const isOnAssessment = location.pathname === '/assessment' ? true : false
+
 	const logout = () => {
-		toast.success('Logout realizado com sucesso!');
-		dispatch(setUser({token: ''}))
-		navigate('/login')
+		if (!isOnAssessment) {
+			toast.success('Logout realizado com sucesso!');
+			dispatch(setUser({ token: '' }))
+			navigate('/login')
+		}
 	};
 
 	return (
 		<S.SHeaderContainer>
-			<Link to="/">
-				<img src={logo} alt="Logo da Gama Academy" />
-			</Link>
+			{!isOnAssessment ? <Link to="/"><img src={logo} alt="Logo da Gama Academy" />
+			</Link> : <Link to="#"><img src={logo} alt="Logo da Gama Academy" />
+			</Link>}
 			<S.SContainer>
 				<S.SInputSearch
 					label=""
-					onChangeValue={function noRefCheck() {}}
-					onClear={function noRefCheck() {}}
+					onChangeValue={function noRefCheck() { }}
+					onClear={function noRefCheck() { }}
 					placeholder="Digite uma palavra-chave"
 					value=""
 					m={undefined}
